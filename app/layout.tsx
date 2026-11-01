@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset";
 import type { Metadata } from "next";
 import { Cormorant_Garamond, IBM_Plex_Sans_Arabic, Outfit } from "next/font/google";
 import "./globals.css";
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   },
   description:
     "Steel structures, rolling shutter doors, and gate automation from Amman since 1969.",
-  icons: { icon: "/logo.jpg" },
+  icons: { icon: asset("/logo.jpg") },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

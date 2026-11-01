@@ -1,4 +1,5 @@
 import { PageStage } from "@/components/PageStage";
+import { asset } from "@/lib/asset";
 import { projects } from "@/lib/catalog";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
@@ -25,7 +26,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ lang:
         {projects.map((project) => (
           <article key={project.id}>
             <div className="frame">
-              <Image src={project.image} alt="" fill sizes="(max-width: 800px) 100vw, 33vw" className="photo" />
+              <Image src={asset(project.image)} alt="" fill sizes="(max-width: 800px) 100vw, 33vw" className="photo" />
             </div>
             <div>
               <h2 style={{ fontSize: "1.25rem" }}>{dict.projects.items[project.id].title}</h2>

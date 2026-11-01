@@ -1,6 +1,7 @@
 "use client";
 
 import { Mark } from "@/components/Mark";
+import { asset } from "@/lib/asset";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -53,7 +54,7 @@ export function WelcomeSection({ text, motion }: { text: string; motion: boolean
       <div className="welcome-sticky">
         {collage.map((photo) => (
           <div key={photo.className} className={`float-photo ${photo.className}`} data-x={photo.x} data-y={photo.y}>
-            <Image src={photo.src} alt="" fill sizes="240px" />
+            <Image src={asset(photo.src)} alt="" fill sizes="240px" />
           </div>
         ))}
         <div className="welcome-copy reveal">

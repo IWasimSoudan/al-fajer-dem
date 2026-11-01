@@ -1,5 +1,6 @@
 "use client";
 
+import { asset } from "@/lib/asset";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import Image from "next/image";
 import type { MouseEvent } from "react";
@@ -27,13 +28,13 @@ export function HeroSection({
             muted
             loop
             playsInline
-            poster="/images/hero.jpg"
+            poster={asset("/images/hero.jpg")}
             aria-hidden="true"
           >
-            <source src="/videos/1101.mp4" type="video/mp4" />
+            <source src={asset("/videos/1101.mp4")} type="video/mp4" />
           </video>
         ) : (
-          <Image src="/images/hero.jpg" alt={heroAlt} fill priority sizes="100vw" className="hero-frame on" />
+          <Image src={asset("/images/hero.jpg")} alt={heroAlt} fill priority sizes="100vw" className="hero-frame on" />
         )}
       </div>
       <div className="hero-shade" />

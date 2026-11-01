@@ -1,5 +1,6 @@
 "use client";
 
+import { asset } from "@/lib/asset";
 import { gallery } from "@/lib/catalog";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import Image from "next/image";
@@ -24,7 +25,7 @@ export function GalleryGrid({ dict }: { dict: Dictionary }) {
         {items.map((item) => (
           <figure key={item.id}>
             <div className="frame">
-              <Image src={item.image} alt={dict.gallery.items[item.id]} fill sizes="(max-width: 800px) 100vw, 33vw" className="photo" />
+              <Image src={asset(item.image)} alt={dict.gallery.items[item.id]} fill sizes="(max-width: 800px) 100vw, 33vw" className="photo" />
             </div>
             <figcaption>{dict.gallery.items[item.id]}</figcaption>
           </figure>

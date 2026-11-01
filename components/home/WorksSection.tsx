@@ -1,5 +1,6 @@
 "use client";
 
+import { asset } from "@/lib/asset";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import Image from "next/image";
@@ -79,7 +80,7 @@ export function WorksSection({ lang, stage, motion }: { lang: Locale; stage: Sta
           >
             {stage.creations.map((item) => (
               <Link key={item.title} href={`/${lang}/${item.href}`} className="works-shot" aria-label={item.title}>
-                <Image src={item.image} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 58vw" />
+                <Image src={asset(item.image)} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 58vw" />
               </Link>
             ))}
           </div>

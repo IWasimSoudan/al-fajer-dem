@@ -1,4 +1,5 @@
 import { VisitSection } from "@/components/home/VisitSection";
+import { asset } from "@/lib/asset";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import Image from "next/image";
@@ -29,7 +30,7 @@ export function PageStage({
         {image ? (
           <>
             <div className="hero-media">
-              <Image src={image} alt={imageAlt} fill priority sizes="100vw" className="hero-frame on" />
+              <Image src={asset(image)} alt={imageAlt} fill priority sizes="100vw" className="hero-frame on" />
             </div>
             <div className="hero-shade" />
           </>

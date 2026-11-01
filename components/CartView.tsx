@@ -2,6 +2,7 @@
 
 import { useCart } from "@/components/CartProvider";
 import { Steps } from "@/components/Steps";
+import { asset } from "@/lib/asset";
 import { productById } from "@/lib/catalog";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
@@ -33,7 +34,7 @@ export function CartView({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               return (
                 <article key={item.id} className="cart-row">
                   <div className="frame">
-                    <Image src={product.image} alt="" fill sizes="92px" className="photo" />
+                    <Image src={asset(product.image)} alt="" fill sizes="92px" className="photo" />
                   </div>
                   <div>
                     <h2 style={{ fontSize: "1.15rem" }}>{copy.name}</h2>

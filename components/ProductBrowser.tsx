@@ -1,6 +1,7 @@
 "use client";
 
 import { useCart } from "@/components/CartProvider";
+import { asset } from "@/lib/asset";
 import { categories, products, type CategoryId } from "@/lib/catalog";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
@@ -47,7 +48,7 @@ export function ProductBrowser({ lang, dict }: { lang: Locale; dict: Dictionary 
             return (
               <article key={product.id} className="card">
                 <div className="frame">
-                  <Image src={product.image} alt="" fill sizes="(max-width: 800px) 100vw, 50vw" className="photo" />
+                  <Image src={asset(product.image)} alt="" fill sizes="(max-width: 800px) 100vw, 50vw" className="photo" />
                 </div>
                 <div className="body">
                   <h3>{copy.name}</h3>

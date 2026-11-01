@@ -1,4 +1,5 @@
 import { PageStage } from "@/components/PageStage";
+import { asset } from "@/lib/asset";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -26,7 +27,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
           <p>{dict.about.p2}</p>
         </div>
         <div className="frame wide">
-          <Image src="/images/steel.jpg" alt="" fill sizes="(max-width: 900px) 100vw, 46vw" className="photo" />
+          <Image src={asset("/images/steel.jpg")} alt="" fill sizes="(max-width: 900px) 100vw, 46vw" className="photo" />
         </div>
       </div>
       <h2>{dict.about.peopleTitle}</h2>
