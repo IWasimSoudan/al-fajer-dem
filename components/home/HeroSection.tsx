@@ -2,9 +2,7 @@
 
 import type { Dictionary } from "@/lib/dictionaries/en";
 import Image from "next/image";
-import { useEffect, useState, type MouseEvent } from "react";
-
-const frames = ["/images/hero.jpg", "/images/laser.jpg", "/images/hall.jpg"];
+import type { MouseEvent } from "react";
 
 type Stage = Dictionary["home"]["stage"];
 
@@ -19,28 +17,24 @@ export function HeroSection({
   motion: boolean;
   onScrollDown: (event: MouseEvent<HTMLAnchorElement>) => void;
 }) {
-  const [frame, setFrame] = useState(0);
-
-  useEffect(() => {
-    if (!motion) return;
-    const id = window.setInterval(() => setFrame((value) => (value + 1) % frames.length), 7000);
-    return () => window.clearInterval(id);
-  }, [motion]);
-
   return (
     <section className="hero-stage">
       <div className="hero-media">
-        {frames.map((src, index) => (
-          <Image
-            key={src}
-            src={src}
-            alt={index === 0 ? heroAlt : ""}
-            fill
-            priority={index === 0}
-            sizes="100vw"
-            className={index === frame ? "hero-frame on" : "hero-frame"}
-          />
-        ))}
+        {motion ? (
+          <video
+            className="hero-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/images/hero.jpg"
+            aria-hidden="true"
+          >
+            <source src="/videos/1101.mp4" type="video/mp4" />
+          </video>
+        ) : (
+          <Image src="/images/hero.jpg" alt={heroAlt} fill priority sizes="100vw" className="hero-frame on" />
+        )}
       </div>
       <div className="hero-shade" />
       <div className="hero-copy">
