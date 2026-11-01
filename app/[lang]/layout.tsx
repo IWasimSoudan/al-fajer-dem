@@ -1,4 +1,5 @@
 import { CartProvider } from "@/components/CartProvider";
+import { DocumentLocale } from "@/components/DocumentLocale";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { load } from "@/lib/page";
@@ -17,10 +18,13 @@ export default async function LangLayout({
   const { lang, dict } = await load(params);
 
   return (
-    <CartProvider>
-      <Header lang={lang} dict={dict} />
-      <main id="main">{children}</main>
-      <Footer lang={lang} dict={dict} />
-    </CartProvider>
+    <>
+      <DocumentLocale lang={lang} />
+      <CartProvider>
+        <Header lang={lang} dict={dict} />
+        <main id="main">{children}</main>
+        <Footer lang={lang} dict={dict} />
+      </CartProvider>
+    </>
   );
 }

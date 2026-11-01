@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, IBM_Plex_Sans_Arabic, Outfit } from "next/font/google";
-import { headers } from "next/headers";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -33,11 +32,9 @@ export const metadata: Metadata = {
   icons: { icon: "/logo.jpg" },
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const lang = (await headers()).get("x-lang") === "ar" ? "ar" : "en";
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"}>
+    <html suppressHydrationWarning>
       <body className={`${outfit.variable} ${arabic.variable} ${serif.variable}`}>{children}</body>
     </html>
   );
