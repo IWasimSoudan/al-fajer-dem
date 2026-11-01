@@ -1,3 +1,4 @@
+import { PageStage } from "@/components/PageStage";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -11,10 +12,14 @@ export default async function CertificatesPage({ params }: { params: Promise<{ l
   const { lang, dict } = await load(params);
 
   return (
-    <article className="page wrap">
-      <p className="kicker">{dict.certificates.kicker}</p>
-      <h1>{dict.certificates.title}</h1>
-      <p className="lead">{dict.certificates.lead}</p>
+    <PageStage
+      lang={lang}
+      dict={dict}
+      kicker={dict.certificates.kicker}
+      title={dict.certificates.title}
+      lead={dict.certificates.lead}
+      image="/images/gate.jpg"
+    >
       <div className="points">
         {dict.certificates.points.map((point) => (
           <p key={point} className="point">
@@ -27,6 +32,6 @@ export default async function CertificatesPage({ params }: { params: Promise<{ l
           {dict.certificates.cta}
         </Link>
       </div>
-    </article>
+    </PageStage>
   );
 }

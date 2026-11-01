@@ -12,9 +12,7 @@ export function CompleteView({ lang, dict }: { lang: Locale; dict: Dictionary })
   const total = orderLines.reduce((sum, line) => sum + line.price * line.qty, 0);
 
   return (
-    <section className="page wrap">
-      <p className="kicker">{dict.steps.label.replace("{current}", "4").replace("{total}", "4")}</p>
-      <h1>{dict.complete.title}</h1>
+    <div>
       <Steps lang={lang} dict={dict} current={4} />
       {!reference ? (
         <div className="prose">
@@ -60,6 +58,6 @@ export function CompleteView({ lang, dict }: { lang: Locale; dict: Dictionary })
           </aside>
         </div>
       )}
-    </section>
+    </div>
   );
 }

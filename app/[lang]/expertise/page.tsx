@@ -1,3 +1,4 @@
+import { PageStage } from "@/components/PageStage";
 import { expertise } from "@/lib/catalog";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
@@ -8,24 +9,28 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 }
 
 export default async function ExpertisePage({ params }: { params: Promise<{ lang: string }> }) {
-  const { dict } = await load(params);
+  const { lang, dict } = await load(params);
 
   return (
-    <article className="page wrap">
-      <p className="kicker">{dict.expertise.kicker}</p>
-      <h1>{dict.expertise.title}</h1>
-      <p className="lead">{dict.expertise.lead}</p>
-      <div className="index" style={{ marginTop: "2rem" }}>
+    <PageStage
+      lang={lang}
+      dict={dict}
+      kicker={dict.expertise.kicker}
+      title={dict.expertise.title}
+      lead={dict.expertise.lead}
+      image="/images/laser.jpg"
+    >
+      <div className="index">
         {expertise.map((id, index) => (
           <article key={id} id={id}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <div>
-              <h2 style={{ fontSize: "1.35rem" }}>{dict.expertise.items[id].title}</h2>
+              <h2>{dict.expertise.items[id].title}</h2>
               <p>{dict.expertise.items[id].text}</p>
             </div>
           </article>
         ))}
       </div>
-    </article>
+    </PageStage>
   );
 }

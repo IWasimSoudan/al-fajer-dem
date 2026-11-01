@@ -1,3 +1,4 @@
+import { PageStage } from "@/components/PageStage";
 import { PaymentForm } from "@/components/PaymentForm";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
@@ -9,5 +10,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 export default async function PaymentPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang, dict } = await load(params);
-  return <PaymentForm lang={lang} dict={dict} />;
+
+  return (
+    <PageStage lang={lang} dict={dict} title={dict.payment.title}>
+      <PaymentForm lang={lang} dict={dict} />
+    </PageStage>
+  );
 }

@@ -22,25 +22,23 @@ export function PaymentForm({ lang, dict }: { lang: Locale; dict: Dictionary }) 
 
   if (items.length === 0) {
     return (
-      <section className="page wrap">
-        <h1>{dict.payment.title}</h1>
+      <div className="prose">
         <p>{dict.cart.empty}</p>
         <Link className="btn" href={`/${lang}/cart`}>
           {dict.steps.cart}
         </Link>
-      </section>
+      </div>
     );
   }
 
   if (!draft.name) {
     return (
-      <section className="page wrap">
-        <h1>{dict.payment.title}</h1>
+      <div className="prose">
         <p>{dict.checkout.missing}</p>
         <Link className="btn" href={`/${lang}/checkout`}>
           {dict.steps.details}
         </Link>
-      </section>
+      </div>
     );
   }
 
@@ -62,9 +60,7 @@ export function PaymentForm({ lang, dict }: { lang: Locale; dict: Dictionary }) 
   }
 
   return (
-    <section className="page wrap">
-      <p className="kicker">{dict.steps.label.replace("{current}", "3").replace("{total}", "4")}</p>
-      <h1>{dict.payment.title}</h1>
+    <div>
       <Steps lang={lang} dict={dict} current={3} />
       <p className="note">{dict.payment.demo}</p>
       <p className="lead">{dict.payment.lead}</p>
@@ -106,6 +102,6 @@ export function PaymentForm({ lang, dict }: { lang: Locale; dict: Dictionary }) 
         </form>
         <Summary lang={lang} dict={dict} title={dict.payment.summary} />
       </div>
-    </section>
+    </div>
   );
 }

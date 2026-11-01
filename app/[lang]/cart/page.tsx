@@ -1,4 +1,5 @@
 import { CartView } from "@/components/CartView";
+import { PageStage } from "@/components/PageStage";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
 
@@ -9,5 +10,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 export default async function CartPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang, dict } = await load(params);
-  return <CartView lang={lang} dict={dict} />;
+
+  return (
+    <PageStage lang={lang} dict={dict} title={dict.cart.title}>
+      <CartView lang={lang} dict={dict} />
+    </PageStage>
+  );
 }

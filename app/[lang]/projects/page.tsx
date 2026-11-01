@@ -1,3 +1,4 @@
+import { PageStage } from "@/components/PageStage";
 import { projects } from "@/lib/catalog";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
@@ -9,14 +10,18 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 }
 
 export default async function ProjectsPage({ params }: { params: Promise<{ lang: string }> }) {
-  const { dict } = await load(params);
+  const { lang, dict } = await load(params);
 
   return (
-    <article className="page wrap">
-      <p className="kicker">{dict.projects.kicker}</p>
-      <h1>{dict.projects.title}</h1>
-      <p className="lead">{dict.projects.lead}</p>
-      <div className="project-grid" style={{ marginTop: "1.8rem" }}>
+    <PageStage
+      lang={lang}
+      dict={dict}
+      kicker={dict.projects.kicker}
+      title={dict.projects.title}
+      lead={dict.projects.lead}
+      image="/images/hall.jpg"
+    >
+      <div className="project-grid">
         {projects.map((project) => (
           <article key={project.id}>
             <div className="frame">
@@ -29,6 +34,6 @@ export default async function ProjectsPage({ params }: { params: Promise<{ lang:
           </article>
         ))}
       </div>
-    </article>
+    </PageStage>
   );
 }

@@ -13,9 +13,7 @@ export function CartView({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const { items, setQty, remove, total } = useCart();
 
   return (
-    <section className="page wrap">
-      <p className="kicker">{dict.steps.label.replace("{current}", "1").replace("{total}", "4")}</p>
-      <h1>{dict.cart.title}</h1>
+    <div>
       <Steps lang={lang} dict={dict} current={1} />
       {items.length === 0 ? (
         <div className="prose">
@@ -72,6 +70,6 @@ export function CartView({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </div>
         </>
       )}
-    </section>
+    </div>
   );
 }

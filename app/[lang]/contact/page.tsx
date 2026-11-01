@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/ContactForm";
+import { PageStage } from "@/components/PageStage";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
 
@@ -8,13 +9,17 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ lang: string }> }) {
-  const { dict } = await load(params);
+  const { lang, dict } = await load(params);
 
   return (
-    <article className="page wrap">
-      <p className="kicker">{dict.contact.kicker}</p>
-      <h1>{dict.contact.title}</h1>
-      <p className="lead">{dict.contact.lead}</p>
+    <PageStage
+      lang={lang}
+      dict={dict}
+      kicker={dict.contact.kicker}
+      title={dict.contact.title}
+      lead={dict.contact.lead}
+      image="/images/shutter.jpg"
+    >
       <div className="split">
         <ContactForm dict={dict} />
         <aside className="summary">
@@ -37,6 +42,6 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
           </details>
         ))}
       </section>
-    </article>
+    </PageStage>
   );
 }

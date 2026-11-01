@@ -20,13 +20,12 @@ export function CheckoutForm({ lang, dict }: { lang: Locale; dict: Dictionary })
 
   if (items.length === 0) {
     return (
-      <section className="page wrap">
-        <h1>{dict.checkout.title}</h1>
+      <div className="prose">
         <p>{dict.cart.empty}</p>
         <Link className="btn" href={`/${lang}/products`}>
           {dict.cart.emptyCta}
         </Link>
-      </section>
+      </div>
     );
   }
 
@@ -52,9 +51,7 @@ export function CheckoutForm({ lang, dict }: { lang: Locale; dict: Dictionary })
   }
 
   return (
-    <section className="page wrap">
-      <p className="kicker">{dict.steps.label.replace("{current}", "2").replace("{total}", "4")}</p>
-      <h1>{dict.checkout.title}</h1>
+    <div>
       <Steps lang={lang} dict={dict} current={2} />
       <p className="lead">{dict.checkout.lead}</p>
       <div className="purchase" style={{ marginTop: "1.4rem" }}>
@@ -86,6 +83,6 @@ export function CheckoutForm({ lang, dict }: { lang: Locale; dict: Dictionary })
         </form>
         <Summary lang={lang} dict={dict} title={dict.checkout.summary} />
       </div>
-    </section>
+    </div>
   );
 }

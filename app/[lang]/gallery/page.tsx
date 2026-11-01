@@ -1,4 +1,5 @@
 import { GalleryGrid } from "@/components/GalleryGrid";
+import { PageStage } from "@/components/PageStage";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
 
@@ -8,14 +9,18 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 }
 
 export default async function GalleryPage({ params }: { params: Promise<{ lang: string }> }) {
-  const { dict } = await load(params);
+  const { lang, dict } = await load(params);
 
   return (
-    <article className="page wrap">
-      <p className="kicker">{dict.gallery.kicker}</p>
-      <h1>{dict.gallery.title}</h1>
-      <p className="lead">{dict.gallery.lead}</p>
+    <PageStage
+      lang={lang}
+      dict={dict}
+      kicker={dict.gallery.kicker}
+      title={dict.gallery.title}
+      lead={dict.gallery.lead}
+      image="/images/airport.jpg"
+    >
       <GalleryGrid dict={dict} />
-    </article>
+    </PageStage>
   );
 }

@@ -1,3 +1,4 @@
+import { PageStage } from "@/components/PageStage";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -8,13 +9,17 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 }
 
 export default async function AboutPage({ params }: { params: Promise<{ lang: string }> }) {
-  const { dict } = await load(params);
+  const { lang, dict } = await load(params);
 
   return (
-    <article className="page wrap">
-      <p className="kicker">{dict.about.kicker}</p>
-      <h1>{dict.about.title}</h1>
-      <p className="lead">{dict.about.lead}</p>
+    <PageStage
+      lang={lang}
+      dict={dict}
+      kicker={dict.about.kicker}
+      title={dict.about.title}
+      lead={dict.about.lead}
+      image="/images/steel.jpg"
+    >
       <div className="split">
         <div className="prose">
           <p>{dict.about.p1}</p>
@@ -33,14 +38,14 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
           </article>
         ))}
       </div>
-      <h2 style={{ marginTop: "2.5rem" }}>{dict.about.madeTitle}</h2>
+      <h2>{dict.about.madeTitle}</h2>
       <ul className="made">
         {dict.about.made.map((item) => (
           <li key={item}>{item}</li>
         ))}
       </ul>
-      <h2 style={{ marginTop: "2.5rem" }}>{dict.about.serviceTitle}</h2>
+      <h2>{dict.about.serviceTitle}</h2>
       <p className="prose">{dict.about.serviceText}</p>
-    </article>
+    </PageStage>
   );
 }

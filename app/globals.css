@@ -353,7 +353,8 @@ html[dir="rtl"] .kicker {
 
 .line-grid,
 .card-grid,
-.project-grid {
+.project-grid,
+.gallery-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
@@ -866,6 +867,11 @@ body:has(.home-page) .site-footer {
   overflow: clip;
 }
 
+.home-page.stage-page,
+.home-page.missing {
+  overflow: visible;
+}
+
 html[dir="rtl"] .home-page {
   --serif: var(--font-arabic), serif;
 }
@@ -996,6 +1002,10 @@ html[dir="rtl"] .home-page {
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.03em;
+}
+
+.home-overlay a[aria-current="page"] {
+  color: var(--gold);
 }
 
 html[dir="rtl"] .home-overlay a {
@@ -1604,11 +1614,247 @@ html[dir="rtl"] .quotes strong {
   .hero-copy h1 { font-size: clamp(3.4rem, 18vw, 5rem); }
 }
 
+.page-hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: end;
+  padding: 18vh 6vw 7vh;
+  overflow: hidden;
+}
+
+.page-hero.compact {
+  min-height: 52svh;
+  background: linear-gradient(180deg, #111, #181818 70%);
+}
+
+.page-hero .hero-media {
+  inset: 0;
+  transform: none;
+}
+
+.page-hero .page-kicker {
+  color: var(--gold);
+  margin: 0 0 0.9rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  animation: rise 0.9s ease both;
+}
+
+html[dir="rtl"] .page-hero .page-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.page-hero .hero-copy h1 {
+  font-size: clamp(2.8rem, 6.4vw, 5.4rem);
+  max-width: 16ch;
+  line-height: 0.95;
+}
+
+.page-body {
+  padding: 4vh 6vw 8vh;
+}
+
+.page-body > .split:first-child {
+  padding-top: 0;
+}
+
+.page-body h2,
+.page-body h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.page-body > h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  margin-top: 2.5rem;
+}
+
+.page-body .index h2,
+.page-body .project-grid h2,
+.page-body .card h3,
+.page-body .summary h2 {
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+.page-body a:not(.btn) {
+  color: var(--gold);
+}
+
+.page-body .prose .btn {
+  justify-self: start;
+}
+
+.home-page .kicker,
+.home-page .index span,
+.home-page .price {
+  color: var(--gold);
+}
+
+.home-page .line,
+.home-page .card,
+.home-page .person,
+.home-page .point,
+.home-page .summary,
+.home-page .note,
+.home-page .cart-row,
+.home-page .brand-name,
+.home-page .gallery-grid figure,
+.home-page .project-grid article {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.home-page .brand-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+}
+
+.home-page .frame {
+  background: #111;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.home-page .index,
+.home-page .index a,
+.home-page .index article,
+.home-page .made,
+.home-page .made li,
+.home-page .faq,
+.home-page .faq details,
+.home-page .qty,
+.home-page .steps a,
+.home-page .steps span {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.home-page .cat-grid button,
+.home-page .filters button,
+.home-page .choices button,
+.home-page .qty button {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(246, 232, 191, 0.45);
+}
+
+.home-page .cat-grid button[aria-pressed="true"],
+.home-page .filters button[aria-pressed="true"],
+.home-page .choices button[aria-pressed="true"],
+.home-page .steps .current {
+  background: var(--gold);
+  color: #181818;
+  border-color: var(--gold);
+}
+
+.home-page .steps a,
+.home-page .steps span {
+  color: rgba(255, 255, 255, 0.62);
+  text-decoration: none;
+}
+
+.home-page .steps a {
+  color: var(--gold);
+}
+
+.home-page .btn {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(246, 232, 191, 0.7);
+  border-radius: 999px;
+}
+
+.home-page .btn.ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.home-page .btn:disabled {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.home-page input,
+.home-page textarea {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(246, 232, 191, 0.45);
+}
+
+.home-page input::placeholder,
+.home-page textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.home-page input:focus,
+.home-page textarea:focus {
+  outline: 1px solid var(--gold);
+  border-color: var(--gold);
+}
+
+.home-page .error {
+  color: var(--gold);
+  border-inline-start-color: var(--gold);
+}
+
+.home-page .linkish {
+  color: var(--gold);
+}
+
+.home-page .reference {
+  font-family: var(--serif);
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.home-contact[aria-current="page"] {
+  background: var(--gold);
+  color: #181818;
+}
+
+.missing .hero-copy h1 {
+  font-size: clamp(2.8rem, 6.4vw, 5.4rem);
+  max-width: 16ch;
+}
+
+.missing .hero-copy p {
+  font-family: var(--font-arabic), serif;
+}
+
+.missing {
+  min-height: 100svh;
+  display: grid;
+  align-items: end;
+  padding: 18vh 6vw 10vh;
+}
+
+.missing .home-links a {
+  color: var(--gold);
+  border-bottom-color: rgba(246, 232, 191, 0.55);
+}
+
+@media (max-width: 800px) {
+  .page-hero .hero-copy h1 {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+    max-width: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-frame,
   .reveal,
   .hero-copy h1,
   .hero-copy p,
+  .page-kicker,
   .scroll-cue,
   .quotes-head span {
     animation: none;
