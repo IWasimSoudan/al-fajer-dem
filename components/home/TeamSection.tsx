@@ -10,7 +10,7 @@ export function TeamSection({ lang, stage }: { lang: Locale; stage: Stage }) {
   return (
     <section className="team-stage">
       <div className="team-photo reveal">
-        <Image src={asset("/images/hall.jpg")} alt={stage.teamTitle} fill sizes="(max-width: 800px) 100vw, 90vw" />
+        <Image src={asset("/images/tanks.jpg")} alt={stage.teamTitle} fill sizes="(max-width: 800px) 100vw, 90vw" />
       </div>
       <div className="team-copy reveal">
         <p>{stage.teamKicker}</p>

@@ -18,7 +18,7 @@ export default async function ExpertisePage({ params }: { params: Promise<{ lang
       kicker={dict.expertise.kicker}
       title={dict.expertise.title}
       lead={dict.expertise.lead}
-      image="/images/laser.jpg"
+      image="/images/hex-panels.jpg"
     >
       <div className="index">
         {expertise.map((id, index) => (

@@ -18,7 +18,7 @@ export default async function BrandsPage({ params }: { params: Promise<{ lang: s
       kicker={dict.brands.kicker}
       title={dict.brands.title}
       lead={dict.brands.lead}
-      image="/images/warehouse.jpg"
+      image="/images/iron-fence.jpg"
     >
       <div className="brands">
         {brands.map((name) => (

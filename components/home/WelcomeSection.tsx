@@ -8,13 +8,13 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 const collage = [
-  { src: "/images/airport.jpg", className: "p1", x: 170, y: 130 },
-  { src: "/images/hall.jpg", className: "p2", x: -180, y: 140 },
-  { src: "/images/laser.jpg", className: "p3", x: 210, y: 20 },
-  { src: "/images/gate.jpg", className: "p4", x: -210, y: 10 },
-  { src: "/images/warehouse.jpg", className: "p5", x: 150, y: -160 },
-  { src: "/images/shutter.jpg", className: "p6", x: 10, y: -180 },
-  { src: "/images/steel.jpg", className: "p7", x: -160, y: -160 },
+  { src: "/images/canopy.jpg", className: "p1", x: 170, y: 130 },
+  { src: "/images/tanks.jpg", className: "p2", x: -180, y: 140 },
+  { src: "/images/hex-panels.jpg", className: "p3", x: 210, y: 20 },
+  { src: "/images/iron-fence.jpg", className: "p4", x: -210, y: 10 },
+  { src: "/images/warehouse-doors.jpg", className: "p5", x: 150, y: -160 },
+  { src: "/images/black-door.jpg", className: "p6", x: 10, y: -180 },
+  { src: "/images/ornate-doors.jpg", className: "p7", x: -160, y: -160 },
 ];
 
 export function WelcomeSection({ text, motion }: { text: string; motion: boolean }) {

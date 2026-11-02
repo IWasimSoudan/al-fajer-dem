@@ -18,7 +18,7 @@ export default async function GalleryPage({ params }: { params: Promise<{ lang: 
       kicker={dict.gallery.kicker}
       title={dict.gallery.title}
       lead={dict.gallery.lead}
-      image="/images/airport.jpg"
+      image="/images/ornate-doors.jpg"
     >
       <GalleryGrid dict={dict} />
     </PageStage>

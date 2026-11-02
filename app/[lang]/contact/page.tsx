@@ -18,7 +18,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
       kicker={dict.contact.kicker}
       title={dict.contact.title}
       lead={dict.contact.lead}
-      image="/images/shutter.jpg"
+      image="/images/bronze-doors.jpg"
     >
       <div className="split">
         <ContactForm dict={dict} />

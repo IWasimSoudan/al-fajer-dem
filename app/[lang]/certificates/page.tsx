@@ -18,7 +18,7 @@ export default async function CertificatesPage({ params }: { params: Promise<{ l
       kicker={dict.certificates.kicker}
       title={dict.certificates.title}
       lead={dict.certificates.lead}
-      image="/images/gate.jpg"
+      image="/images/stair-rail.jpg"
     >
       <div className="points">
         {dict.certificates.points.map((point) => (

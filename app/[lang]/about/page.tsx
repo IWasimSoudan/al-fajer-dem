@@ -19,7 +19,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
       kicker={dict.about.kicker}
       title={dict.about.title}
       lead={dict.about.lead}
-      image="/images/steel.jpg"
+      image="/images/tanks.jpg"
     >
       <div className="split">
         <div className="prose">
@@ -27,7 +27,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
           <p>{dict.about.p2}</p>
         </div>
         <div className="frame wide">
-          <Image src={asset("/images/steel.jpg")} alt="" fill sizes="(max-width: 900px) 100vw, 46vw" className="photo" />
+          <Image src={asset("/images/bronze-doors.jpg")} alt="" fill sizes="(max-width: 900px) 100vw, 46vw" className="photo" />
         </div>
       </div>
       <h2>{dict.about.peopleTitle}</h2>

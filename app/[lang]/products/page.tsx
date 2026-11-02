@@ -18,7 +18,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ lang:
       kicker={dict.products.kicker}
       title={dict.products.title}
       lead={dict.products.lead}
-      image="/images/hero.jpg"
+      image="/images/black-door.jpg"
     >
       <ProductBrowser lang={lang} dict={dict} />
     </PageStage>

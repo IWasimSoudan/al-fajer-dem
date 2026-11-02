@@ -20,7 +20,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ lang:
       kicker={dict.projects.kicker}
       title={dict.projects.title}
       lead={dict.projects.lead}
-      image="/images/hall.jpg"
+      image="/images/warehouse-doors.jpg"
     >
       <div className="project-grid">
         {projects.map((project) => (

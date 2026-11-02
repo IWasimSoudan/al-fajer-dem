@@ -28,13 +28,14 @@ export function HeroSection({
             muted
             loop
             playsInline
-            poster={asset("/images/hero.jpg")}
+            poster={asset("/images/canopy.jpg")}
             aria-hidden="true"
+            suppressHydrationWarning
           >
             <source src={asset("/videos/1101.mp4")} type="video/mp4" />
           </video>
         ) : (
-          <Image src={asset("/images/hero.jpg")} alt={heroAlt} fill priority sizes="100vw" className="hero-frame on" />
+          <Image src={asset("/images/canopy.jpg")} alt={heroAlt} fill priority sizes="100vw" className="hero-frame on" />
         )}
       </div>
       <div className="hero-shade" />
