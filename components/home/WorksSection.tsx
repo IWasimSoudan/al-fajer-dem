@@ -62,10 +62,20 @@ export function WorksSection({ lang, stage, motion }: { lang: Locale; stage: Sta
           </div>
           <div className="works-controls">
             <span className="works-dot" aria-hidden="true" />
-            <button type="button" className="prev" aria-label={stage.prev} onClick={() => shift(-1)}>
+            <button
+              type="button"
+              className="prev"
+              aria-label={lang === "ar" ? stage.next : stage.prev}
+              onClick={() => shift(lang === "ar" ? 1 : -1)}
+            >
               <Arrow />
             </button>
-            <button type="button" className="next" aria-label={stage.next} onClick={() => shift(1)}>
+            <button
+              type="button"
+              className="next"
+              aria-label={lang === "ar" ? stage.prev : stage.next}
+              onClick={() => shift(lang === "ar" ? -1 : 1)}
+            >
               <Arrow />
             </button>
           </div>

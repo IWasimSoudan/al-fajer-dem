@@ -1304,6 +1304,7 @@ html[dir="rtl"] .works-controls .prev .works-arrow { transform: none; }
 .works-viewport {
   overflow: hidden;
   min-height: 100svh;
+  direction: ltr;
 }
 
 .works-track {
