@@ -26,6 +26,7 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         </div>
       </div>
       <div className="wrap foot-links">
+        <Link href={`/${lang}/products`}>{dict.nav.products}</Link>
         <Link href={`/${lang}/brands`}>{dict.nav.brands}</Link>
         <Link href={`/${lang}/certificates`}>{dict.nav.certificates}</Link>
         <Link href={`/${lang}/contact`}>{dict.nav.contact}</Link>

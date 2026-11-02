@@ -37,6 +37,7 @@ export function VisitSection({
       </table>
       <p className="closing">{stage.closing}</p>
       <div className="home-links">
+        <Link href={`/${lang}/products`}>{nav.products}</Link>
         <Link href={`/${lang}/projects`}>{nav.projects}</Link>
         <Link href={`/${lang}/gallery`}>{nav.gallery}</Link>
         <Link href={`/${lang}/contact`}>{nav.contact}</Link>
