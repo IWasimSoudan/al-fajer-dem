@@ -1,5 +1,5 @@
+import { CheckoutStage } from "@/components/CheckoutStage";
 import { CompleteView } from "@/components/CompleteView";
-import { PageStage } from "@/components/PageStage";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
 
@@ -12,8 +12,8 @@ export default async function CompletePage({ params }: { params: Promise<{ lang:
   const { lang, dict } = await load(params);
 
   return (
-    <PageStage lang={lang} dict={dict} title={dict.complete.title}>
+    <CheckoutStage title={dict.complete.title}>
       <CompleteView lang={lang} dict={dict} />
-    </PageStage>
+    </CheckoutStage>
   );
 }

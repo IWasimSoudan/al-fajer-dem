@@ -687,6 +687,10 @@ textarea {
   gap: 1rem;
 }
 
+.summary li span:last-child {
+  white-space: nowrap;
+}
+
 .summary ul {
   list-style: none;
   padding: 0;
@@ -924,6 +928,37 @@ html[dir="rtl"] .home-page {
 
 .home-lang a[aria-current="true"] {
   color: var(--gold);
+}
+
+.home-cart {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: #f6e8bf;
+  text-decoration: none;
+}
+
+.home-cart svg {
+  width: 24px;
+  height: 24px;
+}
+
+.home-cart-count {
+  position: absolute;
+  top: 0;
+  inset-inline-end: -2px;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  padding-inline: 0.28rem;
+  border-radius: 999px;
+  background: #f6e8bf;
+  color: #181818;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.15rem;
+  text-align: center;
 }
 
 .home-contact {
@@ -1620,6 +1655,55 @@ html[dir="rtl"] .quotes strong {
     padding-bottom: 0.2rem;
   }
   .hero-copy h1 { font-size: clamp(3.4rem, 18vw, 5rem); }
+}
+
+.checkout-page {
+  min-height: 100svh;
+  padding-top: 6.5rem;
+}
+
+.checkout-head {
+  padding: 1.2rem 6vw 0;
+}
+
+.checkout-head h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.checkout-page .page-body {
+  padding-top: 0.6rem;
+}
+
+.checkout-page .steps {
+  margin-top: 0.4rem;
+}
+
+.product-buy {
+  display: grid;
+  gap: 0.4rem;
+  max-width: 40rem;
+}
+
+.product-buy .price {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+  margin: 0.4rem 0 0.6rem;
+}
+
+.card h3 a,
+.cart-row h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card .frame,
+.cart-row .frame {
+  display: block;
 }
 
 .page-hero {

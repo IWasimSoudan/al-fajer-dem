@@ -33,11 +33,13 @@ export function CartView({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               const copy = dict.products.items[product.id];
               return (
                 <article key={item.id} className="cart-row">
-                  <div className="frame">
+                  <Link className="frame" href={`/${lang}/products/${product.id}`}>
                     <Image src={asset(product.image)} alt="" fill sizes="92px" className="photo" />
-                  </div>
+                  </Link>
                   <div>
-                    <h2 style={{ fontSize: "1.15rem" }}>{copy.name}</h2>
+                    <h2 style={{ fontSize: "1.15rem" }}>
+                      <Link href={`/${lang}/products/${product.id}`}>{copy.name}</Link>
+                    </h2>
                     <p className="price">{money(lang, product.price)}</p>
                     <div className="qty" aria-label={dict.cart.qty}>
                       <button type="button" onClick={() => setQty(item.id, item.qty - 1)} aria-label="-">

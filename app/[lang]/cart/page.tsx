@@ -1,5 +1,5 @@
 import { CartView } from "@/components/CartView";
-import { PageStage } from "@/components/PageStage";
+import { CheckoutStage } from "@/components/CheckoutStage";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
 
@@ -12,8 +12,8 @@ export default async function CartPage({ params }: { params: Promise<{ lang: str
   const { lang, dict } = await load(params);
 
   return (
-    <PageStage lang={lang} dict={dict} title={dict.cart.title}>
+    <CheckoutStage title={dict.cart.title}>
       <CartView lang={lang} dict={dict} />
-    </PageStage>
+    </CheckoutStage>
   );
 }

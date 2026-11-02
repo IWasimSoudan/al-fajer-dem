@@ -242,6 +242,7 @@ export const en = {
     ask: "Ask about this",
     added: "Added",
     add: "Add to cart",
+    back: "All products",
     samples: "Sample items",
     empty: "No sample item in this category. Tell us what you need and the team will reply.",
     categories: {

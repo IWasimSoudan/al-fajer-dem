@@ -1,4 +1,4 @@
-import { PageStage } from "@/components/PageStage";
+import { CheckoutStage } from "@/components/CheckoutStage";
 import { PaymentForm } from "@/components/PaymentForm";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
@@ -12,8 +12,8 @@ export default async function PaymentPage({ params }: { params: Promise<{ lang: 
   const { lang, dict } = await load(params);
 
   return (
-    <PageStage lang={lang} dict={dict} title={dict.payment.title}>
+    <CheckoutStage title={dict.payment.title}>
       <PaymentForm lang={lang} dict={dict} />
-    </PageStage>
+    </CheckoutStage>
   );
 }

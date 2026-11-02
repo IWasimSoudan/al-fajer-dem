@@ -47,11 +47,13 @@ export function ProductBrowser({ lang, dict }: { lang: Locale; dict: Dictionary 
             const copy = dict.products.items[product.id];
             return (
               <article key={product.id} className="card">
-                <div className="frame">
+                <Link className="frame" href={`/${lang}/products/${product.id}`}>
                   <Image src={asset(product.image)} alt="" fill sizes="(max-width: 800px) 100vw, 50vw" className="photo" />
-                </div>
+                </Link>
                 <div className="body">
-                  <h3>{copy.name}</h3>
+                  <h3>
+                    <Link href={`/${lang}/products/${product.id}`}>{copy.name}</Link>
+                  </h3>
                   <p>{copy.detail}</p>
                   <p className="price">{money(lang, product.price)}</p>
                   <button

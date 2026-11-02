@@ -48,6 +48,26 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             عربي
           </Link>
         </div>
+        <Link
+          className="home-cart"
+          href={`/${lang}/cart`}
+          aria-label={`${dict.nav.cart} (${count})`}
+          aria-current={pathname === `/${lang}/cart` ? "page" : undefined}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M4 5h2.2l1.5 9.2a1 1 0 0 0 1 .8h8.5a1 1 0 0 0 1-.8L20 8H7.2"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <circle cx="10" cy="19.2" r="1.35" fill="currentColor" />
+            <circle cx="17" cy="19.2" r="1.35" fill="currentColor" />
+          </svg>
+          {count > 0 ? <span className="home-cart-count">{count}</span> : null}
+        </Link>
         <Link className="home-contact" href={`/${lang}/contact`} aria-current={pathname === `/${lang}/contact` ? "page" : undefined}>
           {dict.nav.contact}
           <span aria-hidden="true">›</span>
