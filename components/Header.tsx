@@ -13,7 +13,7 @@ function withLocale(pathname: string, locale: Locale) {
   return `/${locale}`;
 }
 
-const links = ["about", "expertise", "products", "projects", "gallery", "contact"] as const;
+const links = ["about", "expertise", "products", "catalog", "projects", "gallery", "contact"] as const;
 
 export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const pathname = usePathname();

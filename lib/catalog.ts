@@ -17,15 +17,21 @@ export const categories = [
 
 export type CategoryId = (typeof categories)[number]["id"];
 
+export const founded = 1969;
+
+export const families = ["rolling", "motors", "doors"] as const;
+
+export type FamilyId = (typeof families)[number];
+
 export const products = [
-  { id: "foam", price: 130, category: "rolling", image: "/images/warehouse-doors.jpg" },
-  { id: "antiwind", price: 250, category: "rolling", image: "/images/warehouse-doors.jpg" },
-  { id: "twisted", price: 85, category: "rolling", image: "/images/black-door.jpg" },
-  { id: "accordion", price: 100, category: "doors", image: "/images/bronze-doors.jpg" },
-  { id: "sap", price: 125, category: "gates", image: "/images/iron-fence.jpg" },
-  { id: "norton", price: 195, category: "gates", image: "/images/ornate-doors.jpg" },
-  { id: "levante", price: 1850, category: "gates", image: "/images/iron-fence.jpg" },
-  { id: "selector", price: 60, category: "gates", image: "/images/black-door.jpg" },
+  { id: "foam", price: 130, category: "rolling", family: "rolling", dimensions: null, rating: null, image: "/images/warehouse-doors.jpg" },
+  { id: "antiwind", price: 250, category: "rolling", family: "rolling", dimensions: "width12", rating: "class4", image: "/images/warehouse-doors.jpg" },
+  { id: "twisted", price: 85, category: "rolling", family: "rolling", dimensions: null, rating: null, image: "/images/black-door.jpg" },
+  { id: "accordion", price: 100, category: "doors", family: "doors", dimensions: null, rating: null, image: "/images/bronze-doors.jpg" },
+  { id: "sap", price: 125, category: "gates", family: "motors", dimensions: null, rating: null, image: "/images/iron-fence.jpg" },
+  { id: "norton", price: 195, category: "gates", family: "motors", dimensions: null, rating: null, image: "/images/ornate-doors.jpg" },
+  { id: "levante", price: 1850, category: "gates", family: "motors", dimensions: null, rating: "leaf120", image: "/images/iron-fence.jpg" },
+  { id: "selector", price: 60, category: "gates", family: "motors", dimensions: null, rating: null, image: "/images/black-door.jpg" },
 ] as const;
 
 export type ProductId = (typeof products)[number]["id"];
