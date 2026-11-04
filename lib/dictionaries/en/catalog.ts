@@ -1,0 +1,42 @@
+export const catalog = {
+  kicker: "Catalog",
+  title: "Technical catalog",
+  lead: "Published ratings for the sample range. Prices are for the demonstration cart.",
+  since: "Workshop since",
+  categories: "Categories",
+  samples: "Sample items",
+  specsTitle: "Specifications",
+  specsLead: "Switch the family. Each line is one published fact.",
+  families: {
+    all: "All",
+    rolling: "Rolling doors",
+    motors: "Gate motors",
+    doors: "Special doors",
+  },
+  name: "Name",
+  family: "Family",
+  category: "Category",
+  dimensions: "Dimensions",
+  rating: "Rating",
+  grade: "Grade",
+  price: "Price",
+  unpublished: "Not published",
+  measures: {
+    width12: "Width up to 12 m",
+    class4: "Class 4, wind up to 120 km/h",
+    leaf120: "Leaves up to 120 kg",
+  },
+  compareTitle: "Compare",
+  compareLead: "Select any of the sample items and read them side by side.",
+  compareNeed: "Select at least two items.",
+  termsTitle: "Terms",
+  termsLead: "Short definitions for the words on this page.",
+  terms: [
+    { title: "Class 4", text: "A wind class used for exposed roll-up doors in this range." },
+    { title: "Wind rating", text: "The Class 4 door in the sample list is rated for wind up to 120 km/h." },
+    { title: "Opening size", text: "Width and height of the opening. The Class 4 sample is listed up to 12 m wide." },
+    { title: "Sample price", text: "A unit price for the demonstration cart. It is not a quotation." },
+  ],
+}
+
+export type CatalogTranslations = typeof catalog;

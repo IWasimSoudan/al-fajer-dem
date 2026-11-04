@@ -1,0 +1,42 @@
+import type { CatalogTranslations } from "@/lib/dictionaries/en/catalog";
+
+export const catalog = {
+  kicker: "الكتالوج",
+  title: "الكتالوج الفني",
+  lead: "التقييمات المنشورة لنماذج العرض. الأسعار لسلة التجربة.",
+  since: "الورشة منذ",
+  categories: "تصنيفات",
+  samples: "نماذج",
+  specsTitle: "المواصفات",
+  specsLead: "بدّل العائلة. كل سطر حقيقة منشورة واحدة.",
+  families: {
+    all: "الكل",
+    rolling: "أبواب لفافة",
+    motors: "محركات البوابات",
+    doors: "أبواب خاصة",
+  },
+  name: "الاسم",
+  family: "العائلة",
+  category: "الفئة",
+  dimensions: "الأبعاد",
+  rating: "التقييم",
+  grade: "الرتبة",
+  price: "السعر",
+  unpublished: "غير منشور",
+  measures: {
+    width12: "عرض حتى 12 م",
+    class4: "فئة 4، رياح حتى 120 كم/ساعة",
+    leaf120: "أوراق حتى 120 كغ",
+  },
+  compareTitle: "مقارنة",
+  compareLead: "اختر أيًا من النماذج واقرأها جنبًا إلى جنب.",
+  compareNeed: "اختر نموذجين على الأقل.",
+  termsTitle: "المصطلحات",
+  termsLead: "تعريفات قصيرة للكلمات في هذه الصفحة.",
+  terms: [
+    { title: "الفئة 4", text: "تصنيف رياح يُستخدم لأبواب اللفافة المكشوفة في هذا النطاق." },
+    { title: "تصنيف الرياح", text: "باب الفئة 4 في قائمة النماذج مُقيَّم لرياح حتى 120 كم/ساعة." },
+    { title: "مقاس الفتحة", text: "عرض الفتحة وارتفاعها. نموذج الفئة 4 مُدرَج حتى عرض 12 م." },
+    { title: "سعر النموذج", text: "سعر وحدة لسلة العرض. ليس عرض سعر." },
+  ],
+} satisfies CatalogTranslations;
