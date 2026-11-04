@@ -61,6 +61,22 @@ export const home = {
     scroll: "Scroll down",
     welcome:
       "Welcome to Al Fajer, where the trade is more than fabrication. It is the full job, from the drawing through fitting.",
+    welcomeMotionPicker: "Welcome image motion — preview only",
+    welcomeMotionHint: "Scroll this section and switch to compare. Pick one later to lock in.",
+    welcomeMotions: {
+      expand: {
+        label: "1 · Inside → out",
+        blurb: "Photos start tight on the copy, then push out to their frames.",
+      },
+      converge: {
+        label: "2 · Outside → in",
+        blurb: "Photos fly in from the edges and settle around the words.",
+      },
+      bloom: {
+        label: "3 · Bloom & settle",
+        blurb: "Photos rise on soft arcs, rotate into place, and ease to rest.",
+      },
+    },
     worksKicker: "Work",
     worksTitle: "Latest from the workshop",
     prev: "Previous slide",

@@ -370,7 +370,7 @@ html[dir="rtl"] .home-overlay a {
 
 .welcome {
   position: relative;
-  min-height: 180vh;
+  min-height: 280vh;
 }
 
 .welcome-sticky {
@@ -424,6 +424,84 @@ html[dir="rtl"] .home-overlay a {
 .p5 { width: 170px; height: 120px; bottom: 10%; inset-inline-start: 8%; }
 .p6 { width: 210px; height: 140px; bottom: 12%; inset-inline-start: 32%; }
 .p7 { width: 150px; height: 180px; bottom: 8%; inset-inline-end: 6%; }
+
+.welcome-motion-picker {
+  position: absolute;
+  z-index: 3;
+  inset-inline: 6vw;
+  bottom: 1.4rem;
+  display: grid;
+  gap: 0.65rem;
+  max-width: 920px;
+  margin-inline: auto;
+  width: min(920px, 100%);
+  justify-self: center;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--white) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.welcome-motion-picker-title {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+html[dir="rtl"] .welcome-motion-picker-title {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.welcome-motion-picker-hint {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--blue) 70%, transparent);
+}
+
+.welcome-motion-picker-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.welcome-motion-item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  background: color-mix(in srgb, var(--grey) 28%, white);
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.welcome-motion-item:hover {
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+.welcome-motion-item.is-active {
+  background: color-mix(in srgb, var(--gold) 14%, white);
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+}
+
+.welcome-motion-item strong {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.welcome-motion-item span {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--blue) 68%, transparent);
+}
 
 .works {
   background: var(--white);
@@ -878,6 +956,17 @@ html[dir="rtl"] .quotes strong {
   .p1 { top: 8%; inset-inline-start: 4%; }
   .p2 { top: 8%; inset-inline-end: 4%; }
   .p5 { bottom: 8%; inset-inline-start: 6%; }
+  .welcome-sticky {
+    padding-bottom: 11rem;
+  }
+  .welcome-motion-picker {
+    inset-inline: 1rem;
+    bottom: 0.75rem;
+    padding: 0.7rem 0.75rem;
+  }
+  .welcome-motion-picker-list {
+    grid-template-columns: 1fr;
+  }
   .works-split { grid-template-columns: 1fr; }
   .works-copy, .works-viewport, .works-shot { min-height: 0; }
   .works-shot { height: 58svh; }

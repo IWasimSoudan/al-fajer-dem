@@ -124,7 +124,7 @@ export function HomeStage({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           lenisRef.current.scrollTo("#welcome");
         }}
       />
-      <WelcomeSection text={stage.welcome} motion={motion} />
+      <WelcomeSection lang={lang} text={stage.welcome} stage={stage} motion={motion} />
       <WorksSection lang={lang} stage={stage} motion={motion} />
       <TeamSection lang={lang} stage={stage} />
       <QuotesSection stage={stage} motion={motion} />
