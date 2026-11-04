@@ -1,7 +1,47 @@
 export const catalog = {
   kicker: "Catalog",
   title: "Technical catalog",
-  lead: "Published ratings for the sample range. Prices are for the demonstration cart.",
+  lead: "Download the company PDFs, then browse sample lines. Prices are for the demonstration cart.",
+  stylePicker: "Catalog layout — preview only",
+  styleHint: "Three simple modern layouts. Pick one later to lock in.",
+  styleWhy: "Why this layout",
+  styles: {
+    sheets: {
+      label: "1 · Download cards",
+      blurb: "Large PDF cards first, then a clean sample grid.",
+      idea: "Best when downloads are the main action — clear, modern, and easy to scan.",
+    },
+    split: {
+      label: "2 · Side rail",
+      blurb: "PDFs in a slim rail beside the sample products.",
+      idea: "Keeps files in view while people browse sample items.",
+    },
+    stack: {
+      label: "3 · Quiet stack",
+      blurb: "Minimal download rows stacked above a light product strip.",
+      idea: "The calmest option — typography-led and low chrome.",
+    },
+  },
+  downloadsTitle: "Download catalogs",
+  downloadsLead: "Company profile, general catalog, and metal works brochure.",
+  downloadCta: "Download",
+  downloads: {
+    profile: {
+      title: "Company profile",
+      blurb: "Al Fajer overview, workshop story, and capability summary.",
+    },
+    general: {
+      title: "Al Fajer catalog",
+      blurb: "Product and service sheets for the main range.",
+    },
+    metal: {
+      title: "Metal works",
+      blurb: "Steel structures, fabrication, and workshop lines.",
+    },
+  },
+  samplesTitle: "Sample items",
+  samplesLead: "A short set from the demo shop. Open any line for detail.",
+  browseProducts: "Browse all products",
   since: "Workshop since",
   categories: "Categories",
   samples: "Sample items",

@@ -1,0 +1,351 @@
+/* Catalog page — simple modern layout previews + PDF downloads */
+
+.cg-studio .cg-body {
+  padding-top: 2vh;
+}
+
+.cg-picker {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 960px;
+  margin: 0 0 1.4rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--white) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+.cg-picker-title {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+html[dir="rtl"] .cg-picker-title {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.cg-picker-hint {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--blue) 70%, transparent);
+}
+
+.cg-picker-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.cg-picker-item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  background: color-mix(in srgb, var(--grey) 28%, white);
+  border: 1px solid transparent;
+}
+
+.cg-picker-item:hover {
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+.cg-picker-item.is-active {
+  background: color-mix(in srgb, var(--gold) 14%, white);
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+}
+
+.cg-picker-item strong {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.cg-picker-item span {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  opacity: 0.75;
+}
+
+.cg-idea {
+  max-width: 720px;
+  margin: 0 0 2.2rem;
+  padding: 0.85rem 1rem;
+  border-inline-start: 3px solid var(--gold);
+  background: color-mix(in srgb, var(--grey) 16%, white);
+}
+
+.cg-idea-kicker {
+  margin: 0 0 0.3rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+html[dir="rtl"] .cg-idea-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.cg-idea p {
+  margin: 0;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.cg-idea strong {
+  color: var(--blue);
+}
+
+.cg-idea span {
+  color: color-mix(in srgb, var(--blue) 75%, white);
+  line-height: 1.45;
+}
+
+.cg-downloads-head,
+.cg-samples-head {
+  margin-bottom: 1.2rem;
+}
+
+.cg-downloads-head h2,
+.cg-samples-head h2 {
+  margin: 0 0 0.4rem;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.cg-downloads-head p,
+.cg-samples-head p {
+  margin: 0;
+  color: color-mix(in srgb, var(--blue) 70%, white);
+  max-width: 40rem;
+}
+
+.cg-download-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cg-download-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 1.1rem 1.2rem;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  background: var(--white);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cg-download-item:hover {
+  border-color: color-mix(in srgb, var(--gold) 50%, transparent);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.cg-download-mark {
+  display: grid;
+  place-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--blue) 8%, white);
+  color: var(--blue);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.cg-download-copy {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.cg-download-copy strong {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.cg-download-copy em {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--blue) 68%, white);
+  line-height: 1.4;
+}
+
+.cg-download-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--primary);
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cg-dl-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+/* 1 · Sheets / cards */
+.cg-sheets .cg-download-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.cg-sheets .cg-download-item {
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  min-height: 100%;
+  align-content: start;
+}
+
+.cg-sheets .cg-download-action {
+  justify-self: start;
+  margin-top: 0.35rem;
+}
+
+/* 2 · Split rail */
+.cg-split {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.2fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.cg-split .cg-download-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cg-split .cg-downloads-head {
+  margin-bottom: 0.9rem;
+}
+
+/* 3 · Quiet stack */
+.cg-stack .cg-download-list {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 2.8rem;
+}
+
+.cg-stack .cg-download-item {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  padding: 1rem 0.2rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+.cg-stack .cg-download-item:hover {
+  transform: none;
+  box-shadow: none;
+  border-bottom-color: color-mix(in srgb, var(--gold) 55%, transparent);
+}
+
+.cg-stack .cg-download-mark {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--blue) 14%, transparent);
+}
+
+.cg-sample-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.cg-sample-card {
+  display: grid;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cg-sample-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--grey) 20%, white);
+}
+
+.cg-sample-media img {
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.cg-sample-card:hover .cg-sample-media img {
+  transform: scale(1.05);
+}
+
+.cg-sample-copy {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.cg-sample-copy strong {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.cg-sample-copy em {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--blue) 60%, white);
+}
+
+.cg-samples-more {
+  margin: 1.4rem 0 0;
+}
+
+.cg-samples-more a {
+  color: var(--primary);
+  text-underline-offset: 0.28em;
+}
+
+.cg-compare {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+}
+
+.cg-compare-filters {
+  margin: 1.2rem 0 1.4rem;
+}
+
+@media (max-width: 900px) {
+  .cg-picker-list,
+  .cg-sheets .cg-download-list,
+  .cg-sample-grid,
+  .cg-split {
+    grid-template-columns: 1fr;
+  }
+
+  .cg-download-item {
+    grid-template-columns: auto 1fr;
+  }
+
+  .cg-download-action {
+    grid-column: 2;
+  }
+}

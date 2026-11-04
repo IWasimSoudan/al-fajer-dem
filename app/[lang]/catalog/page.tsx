@@ -1,7 +1,7 @@
-import { CatalogView } from "@/components/CatalogView";
-import { PageStage } from "@/components/PageStage";
+import { CatalogStyleStudio } from "@/components/catalog/CatalogStyleStudio";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { dict } = await load(params);
@@ -12,15 +12,8 @@ export default async function CatalogPage({ params }: { params: Promise<{ lang: 
   const { lang, dict } = await load(params);
 
   return (
-    <PageStage
-      lang={lang}
-      dict={dict}
-      kicker={dict.catalog.kicker}
-      title={dict.catalog.title}
-      lead={dict.catalog.lead}
-      image="/images/tanks.jpg"
-    >
-      <CatalogView lang={lang} dict={dict} />
-    </PageStage>
+    <Suspense fallback={null}>
+      <CatalogStyleStudio lang={lang} dict={dict} />
+    </Suspense>
   );
 }
