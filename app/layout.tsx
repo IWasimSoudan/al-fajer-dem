@@ -2,6 +2,10 @@ import { asset } from "@/lib/asset";
 import type { Metadata } from "next";
 import { Cormorant_Garamond, IBM_Plex_Sans_Arabic, Outfit } from "next/font/google";
 import "./globals.css";
+import "@/styles/layout.css";
+import "@/styles/forms.css";
+import "@/styles/catalog.css";
+import "@/styles/home.css";
 
 const outfit = Outfit({
   subsets: ["latin"],
