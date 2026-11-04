@@ -7,6 +7,7 @@ import "@/styles/footer.css";
 import "@/styles/forms.css";
 import "@/styles/catalog.css";
 import "@/styles/product-styles.css";
+import "@/styles/project-studio.css";
 import "@/styles/home.css";
 
 const inter = Inter({
