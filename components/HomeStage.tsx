@@ -49,9 +49,9 @@ export function HomeStage({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       if (hero && media) {
         gsap.fromTo(
           media,
-          { scale: 1.16 },
+          { scale: 1.28 },
           {
-            scale: 1,
+            scale: 1.08,
             ease: "none",
             scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true },
           },

@@ -293,8 +293,8 @@ html[dir="rtl"] .home-overlay a {
 
 .hero-media {
   position: absolute;
-  inset: -8%;
-  transform: scale(1.12);
+  inset: -12%;
+  transform: scale(1.22);
   will-change: transform;
 }
 
@@ -901,16 +901,16 @@ html[dir="rtl"] .quotes strong {
 
 .page-hero {
   position: relative;
-  min-height: 100svh;
+  min-height: 48svh;
   display: grid;
   align-items: end;
-  padding: 18vh 6vw 7vh;
+  padding: 10vh 6vw 5vh;
   overflow: hidden;
   color: var(--white);
 }
 
 .page-hero.compact {
-  min-height: 52svh;
+  min-height: 40svh;
   color: var(--blue);
   background: linear-gradient(180deg, var(--white), color-mix(in srgb, var(--grey) 18%, white) 70%);
 }
