@@ -6,9 +6,15 @@ import { productTree, products, type CategoryId, type ProductId } from "@/lib/ca
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import { money } from "@/lib/money";
-import { PRODUCT_STYLES, type ProductStyleId } from "@/lib/productStyles";
+import {
+  initialCatalogView,
+  PRODUCT_STYLES,
+  resolveProductStyle,
+  type ProductStyleId,
+} from "@/lib/productStyles";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState, type MouseEvent } from "react";
 
 export type { ProductStyleId };
@@ -726,17 +732,12 @@ function StyleSheet({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRem
   );
 }
 
-export function ProductStyleStudio({
-  lang,
-  dict,
-  style,
-  catalogView = "list",
-}: {
-  lang: Locale;
-  dict: Dictionary;
-  style: ProductStyleId;
-  catalogView?: "list" | "grid";
-}) {
+export function ProductStyleStudio({ lang, dict }: { lang: Locale; dict: Dictionary }) {
+  const searchParams = useSearchParams();
+  const styleParam = searchParams.get("style") ?? undefined;
+  const style = resolveProductStyle(styleParam);
+  const catalogView = initialCatalogView(styleParam);
+
   const { add, setQty: setCartQty, remove, items: cartItems } = useCart();
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<SortKey>("nameAsc");
@@ -751,6 +752,10 @@ export function ProductStyleStudio({
     const start = (page - 1) * PAGE_SIZE;
     return items.slice(start, start + PAGE_SIZE);
   }, [items, page]);
+
+  useEffect(() => {
+    setView(catalogView);
+  }, [catalogView]);
 
   useEffect(() => {
     setPage(1);
