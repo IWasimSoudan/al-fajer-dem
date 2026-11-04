@@ -50,9 +50,11 @@
 }
 
 .product-buy .price {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   margin: 0.4rem 0 0.6rem;
 }
 
@@ -267,6 +269,7 @@ html[dir="rtl"] .chev-end {
 .product-copy .price {
   margin: 0.2rem 0 0;
   color: var(--gold);
+  font-weight: 600;
 }
 
 .product-add {
@@ -553,8 +556,8 @@ html[dir="rtl"] .chev-end {
 .pdp-kicker {
   margin: 0;
   color: var(--gold);
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -565,8 +568,11 @@ html[dir="rtl"] .pdp-kicker {
 
 .pdp-info h2 {
   margin: 0;
-  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
-  line-height: 1.05;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .pdp-detail {
@@ -577,9 +583,11 @@ html[dir="rtl"] .pdp-kicker {
 
 .pdp .price {
   margin: 0.2rem 0 0.4rem;
-  font-family: var(--serif);
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  line-height: 1;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   color: var(--gold);
 }
 
@@ -659,8 +667,11 @@ html[dir="rtl"] .pdp-kicker {
 
 .related-copy h3 {
   margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 600;
   font-size: 1.05rem;
   line-height: 1.25;
+  letter-spacing: -0.015em;
 }
 
 .related-copy h3 a {
@@ -670,6 +681,7 @@ html[dir="rtl"] .pdp-kicker {
 .related-copy .price {
   margin: 0;
   font-size: 1.05rem;
+  font-weight: 600;
 }
 
 .related-link {

@@ -89,9 +89,9 @@ p {
 
 h1 {
   font-size: clamp(2.3rem, 5vw, 4.2rem);
-  line-height: 1.05;
+  line-height: 1.1;
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   margin-bottom: 1rem;
 }
 
@@ -116,8 +116,8 @@ h2 {
 .kicker {
   margin-bottom: 0.8rem;
   color: var(--copper);
-  font-size: 0.82rem;
-  letter-spacing: 0.14em;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
