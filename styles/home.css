@@ -504,7 +504,13 @@ html[dir="rtl"] .welcome-motion-picker-title {
 }
 
 .works {
+  position: relative;
   background: var(--white);
+}
+
+.works-rail .works-split,
+.works-deck {
+  padding-bottom: 7.5rem;
 }
 
 .works-split {
@@ -546,6 +552,8 @@ html[dir="rtl"] .welcome-motion-picker-title {
   stroke: currentColor;
   stroke-width: 0.7;
   pointer-events: none;
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
 .works-lines {
@@ -555,33 +563,40 @@ html[dir="rtl"] .welcome-motion-picker-title {
   max-width: 28rem;
 }
 
-.works-lines .creation-cat,
-.works-lines h3,
-.works-lines .creation-text {
-  animation: line-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.works-lines h3 {
-  animation-delay: 0.08s;
-}
-
-.works-lines .creation-text {
-  animation-delay: 0.16s;
-}
-
 .works-controls {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.55rem;
 }
 
-.works-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--primary);
-  margin-inline-end: 0.65rem;
-  flex: 0 0 auto;
+.works-progress {
+  flex: 1 1 100%;
+  height: 2px;
+  background: color-mix(in srgb, var(--blue) 12%, transparent);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.35rem;
+}
+
+.works-progress span {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.works-index {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+  margin-inline-end: 0.35rem;
+}
+
+.works-index em {
+  font-style: normal;
+  color: color-mix(in srgb, var(--blue) 45%, transparent);
 }
 
 .works-controls button {
@@ -625,8 +640,7 @@ html[dir="rtl"] .works-controls .prev .works-arrow { transform: none; }
 .works-track {
   display: flex;
   height: 100%;
-  width: calc(var(--count) * 92%);
-  transition: transform 0.9s cubic-bezier(0.76, 0, 0.18, 1);
+  will-change: transform;
   direction: ltr;
 }
 
@@ -635,10 +649,316 @@ html[dir="rtl"] .works-controls .prev .works-arrow { transform: none; }
   flex: 0 0 calc(100% / var(--count));
   height: 100svh;
   display: block;
+  overflow: hidden;
+  transform-origin: center center;
+  will-change: transform, opacity;
 }
 
 .works-shot img {
   object-fit: cover;
+  will-change: transform;
+}
+
+/* —— Deck (style 2) —— */
+.works-deck {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(260px, 1fr);
+  min-height: 100svh;
+  gap: clamp(3.5rem, 8vw, 7.5rem);
+  align-items: stretch;
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+}
+
+.works-deck-copy {
+  z-index: 2;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  padding: 7vh 1.5rem 5vh;
+  min-height: 100svh;
+}
+
+.works-deck-copy h2 {
+  max-width: 14ch;
+  margin-inline: auto;
+}
+
+.works-deck-copy .works-controls {
+  justify-content: center;
+  width: min(100%, 280px);
+}
+
+.works-deck-stage {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 8vh 1.5rem;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 50% at 50% 40%, color-mix(in srgb, var(--gold) 10%, transparent), transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--grey) 35%, white), var(--white));
+}
+
+.works-deck-stack {
+  position: relative;
+  width: min(420px, 100%);
+  height: min(68vh, 600px);
+  margin-inline: auto;
+}
+
+.works-deck-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  display: block;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+  transform-style: preserve-3d;
+  will-change: transform, filter, opacity;
+  color: var(--white);
+}
+
+.works-deck-card img {
+  object-fit: cover;
+}
+
+.works-deck-label {
+  position: absolute;
+  inset-inline-start: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.7rem;
+  background: color-mix(in srgb, var(--ink, #0c0c0c) 55%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+html[dir="rtl"] .works-deck-label {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* —— Curtain (style 3) —— */
+.works-curtain {
+  position: relative;
+  min-height: 100svh;
+  color: var(--white);
+  overflow: hidden;
+  padding-bottom: 7.5rem;
+}
+
+.works-curtain-media {
+  position: absolute;
+  inset: 0;
+}
+
+.works-curtain-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.works-curtain-layer img {
+  object-fit: cover;
+  will-change: transform;
+}
+
+.works-curtain-front {
+  z-index: 1;
+  will-change: clip-path;
+}
+
+.works-curtain-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(8, 10, 14, 0.78) 0%, rgba(8, 10, 14, 0.35) 42%, rgba(8, 10, 14, 0.2) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.25), transparent 30%, rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+}
+
+.works-curtain-ui {
+  position: relative;
+  z-index: 3;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 10vh 6vw 7vh;
+  max-width: 720px;
+}
+
+.works-curtain-kicker {
+  margin: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+html[dir="rtl"] .works-curtain-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.works-curtain-copy {
+  align-self: end;
+  padding-bottom: 2rem;
+}
+
+.works-curtain-copy h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  line-height: 1.05;
+  margin: 0.35rem 0 1rem;
+  max-width: 14ch;
+}
+
+.works-curtain-copy h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.works-curtain-copy .creation-text {
+  color: color-mix(in srgb, var(--white) 82%, var(--gold));
+  max-width: 36rem;
+}
+
+.works-curtain-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.works-curtain-count {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.works-curtain-count em {
+  font-style: normal;
+  font-size: 0.45em;
+  opacity: 0.55;
+}
+
+.works-curtain .works-controls {
+  color: var(--white);
+}
+
+.works-curtain .works-controls button {
+  color: var(--gold);
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+.works-curtain .works-progress {
+  background: color-mix(in srgb, var(--white) 18%, transparent);
+  flex-basis: min(180px, 40vw);
+}
+
+/* —— Style picker —— */
+.works-style-picker {
+  position: absolute;
+  z-index: 5;
+  inset-inline: 6vw;
+  bottom: 1.25rem;
+  display: grid;
+  gap: 0.65rem;
+  max-width: 920px;
+  width: min(920px, calc(100% - 12vw));
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--white) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(8px);
+}
+
+.works-curtain .works-style-picker {
+  background: color-mix(in srgb, #101216 88%, transparent);
+  border-color: color-mix(in srgb, var(--gold) 28%, transparent);
+  color: var(--white);
+}
+
+.works-style-picker-title {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.works-curtain .works-style-picker-title {
+  color: var(--gold);
+}
+
+html[dir="rtl"] .works-style-picker-title {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.works-style-picker-hint {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--blue) 70%, transparent);
+}
+
+.works-curtain .works-style-picker-hint {
+  color: color-mix(in srgb, var(--white) 70%, transparent);
+}
+
+.works-style-picker-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.works-style-item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  background: color-mix(in srgb, var(--grey) 28%, white);
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.works-curtain .works-style-item {
+  background: color-mix(in srgb, var(--white) 8%, transparent);
+}
+
+.works-style-item:hover {
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+.works-style-item.is-active {
+  background: color-mix(in srgb, var(--gold) 14%, white);
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+}
+
+.works-curtain .works-style-item.is-active {
+  background: color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+.works-style-item strong {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.works-style-item span {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  opacity: 0.75;
 }
 
 .creation-cat {
@@ -967,10 +1287,39 @@ html[dir="rtl"] .quotes strong {
   .welcome-motion-picker-list {
     grid-template-columns: 1fr;
   }
-  .works-split { grid-template-columns: 1fr; }
+  .works-split,
+  .works-deck { grid-template-columns: 1fr; }
   .works-copy, .works-viewport, .works-shot { min-height: 0; }
   .works-shot { height: 58svh; }
   .works-copy { min-height: auto; padding: 3rem 1.25rem 1.5rem; }
+  .works-deck {
+    gap: 2rem;
+    padding-inline: 1rem;
+  }
+  .works-deck-copy {
+    min-height: auto;
+    padding: 2.5rem 1rem 1.5rem;
+  }
+  .works-deck-stage {
+    min-height: 58svh;
+    padding: 1.5rem 1rem 7rem;
+  }
+  .works-deck-stack {
+    width: min(360px, 100%);
+    height: min(52vh, 480px);
+  }
+  .works-curtain-ui {
+    padding: 8vh 1.25rem 10rem;
+  }
+  .works-style-picker {
+    inset-inline: 1rem;
+    bottom: 0.75rem;
+    width: auto;
+    max-width: none;
+  }
+  .works-style-picker-list {
+    grid-template-columns: 1fr;
+  }
   .visit-table,
   .visit-table tbody,
   .visit-table tr,
@@ -1304,10 +1653,15 @@ html[dir="rtl"] .page-hero .page-kicker {
 
   .creation-photo img,
   .works-track,
+  .works-shot,
+  .works-deck-card,
+  .works-curtain-front,
+  .works-curtain-layer img,
   .works-lines .creation-cat,
   .works-lines h3,
   .works-lines .creation-text {
     transition: none;
     animation: none;
+    filter: none !important;
   }
 }

@@ -137,10 +137,14 @@ export function WelcomeSection({
             {WELCOME_MOTIONS.map((id) => {
               const meta = stage.welcomeMotions[id];
               const active = mode === id;
+              const params = new URLSearchParams();
+              params.set("welcome", id);
+              const works = searchParams.get("works");
+              if (works) params.set("works", works);
               return (
                 <Link
                   key={id}
-                  href={`/${lang}?welcome=${id}#welcome`}
+                  href={`/${lang}?${params.toString()}#welcome`}
                   role="listitem"
                   className={active ? "welcome-motion-item is-active" : "welcome-motion-item"}
                   aria-current={active ? "page" : undefined}

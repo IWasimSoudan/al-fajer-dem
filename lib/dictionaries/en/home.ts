@@ -79,6 +79,22 @@ export const home = {
     },
     worksKicker: "Work",
     worksTitle: "Latest from the workshop",
+    worksStylePicker: "Works gallery style — preview only",
+    worksStyleHint: "Switch styles and use the arrows. Pick one later to lock in.",
+    worksStyles: {
+      rail: {
+        label: "1 · Cinematic rail",
+        blurb: "Horizontal track with Ken Burns zoom, clipped text, and a ticking gear.",
+      },
+      deck: {
+        label: "2 · Depth deck",
+        blurb: "Stacked cards in 3D — the active piece rises while others fall back.",
+      },
+      curtain: {
+        label: "3 · Steel curtain",
+        blurb: "Full-bleed wipe reveal: the next workshop shot draws across like a shutter.",
+      },
+    },
     prev: "Previous slide",
     next: "Next slide",
     creations: [
