@@ -68,8 +68,8 @@ body:has(.home-page) .home-bar {
 
 /* Home hero top — floats clear over the media */
 .home-bar.is-top {
-  --bar-fg: var(--gold);
-  --bar-muted: color-mix(in srgb, var(--gold) 55%, transparent);
+  --bar-fg: var(--cream);
+  --bar-muted: color-mix(in srgb, var(--cream) 62%, transparent);
   background: transparent;
   border-bottom-color: transparent;
   box-shadow: none;
@@ -208,7 +208,7 @@ body:has(.home-page) .home-bar {
 .home-rail-nav a {
   color: var(--bar-fg);
   text-decoration: none;
-  font-size: clamp(0.72rem, 0.95vw, 0.88rem);
+  font-size: clamp(0.9rem, 1.15vw, 1.08rem);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -221,12 +221,12 @@ body:has(.home-page) .home-bar {
 }
 
 .home-bar.is-top .home-rail-nav a[aria-current="page"] {
-  color: var(--gold);
+  color: var(--cream);
 }
 
 .home-bar.is-open {
-  --bar-fg: var(--gold);
-  --bar-muted: color-mix(in srgb, var(--gold) 55%, transparent);
+  --bar-fg: var(--cream);
+  --bar-muted: color-mix(in srgb, var(--cream) 62%, transparent);
   background: transparent;
 }
 
@@ -355,7 +355,7 @@ html[dir="rtl"] .home-overlay a {
 
 .hero-copy p {
   max-width: 38rem;
-  color: var(--gold);
+  color: var(--cream);
   font-family: var(--font-sans);
   font-size: clamp(1.1rem, 2vw, 1.25rem);
   font-weight: 400;
@@ -371,12 +371,16 @@ html[dir="rtl"] .home-overlay a {
   width: max-content;
   margin-top: 2.2rem;
   margin-inline-start: auto;
-  color: var(--gold);
+  color: var(--cream);
   text-decoration: none;
   font-size: 0.95rem;
   line-height: 1.2;
   text-align: end;
   animation: rise 1.2s 0.3s ease both;
+}
+
+.hero-stage .hero-copy h1 {
+  color: var(--cream);
 }
 
 /* Hero 2 · Center */
