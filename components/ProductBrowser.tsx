@@ -8,7 +8,110 @@ import type { Locale } from "@/lib/i18n";
 import { money } from "@/lib/money";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+
+type Product = (typeof products)[number];
+
+function Chevron({ dir }: { dir: "start" | "end" }) {
+  return (
+    <svg className={dir === "start" ? "chev-start" : "chev-end"} viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ProductRow({
+  lang,
+  dict,
+  product,
+  added,
+  onAdd,
+}: {
+  lang: Locale;
+  dict: Dictionary;
+  product: Product;
+  added: boolean;
+  onAdd: () => void;
+}) {
+  const photos = product.images;
+  const [index, setIndex] = useState(0);
+  const viewRef = useRef<HTMLDialogElement>(null);
+  const photo = photos[index] ?? product.image;
+  const copy = dict.products.items[product.id];
+  const many = photos.length > 1;
+
+  function step(delta: number) {
+    setIndex((current) => (current + delta + photos.length) % photos.length);
+  }
+
+  function openView() {
+    viewRef.current?.showModal();
+  }
+
+  function closeView() {
+    viewRef.current?.close();
+  }
+
+  return (
+    <article className="product-row">
+      <div className="product-thumb">
+        <button type="button" className="frame product-shot" aria-label={dict.products.photoView} onClick={openView}>
+          <Image src={asset(photo)} alt="" fill sizes="112px" className="photo" />
+        </button>
+        {many ? (
+          <>
+            <button type="button" className="thumb-step prev" aria-label={dict.products.photoPrev} onClick={() => step(-1)}>
+              <Chevron dir="start" />
+            </button>
+            <button type="button" className="thumb-step next" aria-label={dict.products.photoNext} onClick={() => step(1)}>
+              <Chevron dir="end" />
+            </button>
+            <span className="thumb-dots" aria-hidden="true">
+              {photos.map((_, dot) => (
+                <span key={dot} className={dot === index ? "on" : undefined} />
+              ))}
+            </span>
+          </>
+        ) : null}
+      </div>
+      <dialog
+        className="photo-view"
+        ref={viewRef}
+        aria-label={copy.name}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) closeView();
+        }}
+      >
+        <div className="photo-view-frame">
+          <Image src={asset(photo)} alt={copy.name} fill sizes="92vw" className="photo" />
+        </div>
+        <button type="button" className="photo-view-close" aria-label={dict.products.photoClose} onClick={closeView}>
+          ×
+        </button>
+        {many ? (
+          <>
+            <button type="button" className="thumb-step prev photo-view-step" aria-label={dict.products.photoPrev} onClick={() => step(-1)}>
+              <Chevron dir="start" />
+            </button>
+            <button type="button" className="thumb-step next photo-view-step" aria-label={dict.products.photoNext} onClick={() => step(1)}>
+              <Chevron dir="end" />
+            </button>
+          </>
+        ) : null}
+      </dialog>
+      <div className="product-copy">
+        <h3>
+          <Link href={`/${lang}/products/${product.id}`}>{copy.name}</Link>
+        </h3>
+        <p>{copy.detail}</p>
+        <p className="price">{money(lang, product.price)}</p>
+      </div>
+      <button className="btn product-add" type="button" onClick={onAdd}>
+        {added ? dict.products.added : dict.products.add}
+      </button>
+    </article>
+  );
+}
 
 export function ProductBrowser({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const { add } = useCart();
@@ -39,13 +142,9 @@ export function ProductBrowser({ lang, dict }: { lang: Locale; dict: Dictionary 
   }, [dict, filter, lang, query, sort]);
 
   return (
-    <div>
-      <p className="note">{dict.products.demo}</p>
-      <p className="catalog-jump">
-        <Link href={`/${lang}/catalog`}>{dict.products.catalogLink}</Link>
-      </p>
+    <div className="product-browser">
       <div className="browse-tools">
-        <label className="field">
+        <label className="browse-search">
           <span>{dict.products.search}</span>
           <input
             type="search"
@@ -54,7 +153,7 @@ export function ProductBrowser({ lang, dict }: { lang: Locale; dict: Dictionary 
             onChange={(event) => setQuery(event.target.value)}
           />
         </label>
-        <label className="field">
+        <label className="browse-sort">
           <span>{dict.products.sort}</span>
           <select value={sort} onChange={(event) => setSort(event.target.value as "name" | "price")}>
             <option value="name">{dict.products.sortName}</option>
@@ -62,7 +161,7 @@ export function ProductBrowser({ lang, dict }: { lang: Locale; dict: Dictionary 
           </select>
         </label>
       </div>
-      <div className="cat-grid" role="group" aria-label={dict.products.samples}>
+      <div className="browse-pills" role="group" aria-label={dict.products.samples}>
         <button type="button" aria-pressed={filter === "all"} onClick={() => setFilter("all")}>
           {dict.products.all}
         </button>
@@ -86,34 +185,20 @@ export function ProductBrowser({ lang, dict }: { lang: Locale; dict: Dictionary 
           {dict.products.empty} <Link href={`/${lang}/contact`}>{dict.products.ask}</Link>
         </p>
       ) : (
-        <div className="card-grid">
-          {visible.map((product) => {
-            const copy = dict.products.items[product.id];
-            return (
-              <article key={product.id} className="card">
-                <Link className="frame" href={`/${lang}/products/${product.id}`}>
-                  <Image src={asset(product.image)} alt="" fill sizes="(max-width: 800px) 100vw, 50vw" className="photo" />
-                </Link>
-                <div className="body">
-                  <h3>
-                    <Link href={`/${lang}/products/${product.id}`}>{copy.name}</Link>
-                  </h3>
-                  <p>{copy.detail}</p>
-                  <p className="price">{money(lang, product.price)}</p>
-                  <button
-                    className="btn"
-                    type="button"
-                    onClick={() => {
-                      add(product.id);
-                      setAdded(product.id);
-                    }}
-                  >
-                    {added === product.id ? dict.products.added : dict.products.add}
-                  </button>
-                </div>
-              </article>
-            );
-          })}
+        <div className="product-list">
+          {visible.map((product) => (
+            <ProductRow
+              key={product.id}
+              lang={lang}
+              dict={dict}
+              product={product}
+              added={added === product.id}
+              onAdd={() => {
+                add(product.id);
+                setAdded(product.id);
+              }}
+            />
+          ))}
         </div>
       )}
     </div>

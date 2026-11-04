@@ -236,9 +236,8 @@ export const en = {
   },
   products: {
     kicker: "Products",
-    title: "Demonstration catalogue",
+    title: "Sample products",
     lead: "Categories follow the workshop range. The prices below are samples so you can walk through the cart. Nothing is sold.",
-    demo: "Demonstration only. No payment is taken and no order is saved.",
     all: "All",
     ask: "Ask about this",
     added: "Added",
@@ -251,7 +250,10 @@ export const en = {
     sortName: "Name",
     sortPrice: "Sample price",
     count: "{count} sample items",
-    catalogLink: "Open the technical catalog",
+    photoPrev: "Previous photo",
+    photoNext: "Next photo",
+    photoView: "View photo",
+    photoClose: "Close photo",
     empty: "No sample item matches. Tell us what you need and the team will reply.",
     categories: {
       rolling: { title: "Rolling shutters and bay doors", text: "Foam, twisted, and high-speed roll-up doors." },

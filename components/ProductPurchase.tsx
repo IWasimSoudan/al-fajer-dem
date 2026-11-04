@@ -19,7 +19,6 @@ export function ProductPurchase({ lang, dict, id }: { lang: Locale; dict: Dictio
     <div className="product-buy">
       <p className="prose">{copy.detail}</p>
       <p className="price">{money(lang, product.price)}</p>
-      <p className="note">{dict.products.demo}</p>
       <div className="actions">
         <button
           className="btn"
