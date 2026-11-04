@@ -163,7 +163,9 @@ body:has(.home-page) {
   align-items: center;
   justify-content: center;
   flex: 1 1 auto;
-  gap: clamp(0.85rem, 1.6vw, 1.5rem);
+  flex-wrap: wrap;
+  row-gap: 0.35rem;
+  column-gap: clamp(0.55rem, 1.1vw, 1rem);
   min-width: 0;
   position: relative;
   z-index: 32;
@@ -172,7 +174,7 @@ body:has(.home-page) {
 .home-rail-nav a {
   color: var(--bar-fg);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: clamp(0.72rem, 0.95vw, 0.88rem);
   font-weight: 500;
   white-space: nowrap;
 }

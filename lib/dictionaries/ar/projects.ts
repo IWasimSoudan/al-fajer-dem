@@ -3,7 +3,7 @@ import type { ProjectsTranslations } from "@/lib/dictionaries/en/projects";
 export const projects = {
   kicker: "المشاريع",
   title: "أنواع الأعمال",
-  lead: "هذه أنواع شغل، وليست أسماء عملاء.",
+  lead: "ستة خطوط مشاريع من خريطة الموقع (P1–P6). هذه أنواع شغل، وليست أسماء عملاء.",
   items: {
     hangar: { title: "هناجر صناعية", text: "صالات بإطارات ومبانٍ من الفولاذ الخفيف، تصنيعًا وتركيبًا من الفريق نفسه." },
     warehouse: { title: "حزم المستودعات", text: "أبواب وإطارات وأعمال فولاذ لمباني التخزين والتحميل." },

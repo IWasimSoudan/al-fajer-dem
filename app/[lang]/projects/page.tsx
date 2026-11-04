@@ -29,6 +29,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ lang:
               <Image src={asset(project.image)} alt="" fill sizes="(max-width: 800px) 100vw, 33vw" className="photo" />
             </div>
             <div>
+              <p className="project-code">{project.code}</p>
               <h2 style={{ fontSize: "1.25rem" }}>{dict.projects.items[project.id].title}</h2>
               <p>{dict.projects.items[project.id].text}</p>
             </div>

@@ -44,10 +44,16 @@ export function FooterOptionB({ lang, dict }: { lang: Locale; dict: Dictionary }
       <div className="foot-b-bar">
         <div className="wrap foot-b-bar-inner">
           <nav className="foot-b-links" aria-label={nav.primary}>
+            <Link href={`/${lang}/about`}>{nav.about}</Link>
             <Link href={`/${lang}/products`}>{nav.products}</Link>
-            <Link href={`/${lang}/catalog`}>{nav.catalog}</Link>
+            <Link href={`/${lang}/projects`}>{nav.projects}</Link>
             <Link href={`/${lang}/brands`}>{nav.brands}</Link>
             <Link href={`/${lang}/certificates`}>{nav.certificates}</Link>
+            <Link href={`/${lang}/clients`}>{nav.clients}</Link>
+            <Link href={`/${lang}/gallery`}>{nav.gallery}</Link>
+            <Link href={`/${lang}/shop`}>{nav.shop}</Link>
+            <Link href={`/${lang}/expertise`}>{nav.expertise}</Link>
+            <Link href={`/${lang}/catalog`}>{nav.catalog}</Link>
             <Link href={`/${lang}/contact`}>{nav.contact}</Link>
           </nav>
           <p className="foot-b-copy">

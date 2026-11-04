@@ -9,6 +9,8 @@ export const nav = {
   gallery: "المعرض",
   brands: "العلامات",
   certificates: "الشهادات",
+  clients: "العملاء",
+  shop: "المتجر",
   contact: "تواصل",
   cart: "السلة",
   menu: "القائمة",

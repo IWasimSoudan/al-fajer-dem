@@ -14,8 +14,20 @@ function withLocale(pathname: string, locale: Locale) {
   return `/${locale}`;
 }
 
-const overlayLinks = ["about", "expertise", "products", "catalog", "projects", "gallery", "contact"] as const;
-const railLinks = ["about", "products", "catalog", "projects", "contact"] as const;
+/** All main screens — sitemap order, then remaining site pages. */
+const navLinks = [
+  "about",
+  "products",
+  "projects",
+  "brands",
+  "certificates",
+  "clients",
+  "gallery",
+  "shop",
+  "expertise",
+  "catalog",
+  "contact",
+] as const;
 
 function CartIcon() {
   return (
@@ -72,7 +84,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       </Link>
 
       <nav className="home-rail-nav" aria-label={dict.nav.primary}>
-        {railLinks.map((key) => {
+        {navLinks.map((key) => {
           const href = `/${lang}/${key}`;
           return (
             <Link key={key} href={href} aria-current={pathname === href ? "page" : undefined}>
@@ -114,7 +126,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
       <div className={open ? "home-overlay open" : "home-overlay"}>
         <nav aria-label={dict.nav.primary}>
-          {overlayLinks.map((key) => {
+          {navLinks.map((key) => {
             const href = `/${lang}/${key}`;
             return (
               <Link key={key} href={href} aria-current={pathname === href ? "page" : undefined} onClick={() => setOpen(false)}>

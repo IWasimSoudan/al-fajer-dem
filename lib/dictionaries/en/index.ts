@@ -4,6 +4,7 @@ import { cart } from "./cart";
 import { catalog } from "./catalog";
 import { certificates } from "./certificates";
 import { checkout } from "./checkout";
+import { clients } from "./clients";
 import { common } from "./common";
 import { complete } from "./complete";
 import { contact } from "./contact";
@@ -16,6 +17,7 @@ import { notFound } from "./notFound";
 import { payment } from "./payment";
 import { products } from "./products";
 import { projects } from "./projects";
+import { shop } from "./shop";
 import { steps } from "./steps";
 
 export const en = {
@@ -31,6 +33,8 @@ export const en = {
   gallery,
   brands,
   certificates,
+  clients,
+  shop,
   contact,
   steps,
   cart,
@@ -48,6 +52,7 @@ export type { CartTranslations } from "./cart";
 export type { CatalogTranslations } from "./catalog";
 export type { CertificatesTranslations } from "./certificates";
 export type { CheckoutTranslations } from "./checkout";
+export type { ClientsTranslations } from "./clients";
 export type { CommonTranslations } from "./common";
 export type { CompleteTranslations } from "./complete";
 export type { ContactTranslations } from "./contact";
@@ -60,4 +65,5 @@ export type { NotFoundTranslations } from "./notFound";
 export type { PaymentTranslations } from "./payment";
 export type { ProductsTranslations } from "./products";
 export type { ProjectsTranslations } from "./projects";
+export type { ShopTranslations } from "./shop";
 export type { StepsTranslations } from "./steps";

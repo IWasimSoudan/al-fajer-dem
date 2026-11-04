@@ -5,6 +5,7 @@ import { cart } from "./cart";
 import { catalog } from "./catalog";
 import { certificates } from "./certificates";
 import { checkout } from "./checkout";
+import { clients } from "./clients";
 import { common } from "./common";
 import { complete } from "./complete";
 import { contact } from "./contact";
@@ -17,6 +18,7 @@ import { notFound } from "./notFound";
 import { payment } from "./payment";
 import { products } from "./products";
 import { projects } from "./projects";
+import { shop } from "./shop";
 import { steps } from "./steps";
 
 export const ar = {
@@ -32,6 +34,8 @@ export const ar = {
   gallery,
   brands,
   certificates,
+  clients,
+  shop,
   contact,
   steps,
   cart,

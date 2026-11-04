@@ -7,6 +7,8 @@ export const nav = {
   gallery: "Gallery",
   brands: "Brands",
   certificates: "Certificates",
+  clients: "Clients",
+  shop: "Shop",
   contact: "Contact",
   cart: "Cart",
   menu: "Menu",

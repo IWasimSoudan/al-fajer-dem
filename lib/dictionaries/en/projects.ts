@@ -1,7 +1,7 @@
 export const projects = {
   kicker: "Projects",
   title: "Kinds of work",
-  lead: "These are types of jobs, not a list of named clients.",
+  lead: "Six project lines from the site map (P1–P6). These are types of jobs, not a list of named clients.",
   items: {
     hangar: { title: "Industrial hangars", text: "Framed halls and light steel buildings, fabricated and erected by the same team." },
     warehouse: { title: "Warehouse packages", text: "Doors, frames, and steelwork for storage and loading buildings." },

@@ -21,6 +21,10 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
       lead={dict.about.lead}
       image="/images/tanks.jpg"
     >
+      <section className="about-intro" id="introduction">
+        <h2>{dict.about.introductionTitle}</h2>
+        <p className="prose">{dict.about.introduction}</p>
+      </section>
       <div className="split">
         <div className="prose">
           <p>{dict.about.p1}</p>

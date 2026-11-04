@@ -798,3 +798,118 @@ html[dir="rtl"] .pdp-kicker {
     aspect-ratio: 16 / 10;
   }
 }
+
+/* product tree (sitemap categories) */
+.product-tree {
+  margin-top: 0.5rem;
+}
+
+.product-tree-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.product-tree-head h2 {
+  margin-bottom: 0.4rem;
+}
+
+.product-tree-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.product-branch {
+  border: 1px solid var(--grey);
+}
+
+.product-branch > button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+  align-items: stretch;
+  text-align: start;
+  padding: 0;
+  background: var(--white);
+  border: 0;
+  cursor: pointer;
+}
+
+.product-branch-media {
+  aspect-ratio: 1;
+  border: 0;
+  min-height: 96px;
+}
+
+.product-branch-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.85rem 1rem 0.85rem 0;
+}
+
+.product-branch-copy strong {
+  font-size: 1.15rem;
+}
+
+.product-branch-copy span {
+  color: color-mix(in srgb, var(--blue) 72%, var(--grey));
+  font-size: 0.95rem;
+}
+
+.product-branch.is-open {
+  border-color: var(--primary);
+}
+
+.product-subtypes {
+  border-top: 1px solid var(--grey);
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+.product-subtypes-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.7rem;
+}
+
+.product-subtypes ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.product-subtypes li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid var(--grey);
+  padding: 0.45rem 0.65rem 0.45rem 0.45rem;
+}
+
+.product-subtype-media {
+  width: 56px;
+  height: 56px;
+  flex: 0 0 auto;
+  border: 0;
+  position: relative;
+}
+
+@media (max-width: 700px) {
+  .product-branch > button {
+    grid-template-columns: 88px 1fr;
+  }
+
+  .product-subtypes ul {
+    grid-template-columns: 1fr;
+  }
+}

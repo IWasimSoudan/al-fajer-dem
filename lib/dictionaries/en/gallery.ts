@@ -1,14 +1,12 @@
 export const gallery = {
   kicker: "Gallery",
   title: "Metal work",
-  lead: "A short look at the kind of work. Filter by subject.",
+  lead: "Events, exhibitions, and workshop gallery shots. Filter by set.",
   filters: {
     all: "All",
-    steel: "Steel",
-    shutters: "Shutters",
-    art: "Art steel",
-    warehouse: "Warehouse",
-    gates: "Gates",
+    events: "Events",
+    exhibitions: "Exhibitions",
+    nfw: "NFW gallery",
   },
   items: {
     g1: "Stainless storage tanks",

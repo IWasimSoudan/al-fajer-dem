@@ -3,14 +3,12 @@ import type { GalleryTranslations } from "@/lib/dictionaries/en/gallery";
 export const gallery = {
   kicker: "المعرض",
   title: "أعمال معدنية",
-  lead: "نظرة قصيرة على نوع العمل. صفِّ حسب الموضوع.",
+  lead: "فعاليات ومعارض ولقطات من الورشة. صفِّ حسب المجموعة.",
   filters: {
     all: "الكل",
-    steel: "فولاذ",
-    shutters: "أبواب لفافة",
-    art: "فولاذ فني",
-    warehouse: "مستودعات",
-    gates: "بوابات",
+    events: "فعاليات",
+    exhibitions: "معارض",
+    nfw: "معرض NFW",
   },
   items: {
     g1: "خزانات ستانلس للتخزين",

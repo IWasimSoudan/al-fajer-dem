@@ -434,6 +434,70 @@ html[dir="rtl"] .kicker {
   font-size: 1.15rem;
 }
 
+.brand-name.is-featured {
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.brands-featured {
+  margin-bottom: 2rem;
+}
+
+.project-code {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+}
+
+.client-grid,
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.client-card,
+.cert-card {
+  margin: 0;
+  border: 1px solid var(--grey);
+}
+
+.client-card p,
+.cert-card > div {
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+.client-mark {
+  aspect-ratio: 16 / 10;
+  border: 0;
+  filter: grayscale(1);
+  opacity: 0.85;
+}
+
+.cert-card .frame {
+  aspect-ratio: 4 / 3;
+  border: 0;
+}
+
+.cert-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.about-intro {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--grey);
+}
+
+.about-intro h2 {
+  margin-bottom: 0.75rem;
+}
+
 .faq {
   margin-top: 2.5rem;
   border-top: 1px solid var(--grey);
@@ -470,7 +534,9 @@ html[dir="rtl"] .kicker {
   .people,
   .gallery-grid,
   .project-grid,
-  .brands {
+  .brands,
+  .client-grid,
+  .cert-grid {
     grid-template-columns: 1fr;
   }
 
@@ -497,7 +563,9 @@ html[dir="rtl"] .kicker {
   .gallery-grid,
   .people,
   .points,
-  .brands {
+  .brands,
+  .client-grid,
+  .cert-grid {
     grid-template-columns: 1fr;
   }
 }

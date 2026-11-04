@@ -1,5 +1,5 @@
 import { PageStage } from "@/components/PageStage";
-import { ProductBrowser } from "@/components/ProductBrowser";
+import { ProductTree } from "@/components/ProductTree";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
 
@@ -20,7 +20,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ lang:
       lead={dict.products.lead}
       image="/images/black-door.jpg"
     >
-      <ProductBrowser lang={lang} dict={dict} />
+      <ProductTree lang={lang} dict={dict} />
     </PageStage>
   );
 }
