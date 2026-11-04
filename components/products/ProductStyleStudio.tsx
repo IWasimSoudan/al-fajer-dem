@@ -24,6 +24,20 @@ function categoryCount(categoryId: CategoryId) {
   return products.filter((product) => product.category === categoryId).length;
 }
 
+/** Deterministic demo stock so list rows feel like an industrial catalog. */
+function sampleStock(id: ProductId) {
+  const n = (id.charCodeAt(0) * 7 + id.length * 3) % 9;
+  return n === 0 ? 1 : n;
+}
+
+function stockLabel(dict: Dictionary, count: number) {
+  if (count <= 2) {
+    const key = count === 1 ? dict.products.lowStock : dict.products.lowStockPlural;
+    return key.replaceAll("{count}", String(count));
+  }
+  return dict.products.stockCount.replaceAll("{count}", String(count));
+}
+
 function StylePicker({
   lang,
   dict,
@@ -52,11 +66,28 @@ function StylePicker({
             >
               <strong>{meta.label}</strong>
               <span>{meta.blurb}</span>
+              <em className="ps-picker-idea">
+                <span className="ps-picker-idea-label">{dict.products.styleWhy}</span>
+                {meta.idea}
+              </em>
             </Link>
           );
         })}
       </div>
     </aside>
+  );
+}
+
+function StyleIdeaBanner({ dict, style }: { dict: Dictionary; style: ProductStyleId }) {
+  const meta = dict.products.styles[style];
+  return (
+    <div className="ps-idea-banner" role="note">
+      <p className="ps-idea-kicker">{dict.products.styleWhy}</p>
+      <p className="ps-idea-text">
+        <strong>{meta.label}</strong>
+        <span>{meta.idea}</span>
+      </p>
+    </div>
   );
 }
 
@@ -210,6 +241,7 @@ function BuyActions({
   onAdd,
   onRemove,
   onCartQty,
+  compact = false,
 }: {
   lang: Locale;
   dict: Dictionary;
@@ -220,13 +252,14 @@ function BuyActions({
   onAdd: () => void;
   onRemove: () => void;
   onCartQty: (qty: number) => void;
+  compact?: boolean;
 }) {
   const inCart = cartQty > 0;
 
   return (
-    <div className="ps-buy">
+    <div className={compact ? "ps-buy is-compact" : "ps-buy"}>
       <p className="ps-price">{money(lang, product.price)}</p>
-      <p className="ps-tax">{dict.products.taxNote}</p>
+      {!compact ? <p className="ps-tax">{dict.products.taxNote}</p> : null}
       {inCart ? <p className="ps-in-cart">{dict.products.inCart}: {cartQty}</p> : null}
       <div className="ps-buy-row">
         <QtyControl
@@ -254,6 +287,25 @@ function BuyActions({
         )}
       </div>
     </div>
+  );
+}
+
+function ProductMeta({
+  dict,
+  product,
+  stock,
+}: {
+  dict: Dictionary;
+  product: Product;
+  stock: number;
+}) {
+  return (
+    <p className="ps-meta">
+      <span>
+        {dict.products.skuLabel} {product.id.toUpperCase()}
+      </span>
+      <span className={stock <= 2 ? "is-low" : "is-ok"}>{stockLabel(dict, stock)}</span>
+    </p>
   );
 }
 
@@ -295,27 +347,30 @@ type BuyProps = {
   onCartQty: (id: ProductId, qty: number) => void;
 };
 
-function StyleList({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRemove, onCartQty }: BuyProps) {
+function StyleCatalogList({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRemove, onCartQty }: BuyProps) {
   return (
-    <div className="ps-list">
+    <div className="ps-catalog-list">
       {items.map((product) => {
         const copy = dict.products.items[product.id];
         const qty = qtyMap[product.id] ?? 1;
+        const stock = sampleStock(product.id);
+        const category = dict.products.categories[product.category].title;
         return (
-          <article key={product.id} className="ps-list-card">
-            <Link href={`/${lang}/products/${product.id}`} className="ps-list-media">
-              <Image src={asset(product.image)} alt="" fill sizes="(max-width: 800px) 100vw, 280px" className="photo" />
+          <article key={product.id} className="ps-catalog-row">
+            <Link href={`/${lang}/products/${product.id}`} className="ps-catalog-media">
+              <Image src={asset(product.image)} alt="" fill sizes="(max-width: 800px) 40vw, 140px" className="photo" />
             </Link>
-            <div className="ps-list-body">
-              <p className="ps-sku">{product.id.toUpperCase()}</p>
+            <div className="ps-catalog-copy">
+              <p className="ps-eyebrow">{category}</p>
               <h3>
                 <Link href={`/${lang}/products/${product.id}`}>{copy.name}</Link>
               </h3>
-              <p>{copy.detail}</p>
-              <div className="ps-badges">
-                <span className="ps-badge">{dict.products.categories[product.category].title}</span>
-                <span className="ps-badge is-stock">{dict.products.inStock}</span>
-              </div>
+              <ProductMeta dict={dict} product={product} stock={stock} />
+              <Link href={`/${lang}/products/${product.id}`} className="ps-specs">
+                {dict.products.seeSpecs}
+              </Link>
+            </div>
+            <div className="ps-catalog-actions">
               <BuyActions
                 lang={lang}
                 dict={dict}
@@ -326,6 +381,7 @@ function StyleList({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRemo
                 onAdd={() => onAdd(product.id, qty)}
                 onRemove={() => onRemove(product.id)}
                 onCartQty={(value) => onCartQty(product.id, value)}
+                compact
               />
             </div>
           </article>
@@ -335,23 +391,28 @@ function StyleList({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRemo
   );
 }
 
-function StyleGrid({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRemove, onCartQty }: BuyProps) {
+function StyleCatalogGrid({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRemove, onCartQty }: BuyProps) {
   return (
-    <div className="ps-grid">
+    <div className="ps-catalog-grid">
       {items.map((product) => {
         const copy = dict.products.items[product.id];
         const qty = qtyMap[product.id] ?? 1;
+        const stock = sampleStock(product.id);
+        const category = dict.products.categories[product.category].title;
         return (
-          <article key={product.id} className="ps-grid-card">
-            <Link href={`/${lang}/products/${product.id}`} className="ps-grid-media">
+          <article key={product.id} className="ps-catalog-card">
+            <Link href={`/${lang}/products/${product.id}`} className="ps-catalog-card-media">
               <Image src={asset(product.image)} alt="" fill sizes="(max-width: 800px) 100vw, 33vw" className="photo" />
             </Link>
-            <div className="ps-grid-body">
-              <p className="ps-sku">{product.id.toUpperCase()}</p>
+            <div className="ps-catalog-card-body">
+              <p className="ps-eyebrow">{category}</p>
               <h3>
                 <Link href={`/${lang}/products/${product.id}`}>{copy.name}</Link>
               </h3>
-              <p>{dict.products.categories[product.category].title}</p>
+              <ProductMeta dict={dict} product={product} stock={stock} />
+              <Link href={`/${lang}/products/${product.id}`} className="ps-specs">
+                {dict.products.seeSpecs}
+              </Link>
               <BuyActions
                 lang={lang}
                 dict={dict}
@@ -362,6 +423,7 @@ function StyleGrid({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRemo
                 onAdd={() => onAdd(product.id, qty)}
                 onRemove={() => onRemove(product.id)}
                 onCartQty={(value) => onCartQty(product.id, value)}
+                compact
               />
             </div>
           </article>
@@ -377,17 +439,19 @@ function StyleSplit({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRem
       {items.map((product) => {
         const copy = dict.products.items[product.id];
         const qty = qtyMap[product.id] ?? 1;
+        const stock = sampleStock(product.id);
         return (
           <article key={product.id} className="ps-split-item">
             <Link href={`/${lang}/products/${product.id}`} className="ps-split-thumb-lg">
               <Image src={asset(product.image)} alt="" fill sizes="140px" className="photo" />
             </Link>
             <div className="ps-split-item-copy">
-              <p className="ps-sku">{product.id.toUpperCase()}</p>
+              <p className="ps-eyebrow">{dict.products.categories[product.category].title}</p>
               <h3>
                 <Link href={`/${lang}/products/${product.id}`}>{copy.name}</Link>
               </h3>
-              <p>{copy.detail}</p>
+              <ProductMeta dict={dict} product={product} stock={stock} />
+              <p className="ps-split-detail">{copy.detail}</p>
               <BuyActions
                 lang={lang}
                 dict={dict}
@@ -398,6 +462,7 @@ function StyleSplit({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRem
                 onAdd={() => onAdd(product.id, qty)}
                 onRemove={() => onRemove(product.id)}
                 onCartQty={(value) => onCartQty(product.id, value)}
+                compact
               />
             </div>
           </article>
@@ -413,6 +478,7 @@ function StyleEditorial({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, o
       {items.map((product, index) => {
         const copy = dict.products.items[product.id];
         const qty = qtyMap[product.id] ?? 1;
+        const stock = sampleStock(product.id);
         const flip = index % 2 === 1;
         return (
           <article key={product.id} className={flip ? "ps-editorial-row is-flip" : "ps-editorial-row"}>
@@ -421,12 +487,12 @@ function StyleEditorial({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, o
             </Link>
             <div className="ps-editorial-copy">
               <p className="ps-editorial-index">{String(index + 1).padStart(2, "0")}</p>
-              <p className="ps-sku">{product.id.toUpperCase()}</p>
+              <p className="ps-eyebrow">{dict.products.categories[product.category].title}</p>
               <h3>
                 <Link href={`/${lang}/products/${product.id}`}>{copy.name}</Link>
               </h3>
+              <ProductMeta dict={dict} product={product} stock={stock} />
               <p>{copy.detail}</p>
-              <p className="ps-badge">{dict.products.categories[product.category].title}</p>
               <BuyActions
                 lang={lang}
                 dict={dict}
@@ -459,6 +525,7 @@ function StyleSheet({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRem
         const qty = qtyMap[product.id] ?? 1;
         const cartQty = cartQtyOf(product.id);
         const inCart = cartQty > 0;
+        const stock = sampleStock(product.id);
         return (
           <div key={product.id} className="ps-sheet-row">
             <div className="ps-sheet-buy-main">
@@ -467,7 +534,8 @@ function StyleSheet({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRem
                   <strong>{copy.name}</strong>
                 </Link>
                 <small>
-                  {product.id.toUpperCase()} · {dict.products.categories[product.category].title}
+                  {dict.products.skuLabel} {product.id.toUpperCase()} · {dict.products.categories[product.category].title} ·{" "}
+                  {stockLabel(dict, stock)}
                 </small>
               </span>
               <span className="ps-price">{money(lang, product.price)}</span>
@@ -508,22 +576,21 @@ export function ProductStyleStudio({
   lang,
   dict,
   style,
+  catalogView = "list",
 }: {
   lang: Locale;
   dict: Dictionary;
   style: ProductStyleId;
+  catalogView?: "list" | "grid";
 }) {
   const { add, setQty: setCartQty, remove, items: cartItems } = useCart();
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<SortKey>("nameAsc");
   const [filter, setFilter] = useState<CategoryId | "all">("all");
   const [catsOpen, setCatsOpen] = useState(true);
-  const [view, setView] = useState<"list" | "grid">(style === "grid" ? "grid" : "list");
+  const [view, setView] = useState<"list" | "grid">(catalogView);
   const [qtyMap, setQtyMap] = useState<Record<string, number>>({});
   const items = useCatalog(dict, lang, query, sort, filter);
-
-  const showToggle = style === "list" || style === "grid";
-  const effectiveView = style === "grid" ? "grid" : style === "list" ? view : null;
 
   function setLocalQty(id: ProductId, qty: number) {
     setQtyMap((current) => ({ ...current, [id]: qty }));
@@ -574,6 +641,8 @@ export function ProductStyleStudio({
         <p>{dict.products.lead}</p>
       </header>
 
+      <StyleIdeaBanner dict={dict} style={style} />
+
       <div className={catsOpen ? "ps-layout" : "ps-layout is-collapsed"}>
         <CategorySidebar
           dict={dict}
@@ -590,8 +659,8 @@ export function ProductStyleStudio({
             onQuery={setQuery}
             sort={sort}
             onSort={setSort}
-            view={showToggle ? view : undefined}
-            onView={showToggle ? setView : undefined}
+            view={style === "list" ? view : undefined}
+            onView={style === "list" ? setView : undefined}
             count={items.length}
           />
 
@@ -601,8 +670,8 @@ export function ProductStyleStudio({
             </p>
           ) : null}
 
-          {style === "list" && effectiveView === "list" ? <StyleList {...buyProps} /> : null}
-          {(style === "grid" || (style === "list" && effectiveView === "grid")) && <StyleGrid {...buyProps} />}
+          {style === "list" && view === "list" ? <StyleCatalogList {...buyProps} /> : null}
+          {style === "list" && view === "grid" ? <StyleCatalogGrid {...buyProps} /> : null}
           {style === "split" ? <StyleSplit {...buyProps} /> : null}
           {style === "editorial" ? <StyleEditorial {...buyProps} /> : null}
           {style === "sheet" ? <StyleSheet {...buyProps} /> : null}

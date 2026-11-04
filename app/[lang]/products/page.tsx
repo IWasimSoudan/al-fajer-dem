@@ -1,5 +1,5 @@
 import { ProductStyleStudio } from "@/components/products/ProductStyleStudio";
-import { isProductStyle, type ProductStyleId } from "@/lib/productStyles";
+import { initialCatalogView, resolveProductStyle } from "@/lib/productStyles";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
 
@@ -17,7 +17,8 @@ export default async function ProductsPage({
 }) {
   const { lang, dict } = await load(params);
   const { style: styleParam } = await searchParams;
-  const style: ProductStyleId = isProductStyle(styleParam) ? styleParam : "list";
+  const style = resolveProductStyle(styleParam);
+  const catalogView = initialCatalogView(styleParam);
 
-  return <ProductStyleStudio lang={lang} dict={dict} style={style} />;
+  return <ProductStyleStudio lang={lang} dict={dict} style={style} catalogView={catalogView} />;
 }
