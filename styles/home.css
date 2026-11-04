@@ -26,12 +26,11 @@ body:has(.home-page) {
 }
 
 .home-bar {
-  --bar-fg: var(--gold);
-  --bar-muted: color-mix(in srgb, var(--gold) 55%, transparent);
-  position: fixed;
-  inset-inline: 0;
+  --bar-fg: var(--blue);
+  --bar-muted: color-mix(in srgb, var(--blue) 50%, transparent);
+  position: sticky;
   top: 0;
-  z-index: 30;
+  z-index: 40;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,19 +38,46 @@ body:has(.home-page) {
   min-height: 72px;
   padding: 0.85rem 1.4rem;
   color: var(--bar-fg);
-  background: transparent;
+  background: var(--white);
   border-bottom: 1px solid transparent;
-  transition: background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    background 0.35s ease,
+    backdrop-filter 0.35s ease,
+    -webkit-backdrop-filter 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    color 0.35s ease;
 }
 
-.home-bar.is-solid {
-  background: color-mix(in srgb, var(--white) 82%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom-color: color-mix(in srgb, var(--grey) 45%, transparent);
-  box-shadow: 0 8px 24px rgb(17 17 17 / 6%);
+/* Top of page — solid seat in the layout */
+.home-bar.is-rest {
+  background: var(--white);
+  border-bottom-color: color-mix(in srgb, var(--grey) 35%, transparent);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Home hero top — floats clear over the media */
+.home-bar.is-top {
+  --bar-fg: var(--gold);
+  --bar-muted: color-mix(in srgb, var(--gold) 55%, transparent);
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Scrolled — frosted glass */
+.home-bar.is-glass {
   --bar-fg: var(--blue);
   --bar-muted: color-mix(in srgb, var(--blue) 50%, transparent);
+  background: color-mix(in srgb, var(--white) 62%, transparent);
+  backdrop-filter: blur(18px) saturate(1.35);
+  -webkit-backdrop-filter: blur(18px) saturate(1.35);
+  border-bottom-color: color-mix(in srgb, var(--grey) 40%, transparent);
+  box-shadow: 0 10px 28px rgb(17 17 17 / 8%);
 }
 
 .home-brand {
@@ -186,13 +212,14 @@ body:has(.home-page) {
   text-decoration-thickness: 1px;
 }
 
-.home-bar:not(.is-solid) .home-rail-nav a[aria-current="page"] {
+.home-bar.is-top .home-rail-nav a[aria-current="page"] {
   color: var(--gold);
 }
 
 .home-bar.is-open {
   --bar-fg: var(--gold);
   --bar-muted: color-mix(in srgb, var(--gold) 55%, transparent);
+  background: transparent;
 }
 
 @media (min-width: 980px) {
@@ -258,7 +285,8 @@ html[dir="rtl"] .home-overlay a {
   min-height: 100svh;
   display: grid;
   align-items: end;
-  padding: 18vh 6vw 7vh;
+  margin-top: -72px;
+  padding: calc(18vh + 72px) 6vw 7vh;
   overflow: hidden;
   color: var(--white);
 }

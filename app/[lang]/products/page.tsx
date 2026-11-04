@@ -1,5 +1,5 @@
-import { PageStage } from "@/components/PageStage";
-import { ProductTree } from "@/components/ProductTree";
+import { ProductStyleStudio } from "@/components/products/ProductStyleStudio";
+import { isProductStyle, type ProductStyleId } from "@/lib/productStyles";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
 
@@ -8,19 +8,16 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return { title: dict.products.title };
 }
 
-export default async function ProductsPage({ params }: { params: Promise<{ lang: string }> }) {
+export default async function ProductsPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ lang: string }>;
+  searchParams: Promise<{ style?: string }>;
+}) {
   const { lang, dict } = await load(params);
+  const { style: styleParam } = await searchParams;
+  const style: ProductStyleId = isProductStyle(styleParam) ? styleParam : "list";
 
-  return (
-    <PageStage
-      lang={lang}
-      dict={dict}
-      kicker={dict.products.kicker}
-      title={dict.products.title}
-      lead={dict.products.lead}
-      image="/images/black-door.jpg"
-    >
-      <ProductTree lang={lang} dict={dict} />
-    </PageStage>
-  );
+  return <ProductStyleStudio lang={lang} dict={dict} style={style} />;
 }

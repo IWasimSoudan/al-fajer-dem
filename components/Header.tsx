@@ -23,7 +23,6 @@ const navLinks = [
   "certificates",
   "clients",
   "gallery",
-  "shop",
   "expertise",
   "catalog",
   "contact",
@@ -53,7 +52,8 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const [scrolled, setScrolled] = useState(false);
 
   const isHome = pathname === `/${lang}` || pathname === `/${lang}/`;
-  const solid = scrolled || !isHome;
+  const atTop = !scrolled;
+  const glass = scrolled;
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -67,14 +67,24 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   }, [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header className={["home-bar", solid ? "is-solid" : "", open ? "is-open" : ""].filter(Boolean).join(" ")}>
+    <header
+      className={[
+        "home-bar",
+        atTop && isHome ? "is-top" : "",
+        atTop && !isHome ? "is-rest" : "",
+        glass ? "is-glass" : "",
+        open ? "is-open" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <a className="skip" href="#main">
         {dict.nav.home}
       </a>

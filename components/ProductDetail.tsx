@@ -21,10 +21,9 @@ function relatedFor(id: ProductId) {
 }
 
 export function ProductDetail({ lang, dict, id }: { lang: Locale; dict: Dictionary; id: ProductId }) {
-  const { add } = useCart();
+  const { add, remove, items, setQty } = useCart();
   const product = productById(id);
   const [index, setIndex] = useState(0);
-  const [added, setAdded] = useState(false);
   const viewRef = useRef<HTMLDialogElement>(null);
   const related = useMemo(() => relatedFor(id), [id]);
 
@@ -38,6 +37,8 @@ export function ProductDetail({ lang, dict, id }: { lang: Locale; dict: Dictiona
   const dimensions = product.dimensions ? dict.catalog.measures[product.dimensions] : null;
   const rating = product.rating ? dict.catalog.measures[product.rating] : null;
   const many = photos.length > 1;
+  const cartQty = items.find((item) => item.id === product.id)?.qty ?? 0;
+  const inCart = cartQty > 0;
 
   function openView() {
     viewRef.current?.showModal();
@@ -87,17 +88,28 @@ export function ProductDetail({ lang, dict, id }: { lang: Locale; dict: Dictiona
             <h2>{copy.name}</h2>
             <p className="pdp-detail">{copy.detail}</p>
             <p className="price">{money(lang, product.price)}</p>
+            {inCart ? <p className="ps-in-cart">{dict.products.inCart}: {cartQty}</p> : null}
             <div className="pdp-buy">
-              <button
-                className="btn"
-                type="button"
-                onClick={() => {
-                  add(product.id);
-                  setAdded(true);
-                }}
-              >
-                {added ? dict.products.added : dict.products.add}
-              </button>
+              {inCart ? (
+                <>
+                  <div className="qty" aria-label={dict.cart.qty}>
+                    <button type="button" onClick={() => (cartQty <= 1 ? remove(product.id) : setQty(product.id, cartQty - 1))} aria-label={dict.products.qtyDown}>
+                      −
+                    </button>
+                    <span>{cartQty}</span>
+                    <button type="button" onClick={() => setQty(product.id, cartQty + 1)} aria-label={dict.products.qtyUp}>
+                      +
+                    </button>
+                  </div>
+                  <button className="btn ghost" type="button" onClick={() => remove(product.id)}>
+                    {dict.products.remove}
+                  </button>
+                </>
+              ) : (
+                <button className="btn" type="button" onClick={() => add(product.id)}>
+                  {dict.products.add}
+                </button>
+              )}
               <Link className="btn ghost" href={`/${lang}/cart`}>
                 {dict.nav.cart}
               </Link>

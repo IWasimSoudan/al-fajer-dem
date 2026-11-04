@@ -6,6 +6,7 @@ import "@/styles/layout.css";
 import "@/styles/footer.css";
 import "@/styles/forms.css";
 import "@/styles/catalog.css";
+import "@/styles/product-styles.css";
 import "@/styles/home.css";
 
 const outfit = Outfit({

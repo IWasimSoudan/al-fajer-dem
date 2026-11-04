@@ -18,8 +18,8 @@ export function ProductTree({ lang, dict }: { lang: Locale; dict: Dictionary }) 
           <h2>{dict.products.treeTitle}</h2>
           <p className="lead">{dict.products.treeLead}</p>
         </div>
-        <Link className="btn" href={`/${lang}/shop`}>
-          {dict.products.shopCta}
+        <Link className="btn" href={`/${lang}/products`}>
+          {dict.products.openLine}
         </Link>
       </div>
 

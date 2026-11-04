@@ -51,7 +51,6 @@ export function FooterOptionB({ lang, dict }: { lang: Locale; dict: Dictionary }
             <Link href={`/${lang}/certificates`}>{nav.certificates}</Link>
             <Link href={`/${lang}/clients`}>{nav.clients}</Link>
             <Link href={`/${lang}/gallery`}>{nav.gallery}</Link>
-            <Link href={`/${lang}/shop`}>{nav.shop}</Link>
             <Link href={`/${lang}/expertise`}>{nav.expertise}</Link>
             <Link href={`/${lang}/catalog`}>{nav.catalog}</Link>
             <Link href={`/${lang}/contact`}>{nav.contact}</Link>
