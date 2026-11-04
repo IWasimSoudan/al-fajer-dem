@@ -345,6 +345,106 @@
   color: var(--primary);
 }
 
+/* ——— Shared media gallery (swap photos) ——— */
+.ps-media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--blue) 4%, var(--white));
+  isolation: isolate;
+}
+
+.ps-media-frame {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.ps-media .photo {
+  object-fit: cover;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+.ps-media:hover .photo {
+  transform: scale(1.03);
+}
+
+.ps-media-step {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  translate: 0 -50%;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--white) 88%, transparent);
+  color: var(--blue);
+  cursor: pointer;
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--blue) 18%, transparent);
+  opacity: 0;
+  transition: opacity 0.18s ease, background 0.15s ease;
+}
+
+.ps-media:hover .ps-media-step,
+.ps-media:focus-within .ps-media-step {
+  opacity: 1;
+}
+
+.ps-media-step:hover {
+  background: var(--white);
+  color: var(--primary);
+}
+
+.ps-media-step.is-prev {
+  inset-inline-start: 0.45rem;
+}
+
+.ps-media-step.is-next {
+  inset-inline-end: 0.45rem;
+}
+
+.ps-media-step svg {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+}
+
+.ps-media-dots {
+  position: absolute;
+  z-index: 2;
+  inset-inline: 0;
+  bottom: 0.55rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  pointer-events: none;
+}
+
+.ps-media-dots button {
+  pointer-events: auto;
+  width: 0.45rem;
+  height: 0.45rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--white) 55%, transparent);
+  cursor: pointer;
+}
+
+.ps-media-dots button.is-active {
+  background: var(--white);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+@media (hover: none) {
+  .ps-media-step {
+    opacity: 0.92;
+  }
+}
+
 /* ——— 1 · Industrial catalog (merged list + grid) ——— */
 .ps-catalog-list {
   display: grid;
@@ -355,10 +455,10 @@
 
 .ps-catalog-row {
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr) minmax(180px, 240px);
-  gap: 1rem 1.15rem;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr) minmax(180px, 240px);
+  gap: 1.15rem 1.35rem;
   align-items: center;
-  padding: 0.95rem 1rem;
+  padding: 1.1rem 1.15rem;
   border-bottom: 1px solid color-mix(in srgb, var(--grey) 55%, transparent);
   transition: background 0.15s ease;
 }
@@ -372,21 +472,9 @@
 }
 
 .ps-catalog-media {
-  position: relative;
-  display: block;
   width: 100%;
-  aspect-ratio: 1;
-  overflow: hidden;
-  background: color-mix(in srgb, var(--blue) 4%, var(--white));
-}
-
-.ps-catalog-media .photo {
-  object-fit: cover;
-  transition: transform 0.35s ease;
-}
-
-.ps-catalog-row:hover .ps-catalog-media .photo {
-  transform: scale(1.04);
+  aspect-ratio: 4 / 3;
+  min-height: 180px;
 }
 
 .ps-catalog-copy h3 {
@@ -447,20 +535,8 @@
 }
 
 .ps-catalog-card-media {
-  position: relative;
-  display: block;
-  aspect-ratio: 4 / 3;
-  background: color-mix(in srgb, var(--blue) 4%, var(--white));
-  overflow: hidden;
-}
-
-.ps-catalog-card-media .photo {
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.ps-catalog-card:hover .ps-catalog-card-media .photo {
-  transform: scale(1.05);
+  aspect-ratio: 5 / 4;
+  min-height: 220px;
 }
 
 .ps-catalog-card-body {
@@ -489,9 +565,9 @@
 
 .ps-split-item {
   display: grid;
-  grid-template-columns: 120px minmax(0, 1fr);
-  gap: 1rem;
-  padding: 0.85rem;
+  grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
+  gap: 1.15rem;
+  padding: 1rem;
   border: 1px solid color-mix(in srgb, var(--grey) 70%, transparent);
   background: var(--white);
   transition: border-color 0.15s ease, background 0.15s ease;
@@ -503,14 +579,8 @@
 }
 
 .ps-split-thumb-lg {
-  position: relative;
-  min-height: 110px;
-  background: color-mix(in srgb, var(--blue) 4%, var(--white));
-  overflow: hidden;
-}
-
-.ps-split-thumb-lg .photo {
-  object-fit: cover;
+  min-height: 180px;
+  aspect-ratio: 4 / 3;
 }
 
 .ps-split-item-copy h3 {
@@ -532,12 +602,12 @@
 
 .ps-editorial-row {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   gap: 0;
   border: 1px solid color-mix(in srgb, var(--grey) 70%, transparent);
   background: var(--white);
   overflow: hidden;
-  min-height: 320px;
+  min-height: 420px;
 }
 
 .ps-editorial-row.is-flip {
@@ -557,13 +627,8 @@ html[dir="rtl"] .ps-editorial-row.is-flip > * {
 }
 
 .ps-editorial-media {
-  position: relative;
-  min-height: 280px;
-  background: color-mix(in srgb, var(--blue) 5%, var(--white));
-}
-
-.ps-editorial-media .photo {
-  object-fit: cover;
+  min-height: 380px;
+  height: 100%;
 }
 
 .ps-editorial-copy {
@@ -600,9 +665,15 @@ html[dir="rtl"] .ps-editorial-row.is-flip > * {
 .ps-sheet-head-buy,
 .ps-sheet-buy-main {
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(90px, 0.45fr) minmax(180px, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: 140px minmax(0, 1.5fr) minmax(90px, 0.45fr) minmax(180px, 1fr);
+  gap: 0.85rem;
   align-items: center;
+}
+
+.ps-sheet-media {
+  width: 100%;
+  aspect-ratio: 1;
+  min-height: 120px;
 }
 
 .ps-sheet-head {
@@ -787,6 +858,81 @@ html[dir="rtl"] .ps-editorial-row.is-flip > * {
   min-width: 0;
 }
 
+/* ——— Pagination ——— */
+.ps-pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.25rem;
+  margin-top: 1.5rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid color-mix(in srgb, var(--grey) 65%, transparent);
+}
+
+.ps-pager-status {
+  margin: 0;
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--blue) 70%, var(--grey));
+}
+
+.ps-pager-of {
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.ps-pager-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.ps-pager-pages {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.ps-pager-nav,
+.ps-pager-page {
+  min-height: 40px;
+  min-width: 40px;
+  padding-inline: 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--grey) 75%, var(--blue));
+  background: var(--white);
+  color: var(--blue);
+  cursor: pointer;
+  font: inherit;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.ps-pager-page {
+  padding-inline: 0;
+}
+
+.ps-pager-nav:hover:not(:disabled),
+.ps-pager-page:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.ps-pager-page.is-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+.ps-pager-nav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 /* ——— Responsive ——— */
 @media (max-width: 1100px) {
   .ps-picker-list {
@@ -822,12 +968,16 @@ html[dir="rtl"] .ps-editorial-row.is-flip > * {
 
 @media (max-width: 760px) {
   .ps-catalog-row {
-    grid-template-columns: 88px minmax(0, 1fr);
-    gap: 0.75rem;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .ps-catalog-media {
+    min-height: 210px;
+    aspect-ratio: 16 / 10;
   }
 
   .ps-catalog-actions {
-    grid-column: 1 / -1;
     justify-self: stretch;
   }
 
@@ -844,13 +994,21 @@ html[dir="rtl"] .ps-editorial-row.is-flip > * {
     grid-template-columns: 1fr;
   }
 
-  .ps-sheet-head > span:nth-child(2),
-  .ps-sheet-head > span:nth-child(3) {
+  .ps-sheet-media {
+    min-height: 180px;
+    aspect-ratio: 16 / 10;
+  }
+
+  .ps-sheet-head > span:nth-child(n + 2) {
     display: none;
   }
 
   .ps-sheet-actions {
     justify-content: flex-start;
+  }
+
+  .ps-editorial-media {
+    min-height: 260px;
   }
 }
 
@@ -883,18 +1041,26 @@ html[dir="rtl"] .ps-editorial-row.is-flip > * {
   .ps-sort select {
     flex: 1;
   }
+
+  .ps-pager {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ps-pager-controls {
+    justify-content: space-between;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .ps-picker-item,
   .ps-catalog-card,
-  .ps-catalog-media .photo,
-  .ps-catalog-card-media .photo {
+  .ps-media .photo,
+  .ps-media-step {
     transition: none;
   }
 
-  .ps-catalog-row:hover .ps-catalog-media .photo,
-  .ps-catalog-card:hover .ps-catalog-card-media .photo {
+  .ps-media:hover .photo {
     transform: none;
   }
 }

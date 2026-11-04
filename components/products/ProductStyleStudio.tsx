@@ -9,12 +9,14 @@ import { money } from "@/lib/money";
 import { PRODUCT_STYLES, type ProductStyleId } from "@/lib/productStyles";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type MouseEvent } from "react";
 
 export type { ProductStyleId };
 
 type Product = (typeof products)[number];
 type SortKey = "nameAsc" | "nameDesc" | "priceAsc" | "priceDesc";
+
+const PAGE_SIZE = 4;
 
 function foundLabel(dict: Dictionary, count: number) {
   return dict.products.count.replaceAll("{count}", String(count));
@@ -309,6 +311,75 @@ function ProductMeta({
   );
 }
 
+function ProductMedia({
+  lang,
+  dict,
+  product,
+  className,
+  sizes,
+}: {
+  lang: Locale;
+  dict: Dictionary;
+  product: Product;
+  className: string;
+  sizes: string;
+}) {
+  const photos = product.images.length > 0 ? product.images : [product.image];
+  const [index, setIndex] = useState(0);
+  const many = photos.length > 1;
+  const photo = photos[index] ?? product.image;
+
+  function step(delta: number, event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    setIndex((current) => (current + delta + photos.length) % photos.length);
+  }
+
+  return (
+    <div className={`ps-media ${className}`}>
+      <Link href={`/${lang}/products/${product.id}`} className="ps-media-frame" tabIndex={-1}>
+        <Image
+          key={photo}
+          src={asset(photo)}
+          alt=""
+          fill
+          sizes={sizes}
+          className="photo"
+        />
+      </Link>
+      {many ? (
+        <>
+          <button type="button" className="ps-media-step is-prev" aria-label={dict.products.photoPrev} onClick={(event) => step(-1, event)}>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button type="button" className="ps-media-step is-next" aria-label={dict.products.photoNext} onClick={(event) => step(1, event)}>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M10 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <div className="ps-media-dots" aria-hidden="true">
+            {photos.map((src, dot) => (
+              <button
+                key={src}
+                type="button"
+                className={dot === index ? "is-active" : undefined}
+                aria-label={`${dict.products.photoView} ${dot + 1}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  setIndex(dot);
+                }}
+              />
+            ))}
+          </div>
+        </>
+      ) : null}
+    </div>
+  );
+}
+
 function useCatalog(dict: Dictionary, lang: Locale, query: string, sort: SortKey, filter: CategoryId | "all") {
   return useMemo(() => {
     const locale = lang === "ar" ? "ar" : "en";
@@ -357,9 +428,13 @@ function StyleCatalogList({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd,
         const category = dict.products.categories[product.category].title;
         return (
           <article key={product.id} className="ps-catalog-row">
-            <Link href={`/${lang}/products/${product.id}`} className="ps-catalog-media">
-              <Image src={asset(product.image)} alt="" fill sizes="(max-width: 800px) 40vw, 140px" className="photo" />
-            </Link>
+            <ProductMedia
+              lang={lang}
+              dict={dict}
+              product={product}
+              className="ps-catalog-media"
+              sizes="(max-width: 800px) 45vw, 260px"
+            />
             <div className="ps-catalog-copy">
               <p className="ps-eyebrow">{category}</p>
               <h3>
@@ -401,9 +476,13 @@ function StyleCatalogGrid({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd,
         const category = dict.products.categories[product.category].title;
         return (
           <article key={product.id} className="ps-catalog-card">
-            <Link href={`/${lang}/products/${product.id}`} className="ps-catalog-card-media">
-              <Image src={asset(product.image)} alt="" fill sizes="(max-width: 800px) 100vw, 33vw" className="photo" />
-            </Link>
+            <ProductMedia
+              lang={lang}
+              dict={dict}
+              product={product}
+              className="ps-catalog-card-media"
+              sizes="(max-width: 800px) 100vw, 36vw"
+            />
             <div className="ps-catalog-card-body">
               <p className="ps-eyebrow">{category}</p>
               <h3>
@@ -442,9 +521,13 @@ function StyleSplit({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRem
         const stock = sampleStock(product.id);
         return (
           <article key={product.id} className="ps-split-item">
-            <Link href={`/${lang}/products/${product.id}`} className="ps-split-thumb-lg">
-              <Image src={asset(product.image)} alt="" fill sizes="140px" className="photo" />
-            </Link>
+            <ProductMedia
+              lang={lang}
+              dict={dict}
+              product={product}
+              className="ps-split-thumb-lg"
+              sizes="(max-width: 700px) 100vw, 220px"
+            />
             <div className="ps-split-item-copy">
               <p className="ps-eyebrow">{dict.products.categories[product.category].title}</p>
               <h3>
@@ -482,9 +565,13 @@ function StyleEditorial({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, o
         const flip = index % 2 === 1;
         return (
           <article key={product.id} className={flip ? "ps-editorial-row is-flip" : "ps-editorial-row"}>
-            <Link href={`/${lang}/products/${product.id}`} className="ps-editorial-media">
-              <Image src={asset(product.image)} alt="" fill sizes="(max-width: 900px) 100vw, 50vw" className="photo" />
-            </Link>
+            <ProductMedia
+              lang={lang}
+              dict={dict}
+              product={product}
+              className="ps-editorial-media"
+              sizes="(max-width: 900px) 100vw, 55vw"
+            />
             <div className="ps-editorial-copy">
               <p className="ps-editorial-index">{String(index + 1).padStart(2, "0")}</p>
               <p className="ps-eyebrow">{dict.products.categories[product.category].title}</p>
@@ -512,10 +599,70 @@ function StyleEditorial({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, o
   );
 }
 
+function Pagination({
+  dict,
+  page,
+  pages,
+  total,
+  pageSize,
+  onPage,
+}: {
+  dict: Dictionary;
+  page: number;
+  pages: number;
+  total: number;
+  pageSize: number;
+  onPage: (page: number) => void;
+}) {
+  if (total === 0 || pages <= 1) return null;
+
+  const from = (page - 1) * pageSize + 1;
+  const to = Math.min(page * pageSize, total);
+  const showing = dict.products.showing
+    .replaceAll("{from}", String(from))
+    .replaceAll("{to}", String(to))
+    .replaceAll("{total}", String(total));
+  const pageOf = dict.products.pageOf.replaceAll("{page}", String(page)).replaceAll("{pages}", String(pages));
+
+  const numbers = Array.from({ length: pages }, (_, index) => index + 1);
+
+  return (
+    <nav className="ps-pager" aria-label={dict.products.pageLabel}>
+      <p className="ps-pager-status">
+        <span>{showing}</span>
+        <span className="ps-pager-of">{pageOf}</span>
+      </p>
+      <div className="ps-pager-controls">
+        <button type="button" className="ps-pager-nav" disabled={page <= 1} onClick={() => onPage(page - 1)}>
+          {dict.products.pagePrev}
+        </button>
+        <div className="ps-pager-pages" role="list">
+          {numbers.map((number) => (
+            <button
+              key={number}
+              type="button"
+              role="listitem"
+              className={number === page ? "ps-pager-page is-active" : "ps-pager-page"}
+              aria-current={number === page ? "page" : undefined}
+              onClick={() => onPage(number)}
+            >
+              {number}
+            </button>
+          ))}
+        </div>
+        <button type="button" className="ps-pager-nav" disabled={page >= pages} onClick={() => onPage(page + 1)}>
+          {dict.products.pageNext}
+        </button>
+      </div>
+    </nav>
+  );
+}
+
 function StyleSheet({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRemove, onCartQty }: BuyProps) {
   return (
     <div className="ps-sheet">
       <div className="ps-sheet-head ps-sheet-head-buy" role="row">
+        <span aria-hidden="true" />
         <span>{dict.products.kicker}</span>
         <span>{dict.products.sortPrice}</span>
         <span>{dict.products.add}</span>
@@ -529,6 +676,13 @@ function StyleSheet({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRem
         return (
           <div key={product.id} className="ps-sheet-row">
             <div className="ps-sheet-buy-main">
+              <ProductMedia
+                lang={lang}
+                dict={dict}
+                product={product}
+                className="ps-sheet-media"
+                sizes="160px"
+              />
               <span className="ps-sheet-name">
                 <Link href={`/${lang}/products/${product.id}`}>
                   <strong>{copy.name}</strong>
@@ -590,7 +744,28 @@ export function ProductStyleStudio({
   const [catsOpen, setCatsOpen] = useState(true);
   const [view, setView] = useState<"list" | "grid">(catalogView);
   const [qtyMap, setQtyMap] = useState<Record<string, number>>({});
+  const [page, setPage] = useState(1);
   const items = useCatalog(dict, lang, query, sort, filter);
+  const pages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
+  const pageItems = useMemo(() => {
+    const start = (page - 1) * PAGE_SIZE;
+    return items.slice(start, start + PAGE_SIZE);
+  }, [items, page]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [query, sort, filter, style, view]);
+
+  useEffect(() => {
+    if (page > pages) setPage(pages);
+  }, [page, pages]);
+
+  function goToPage(next: number) {
+    setPage(Math.min(pages, Math.max(1, next)));
+    if (typeof window !== "undefined") {
+      document.getElementById("ps-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
 
   function setLocalQty(id: ProductId, qty: number) {
     setQtyMap((current) => ({ ...current, [id]: qty }));
@@ -622,7 +797,7 @@ export function ProductStyleStudio({
   const buyProps = {
     lang,
     dict,
-    items,
+    items: pageItems,
     qtyMap,
     setQty: setLocalQty,
     cartQtyOf,
@@ -647,20 +822,36 @@ export function ProductStyleStudio({
         <CategorySidebar
           dict={dict}
           filter={filter}
-          onFilter={setFilter}
+          onFilter={(value) => {
+            setFilter(value);
+            setPage(1);
+          }}
           open={catsOpen}
           onToggle={() => setCatsOpen((value) => !value)}
         />
 
-        <div className="ps-main">
+        <div className="ps-main" id="ps-results">
           <Toolbar
             dict={dict}
             query={query}
-            onQuery={setQuery}
+            onQuery={(value) => {
+              setQuery(value);
+              setPage(1);
+            }}
             sort={sort}
-            onSort={setSort}
+            onSort={(value) => {
+              setSort(value);
+              setPage(1);
+            }}
             view={style === "list" ? view : undefined}
-            onView={style === "list" ? setView : undefined}
+            onView={
+              style === "list"
+                ? (value) => {
+                    setView(value);
+                    setPage(1);
+                  }
+                : undefined
+            }
             count={items.length}
           />
 
@@ -675,6 +866,15 @@ export function ProductStyleStudio({
           {style === "split" ? <StyleSplit {...buyProps} /> : null}
           {style === "editorial" ? <StyleEditorial {...buyProps} /> : null}
           {style === "sheet" ? <StyleSheet {...buyProps} /> : null}
+
+          <Pagination
+            dict={dict}
+            page={page}
+            pages={pages}
+            total={items.length}
+            pageSize={PAGE_SIZE}
+            onPage={goToPage}
+          />
         </div>
       </div>
     </div>

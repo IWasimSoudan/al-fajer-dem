@@ -43,6 +43,11 @@ export const products = {
   stockCount: "In stock {count} units",
   lowStock: "Low stock {count} unit",
   lowStockPlural: "Low stock {count} units",
+  pagePrev: "Previous",
+  pageNext: "Next",
+  pageLabel: "Product pages",
+  pageOf: "Page {page} of {pages}",
+  showing: "Showing {from}–{to} of {total}",
   styles: {
     list: {
       label: "1 · Industrial catalog",

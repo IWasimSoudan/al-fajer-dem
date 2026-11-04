@@ -45,6 +45,11 @@ export const products = {
   stockCount: "متوفر {count} وحدات",
   lowStock: "كمية محدودة {count} وحدة",
   lowStockPlural: "كمية محدودة {count} وحدات",
+  pagePrev: "السابق",
+  pageNext: "التالي",
+  pageLabel: "صفحات المنتجات",
+  pageOf: "صفحة {page} من {pages}",
+  showing: "عرض {from}–{to} من {total}",
   styles: {
     list: {
       label: "1 · كتالوج صناعي",
