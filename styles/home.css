@@ -26,6 +26,8 @@ body:has(.home-page) {
 }
 
 .home-bar {
+  --bar-fg: var(--gold);
+  --bar-muted: color-mix(in srgb, var(--gold) 55%, transparent);
   position: fixed;
   inset-inline: 0;
   top: 0;
@@ -34,12 +36,40 @@ body:has(.home-page) {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.1rem 1.4rem;
+  min-height: 72px;
+  padding: 0.85rem 1.4rem;
+  color: var(--bar-fg);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
-.home-mark {
-  color: var(--gold);
+.home-bar.is-solid {
+  background: color-mix(in srgb, var(--white) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: color-mix(in srgb, var(--grey) 45%, transparent);
+  box-shadow: 0 8px 24px rgb(17 17 17 / 6%);
+  --bar-fg: var(--blue);
+  --bar-muted: color-mix(in srgb, var(--blue) 50%, transparent);
+}
+
+.home-brand {
+  position: relative;
+  z-index: 32;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+
+.home-logo {
+  width: auto;
+  height: 52px;
+  object-fit: contain;
+  display: block;
 }
 
 .home-tools {
@@ -48,6 +78,8 @@ body:has(.home-page) {
   flex: 0 0 auto;
   flex-wrap: nowrap;
   gap: 0.8rem;
+  position: relative;
+  z-index: 32;
 }
 
 .home-lang {
@@ -57,12 +89,12 @@ body:has(.home-page) {
 }
 
 .home-lang a {
-  color: color-mix(in srgb, var(--gold) 55%, transparent);
+  color: var(--bar-muted);
   text-decoration: none;
 }
 
 .home-lang a[aria-current="true"] {
-  color: var(--gold);
+  color: var(--bar-fg);
 }
 
 .home-cart {
@@ -71,7 +103,7 @@ body:has(.home-page) {
   place-items: center;
   width: 42px;
   height: 42px;
-  color: var(--gold);
+  color: var(--bar-fg);
   text-decoration: none;
 }
 
@@ -96,23 +128,6 @@ body:has(.home-page) {
   text-align: center;
 }
 
-.home-contact {
-  display: inline-flex;
-  align-items: center;
-  flex: 0 0 auto;
-  gap: 0.45rem;
-  height: 42px;
-  padding-inline: 1.05rem;
-  border: 1px solid var(--primary);
-  border-radius: 999px;
-  background: var(--primary);
-  color: var(--white);
-  text-decoration: none;
-  font-size: 0.95rem;
-  line-height: 1;
-  white-space: nowrap;
-}
-
 .home-burger {
   width: 46px;
   height: 42px;
@@ -124,13 +139,14 @@ body:has(.home-page) {
   cursor: pointer;
   position: relative;
   z-index: 32;
+  color: var(--bar-fg);
 }
 
 .home-burger span {
   display: block;
   width: 22px;
   height: 1.5px;
-  background: var(--gold);
+  background: currentColor;
   transition: transform 0.3s ease;
 }
 
@@ -140,6 +156,57 @@ body:has(.home-page) {
 
 .home-burger.open span:last-child {
   transform: translateY(-4px) rotate(-40deg);
+}
+
+.home-rail-nav {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  gap: clamp(0.85rem, 1.6vw, 1.5rem);
+  min-width: 0;
+  position: relative;
+  z-index: 32;
+}
+
+.home-rail-nav a {
+  color: var(--bar-fg);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.home-rail-nav a[aria-current="page"] {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+  text-decoration-thickness: 1px;
+}
+
+.home-bar:not(.is-solid) .home-rail-nav a[aria-current="page"] {
+  color: var(--gold);
+}
+
+.home-bar.is-open {
+  --bar-fg: var(--gold);
+  --bar-muted: color-mix(in srgb, var(--gold) 55%, transparent);
+}
+
+@media (min-width: 980px) {
+  .home-rail-nav {
+    display: flex;
+  }
+
+  .home-burger {
+    display: none;
+  }
+}
+
+@media (max-width: 979px) {
+  .home-logo {
+    height: 44px;
+  }
 }
 
 .home-overlay {
@@ -1062,14 +1129,6 @@ html[dir="rtl"] .page-hero .page-kicker {
   font-family: var(--serif);
   font-weight: 500;
   color: var(--gold);
-}
-
-.home-contact:hover,
-.home-contact[aria-current="page"],
-.home-contact[aria-current="page"]:hover {
-  background: var(--primary-dark);
-  color: var(--white);
-  border-color: var(--primary-dark);
 }
 
 .missing .hero-copy h1 {
