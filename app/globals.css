@@ -2,6 +2,12 @@
   --blue: #262f37;
   --white: #fdfffe;
   --grey: #a9aba8;
+  --primary: #014e96;
+  --primary-dark: #013a70;
+  --copper: #3d7eb8;
+  --ink: #181818;
+  --ink-deep: rgb(17, 17, 17);
+  --gold: var(--copper);
   --font-sans: var(--font-outfit), sans-serif;
   --max: 1120px;
   --space: clamp(4.5rem, 8vw, 7rem);
@@ -57,7 +63,7 @@ textarea {
 }
 
 :focus-visible {
-  outline: 2px solid var(--blue);
+  outline: 2px solid var(--primary);
   outline-offset: 3px;
 }
 
@@ -65,7 +71,7 @@ textarea {
   position: absolute;
   inset-inline-start: 12px;
   top: -120px;
-  background: var(--blue);
+  background: var(--primary);
   color: var(--white);
   padding: 8px 12px;
   z-index: 20;
@@ -119,6 +125,7 @@ textarea {
 }
 
 .nav a[aria-current="page"] {
+  color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 0.35em;
 }
@@ -141,14 +148,15 @@ textarea {
 }
 
 .lang a[aria-current="true"] {
-  color: var(--blue);
+  color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 0.3em;
 }
 
 .cart-link {
   text-decoration: none;
-  border: 1px solid var(--blue);
+  color: var(--primary);
+  border: 1px solid var(--primary);
   min-height: 40px;
   display: inline-flex;
   align-items: center;
@@ -159,7 +167,8 @@ textarea {
 .nav-toggle {
   display: none;
   background: var(--white);
-  border: 1px solid var(--blue);
+  color: var(--primary);
+  border: 1px solid var(--primary);
   min-height: 40px;
   padding-inline: 0.8rem;
 }
@@ -207,7 +216,7 @@ h2 {
 
 .kicker {
   margin-bottom: 0.8rem;
-  color: var(--grey);
+  color: var(--copper);
   font-size: 0.82rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -232,19 +241,32 @@ html[dir="rtl"] .kicker {
   justify-content: center;
   min-height: 48px;
   padding-inline: 1.2rem;
-  background: var(--blue);
+  background: var(--primary);
   color: var(--white);
-  border: 1px solid var(--blue);
+  border: 1px solid var(--primary);
   text-decoration: none;
   cursor: pointer;
 }
 
-.btn.ghost {
-  background: var(--white);
-  color: var(--blue);
+.btn:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
 }
 
-.btn:disabled {
+.btn.ghost {
+  background: var(--white);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn.ghost:hover {
+  background: var(--white);
+  color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn:disabled,
+.btn:disabled:hover {
   background: var(--white);
   color: var(--grey);
   border-color: var(--grey);
@@ -335,7 +357,10 @@ html[dir="rtl"] .kicker {
   color: var(--white);
 }
 
-.values .kicker,
+.values .kicker {
+  color: var(--copper);
+}
+
 .values p {
   color: var(--grey);
 }
@@ -395,10 +420,18 @@ html[dir="rtl"] .kicker {
   padding: 2rem;
 }
 
-.contact-band .btn {
+.contact-band .btn,
+.contact-band .btn:hover {
   background: var(--white);
-  color: var(--blue);
   border-color: var(--white);
+}
+
+.contact-band .btn {
+  color: var(--primary);
+}
+
+.contact-band .btn:hover {
+  color: var(--primary-dark);
 }
 
 .page {
@@ -415,6 +448,10 @@ html[dir="rtl"] .kicker {
   gap: 1rem;
   max-width: 42rem;
   margin-top: 1.5rem;
+}
+
+.prose a:not(.btn) {
+  color: var(--primary);
 }
 
 .people,
@@ -454,9 +491,9 @@ html[dir="rtl"] .kicker {
 }
 
 .cat-grid button[aria-pressed="true"] {
-  background: var(--blue);
+  background: var(--primary);
   color: var(--white);
-  border-color: var(--blue);
+  border-color: var(--primary);
 }
 
 .filters {
@@ -475,9 +512,9 @@ html[dir="rtl"] .kicker {
 }
 
 .filters button[aria-pressed="true"] {
-  background: var(--blue);
+  background: var(--primary);
   color: var(--white);
-  border-color: var(--blue);
+  border-color: var(--primary);
 }
 
 .gallery-grid,
@@ -588,8 +625,8 @@ textarea {
 }
 
 .error {
-  color: var(--blue);
-  border-inline-start: 3px solid var(--blue);
+  color: var(--copper);
+  border-inline-start: 3px solid var(--copper);
   padding-inline-start: 0.7rem;
 }
 
@@ -621,9 +658,9 @@ textarea {
 }
 
 .steps .current {
-  background: var(--blue);
+  background: var(--primary);
   color: var(--white);
-  border-color: var(--blue);
+  border-color: var(--primary);
 }
 
 .cart-list {
@@ -669,6 +706,7 @@ textarea {
   background: none;
   border: 0;
   padding: 0;
+  color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 0.25em;
   cursor: pointer;
@@ -713,9 +751,9 @@ textarea {
 }
 
 .choices button[aria-pressed="true"] {
-  background: var(--blue);
+  background: var(--primary);
   color: var(--white);
-  border-color: var(--blue);
+  border-color: var(--primary);
 }
 
 .reference {
@@ -854,8 +892,8 @@ textarea {
 }
 
 body:has(.home-page) {
-  background: #181818;
-  color: #fff;
+  background: var(--white);
+  color: var(--blue);
 }
 
 body:has(.home-page) .site-footer {
@@ -863,11 +901,9 @@ body:has(.home-page) .site-footer {
 }
 
 .home-page {
-  --gold: #f6e8bf;
-  --ink: #181818;
   --serif: var(--font-serif), "Times New Roman", serif;
-  background: var(--ink);
-  color: #fff;
+  background: var(--white);
+  color: var(--blue);
   overflow: clip;
 }
 
@@ -884,7 +920,7 @@ html[dir="rtl"] .home-page {
   width: 72px;
   height: 40px;
   display: block;
-  stroke: var(--gold, #f6e8bf);
+  stroke: var(--gold);
   stroke-width: 1.6;
   stroke-linecap: round;
   fill: none;
@@ -922,7 +958,7 @@ html[dir="rtl"] .home-page {
 }
 
 .home-lang a {
-  color: rgba(246, 232, 191, 0.55);
+  color: color-mix(in srgb, var(--gold) 55%, transparent);
   text-decoration: none;
 }
 
@@ -936,7 +972,7 @@ html[dir="rtl"] .home-page {
   place-items: center;
   width: 42px;
   height: 42px;
-  color: #f6e8bf;
+  color: var(--gold);
   text-decoration: none;
 }
 
@@ -953,8 +989,8 @@ html[dir="rtl"] .home-page {
   height: 1.15rem;
   padding-inline: 0.28rem;
   border-radius: 999px;
-  background: #f6e8bf;
-  color: #181818;
+  background: var(--primary);
+  color: var(--white);
   font-size: 0.68rem;
   font-weight: 600;
   line-height: 1.15rem;
@@ -968,9 +1004,10 @@ html[dir="rtl"] .home-page {
   gap: 0.45rem;
   height: 42px;
   padding-inline: 1.05rem;
-  border: 1px solid rgba(246, 232, 191, 0.7);
+  border: 1px solid var(--primary);
   border-radius: 999px;
-  color: var(--gold);
+  background: var(--primary);
+  color: var(--white);
   text-decoration: none;
   font-size: 0.95rem;
   line-height: 1;
@@ -1009,7 +1046,7 @@ html[dir="rtl"] .home-page {
 .home-overlay {
   position: fixed;
   inset: 0;
-  background: #111;
+  background: var(--ink-deep);
   z-index: 31;
   display: grid;
   align-items: end;
@@ -1031,7 +1068,7 @@ html[dir="rtl"] .home-page {
 }
 
 .home-overlay a {
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   font-family: var(--serif);
   font-size: clamp(2.2rem, 6vw, 4.6rem);
@@ -1055,6 +1092,7 @@ html[dir="rtl"] .home-overlay a {
   align-items: end;
   padding: 18vh 6vw 7vh;
   overflow: hidden;
+  color: var(--white);
 }
 
 .hero-media {
@@ -1153,7 +1191,7 @@ html[dir="rtl"] .home-overlay a {
   max-width: 760px;
   text-align: center;
   padding: 1.4rem 1rem;
-  background: radial-gradient(closest-side, rgba(24, 24, 24, 0.94), rgba(24, 24, 24, 0.78) 72%, transparent);
+  background: radial-gradient(closest-side, rgba(253, 255, 254, 0.96), rgba(253, 255, 254, 0.82) 72%, transparent);
 }
 
 .welcome-copy .mark {
@@ -1190,7 +1228,7 @@ html[dir="rtl"] .home-overlay a {
 .p7 { width: 150px; height: 180px; bottom: 8%; inset-inline-end: 6%; }
 
 .works {
-  background: #181818;
+  background: var(--white);
 }
 
 .works-split {
@@ -1227,7 +1265,7 @@ html[dir="rtl"] .home-overlay a {
   position: absolute;
   width: min(460px, 90%);
   height: auto;
-  color: rgba(255, 255, 255, 0.28);
+  color: color-mix(in srgb, var(--blue) 14%, transparent);
   fill: none;
   stroke: currentColor;
   stroke-width: 0.7;
@@ -1265,7 +1303,7 @@ html[dir="rtl"] .home-overlay a {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--primary);
   margin-inline-end: 0.65rem;
   flex: 0 0 auto;
 }
@@ -1283,7 +1321,7 @@ html[dir="rtl"] .home-overlay a {
 }
 
 .works-controls button:hover {
-  background: rgba(246, 232, 191, 0.08);
+  background: color-mix(in srgb, var(--gold) 8%, transparent);
 }
 
 .works-controls button:focus-visible {
@@ -1400,8 +1438,8 @@ html[dir="rtl"] .creation-text {
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 1px solid rgba(246, 232, 191, 0.7);
-  background: rgba(24, 24, 24, 0.35);
+  border: 1px solid color-mix(in srgb, var(--gold) 70%, transparent);
+  background: color-mix(in srgb, var(--ink) 35%, transparent);
   color: var(--gold);
   cursor: pointer;
   display: grid;
@@ -1464,12 +1502,12 @@ html[dir="rtl"] .prev .chev { transform: rotate(45deg); }
 .team-text {
   max-width: 40rem;
   margin: 1.2rem 0 1.4rem;
-  color: rgba(255, 255, 255, 0.86);
+  color: color-mix(in srgb, var(--blue) 82%, white);
   font-size: 1.05rem;
 }
 
 .team-copy a {
-  color: #fff;
+  color: var(--primary);
   text-underline-offset: 0.3em;
 }
 
@@ -1486,7 +1524,7 @@ html[dir="rtl"] .prev .chev { transform: rotate(45deg); }
 .quotes-head span {
   display: block;
   height: 1px;
-  background: rgba(255, 255, 255, 0.35);
+  background: color-mix(in srgb, var(--blue) 22%, transparent);
   transform-origin: inline-start;
   animation: draw 1.4s ease both;
 }
@@ -1526,7 +1564,7 @@ html[dir="rtl"] .quotes strong {
 }
 
 .quotes footer span {
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--grey);
 }
 
 .quote-nav {
@@ -1538,7 +1576,7 @@ html[dir="rtl"] .quotes strong {
 .quote-nav button {
   border: 0;
   background: transparent;
-  color: rgba(255, 255, 255, 0.4);
+  color: color-mix(in srgb, var(--blue) 40%, transparent);
   cursor: pointer;
   font-size: 1rem;
   min-width: 1.4rem;
@@ -1546,7 +1584,7 @@ html[dir="rtl"] .quotes strong {
 }
 
 .quote-nav button[aria-current="true"] {
-  color: #fff;
+  color: var(--primary);
 }
 
 .visit-band {
@@ -1559,11 +1597,11 @@ html[dir="rtl"] .quotes strong {
 }
 
 .visit-table tr {
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-top: 1px solid color-mix(in srgb, var(--blue) 16%, transparent);
 }
 
 .visit-table tr:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid color-mix(in srgb, var(--blue) 16%, transparent);
 }
 
 .visit-table th {
@@ -1611,7 +1649,7 @@ html[dir="rtl"] .quotes strong {
 
 .home-links a {
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid color-mix(in srgb, var(--copper) 55%, transparent);
 }
 
 .reveal {
@@ -1715,11 +1753,13 @@ html[dir="rtl"] .quotes strong {
   align-items: end;
   padding: 18vh 6vw 7vh;
   overflow: hidden;
+  color: var(--white);
 }
 
 .page-hero.compact {
   min-height: 52svh;
-  background: linear-gradient(180deg, #111, #181818 70%);
+  color: var(--blue);
+  background: linear-gradient(180deg, var(--white), color-mix(in srgb, var(--grey) 18%, white) 70%);
 }
 
 .page-hero .hero-media {
@@ -1802,8 +1842,8 @@ html[dir="rtl"] .page-hero .page-kicker {
 .home-page .gallery-grid figure,
 .home-page .project-grid article {
   background: transparent;
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--blue);
+  border-color: var(--grey);
 }
 
 .home-page .brand-name {
@@ -1813,8 +1853,8 @@ html[dir="rtl"] .page-hero .page-kicker {
 }
 
 .home-page .frame {
-  background: #111;
-  border-color: rgba(255, 255, 255, 0.12);
+  background: color-mix(in srgb, var(--grey) 28%, white);
+  border-color: var(--grey);
 }
 
 .home-page .index,
@@ -1827,7 +1867,7 @@ html[dir="rtl"] .page-hero .page-kicker {
 .home-page .qty,
 .home-page .steps a,
 .home-page .steps span {
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: var(--grey);
 }
 
 .home-page .cat-grid button,
@@ -1835,46 +1875,54 @@ html[dir="rtl"] .page-hero .page-kicker {
 .home-page .choices button,
 .home-page .qty button {
   background: transparent;
-  color: #fff;
-  border-color: rgba(246, 232, 191, 0.45);
+  color: var(--blue);
+  border-color: color-mix(in srgb, var(--copper) 45%, transparent);
 }
 
 .home-page .cat-grid button[aria-pressed="true"],
 .home-page .filters button[aria-pressed="true"],
 .home-page .choices button[aria-pressed="true"],
 .home-page .steps .current {
-  background: var(--gold);
-  color: #181818;
-  border-color: var(--gold);
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
 }
 
 .home-page .steps a,
 .home-page .steps span {
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--grey);
   text-decoration: none;
 }
 
 .home-page .steps a {
-  color: var(--gold);
+  color: var(--primary);
 }
 
 .home-page .btn {
-  background: transparent;
-  color: var(--gold);
-  border: 1px solid rgba(246, 232, 191, 0.7);
+  background: var(--primary);
+  color: var(--white);
+  border: 1px solid var(--primary);
   border-radius: 999px;
 }
 
-.home-page .btn.ghost {
-  background: transparent;
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.45);
+.home-page .btn:hover {
+  background: var(--primary-dark);
+  color: var(--white);
+  border-color: var(--primary-dark);
 }
 
-.home-page .btn:disabled {
+.home-page .btn.ghost,
+.home-page .btn.ghost:hover {
   background: transparent;
-  color: rgba(255, 255, 255, 0.4);
-  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--gold);
+  border-color: color-mix(in srgb, var(--gold) 70%, transparent);
+}
+
+.home-page .btn:disabled,
+.home-page .btn:disabled:hover {
+  background: transparent;
+  color: var(--grey);
+  border-color: var(--grey);
 }
 
 .browse-tools {
@@ -1892,7 +1940,7 @@ html[dir="rtl"] .page-hero .page-kicker {
   min-width: 0;
   min-height: 36px;
   padding-inline: 0.9rem;
-  border: 1px solid rgba(246, 232, 191, 0.45);
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
   border-radius: 999px;
 }
 
@@ -1915,7 +1963,7 @@ html[dir="rtl"] .browse-search span {
   padding: 0.15rem 0;
   border: 0;
   background: transparent;
-  color: #fff;
+  color: var(--blue);
 }
 
 .browse-search:focus-within {
@@ -1958,21 +2006,21 @@ html[dir="rtl"] .browse-search span {
   min-height: 30px;
   padding: 0.15rem 0.7rem;
   border-radius: 999px;
-  border: 1px solid rgba(246, 232, 191, 0.45);
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
   background: transparent;
-  color: #fff;
+  color: var(--blue);
   font-size: 0.8rem;
   cursor: pointer;
 }
 
 .browse-pills button[aria-pressed="true"] {
-  background: var(--gold);
-  color: #181818;
-  border-color: var(--gold);
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
 }
 
 .product-list {
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-top: 1px solid var(--grey);
 }
 
 .product-row {
@@ -1981,7 +2029,7 @@ html[dir="rtl"] .browse-search span {
   gap: 0.35rem 1rem;
   align-items: center;
   padding: 0.8rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid var(--grey);
 }
 
 .product-thumb {
@@ -2012,10 +2060,10 @@ html[dir="rtl"] .browse-search span {
   width: 22px;
   height: 22px;
   padding: 0;
-  border: 1px solid rgba(246, 232, 191, 0.75);
+  border: 1px solid color-mix(in srgb, var(--gold) 75%, transparent);
   border-radius: 999px;
-  background: rgba(17, 17, 17, 0.55);
-  color: #fff;
+  background: color-mix(in srgb, var(--ink-deep) 55%, transparent);
+  color: var(--white);
   cursor: pointer;
   transform: translateY(-50%);
 }
@@ -2101,7 +2149,7 @@ html[dir="rtl"] .chev-end {
   height: min(88vh, 760px);
   padding: 0;
   border: 0;
-  background: #111;
+  background: var(--ink-deep);
   overflow: hidden;
 }
 
@@ -2127,10 +2175,10 @@ html[dir="rtl"] .chev-end {
   width: 36px;
   height: 36px;
   padding: 0;
-  border: 1px solid rgba(246, 232, 191, 0.75);
+  border: 1px solid color-mix(in srgb, var(--gold) 75%, transparent);
   border-radius: 999px;
-  background: rgba(17, 17, 17, 0.55);
-  color: #fff;
+  background: color-mix(in srgb, var(--ink-deep) 55%, transparent);
+  color: var(--white);
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
@@ -2167,13 +2215,13 @@ html[dir="rtl"] .chev-end {
 .catalog-figs {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-block: 1px solid rgba(255, 255, 255, 0.18);
+  border-block: 1px solid var(--grey);
   margin-bottom: 1.6rem;
 }
 
 .catalog-figs div {
   padding: 1.1rem 1rem 1.3rem;
-  border-inline-start: 1px solid rgba(255, 255, 255, 0.18);
+  border-inline-start: 1px solid var(--grey);
 }
 
 .catalog-figs div:first-child {
@@ -2192,7 +2240,7 @@ html[dir="rtl"] .chev-end {
 .catalog-figs span {
   display: block;
   margin-top: 0.45rem;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--grey);
 }
 
 .catalog-strip {
@@ -2208,7 +2256,7 @@ html[dir="rtl"] .chev-end {
 
 .spec-list {
   overflow-x: auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-top: 1px solid var(--grey);
 }
 
 .spec-list article {
@@ -2218,7 +2266,7 @@ html[dir="rtl"] .chev-end {
   align-items: start;
   min-width: 58rem;
   padding: 1.15rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid var(--grey);
 }
 
 .spec-list h3 {
@@ -2237,7 +2285,7 @@ html[dir="rtl"] .chev-end {
 }
 
 .spec-list dt {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--grey);
 }
 
 .spec-list dd {
@@ -2260,7 +2308,7 @@ html[dir="rtl"] .chev-end {
   text-align: start;
   vertical-align: top;
   padding: 0.75rem 0.85rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid var(--grey);
 }
 
 .compare-table thead th {
@@ -2277,8 +2325,8 @@ html[dir="rtl"] .chev-end {
 .home-page textarea,
 .home-page select {
   background: transparent;
-  color: #fff;
-  border-color: rgba(246, 232, 191, 0.45);
+  color: var(--blue);
+  border-color: color-mix(in srgb, var(--copper) 45%, transparent);
 }
 
 .home-page select {
@@ -2288,19 +2336,19 @@ html[dir="rtl"] .chev-end {
 }
 
 .home-page select option {
-  color: #181818;
-  background: #fff;
+  color: var(--blue);
+  background: var(--white);
 }
 
 .home-page .filters button:disabled {
-  color: rgba(255, 255, 255, 0.35);
-  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--grey);
+  border-color: var(--grey);
   cursor: not-allowed;
 }
 
 .home-page input::placeholder,
 .home-page textarea::placeholder {
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--grey);
 }
 
 .home-page input:focus,
@@ -2351,9 +2399,12 @@ html[dir="rtl"] .chev-end {
   color: var(--gold);
 }
 
-.home-contact[aria-current="page"] {
-  background: var(--gold);
-  color: #181818;
+.home-contact:hover,
+.home-contact[aria-current="page"],
+.home-contact[aria-current="page"]:hover {
+  background: var(--primary-dark);
+  color: var(--white);
+  border-color: var(--primary-dark);
 }
 
 .missing .hero-copy h1 {
@@ -2374,7 +2425,7 @@ html[dir="rtl"] .chev-end {
 
 .missing .home-links a {
   color: var(--gold);
-  border-bottom-color: rgba(246, 232, 191, 0.55);
+  border-bottom-color: color-mix(in srgb, var(--gold) 55%, transparent);
 }
 
 @media (max-width: 800px) {
@@ -2413,7 +2464,7 @@ html[dir="rtl"] .chev-end {
 
   .catalog-figs div {
     border-inline-start: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    border-top: 1px solid var(--grey);
   }
 
   .catalog-figs div:first-child {
