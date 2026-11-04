@@ -467,6 +467,228 @@ html[dir="rtl"] .chev-end {
   }
 }
 
+.product-detail {
+  display: grid;
+  gap: 3rem;
+}
+
+.pdp {
+  display: grid;
+  gap: 1rem;
+}
+
+.pdp-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.86rem;
+  color: var(--grey);
+}
+
+.pdp-crumbs a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.pdp-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(15rem, 0.75fr);
+  gap: 1.5rem 2rem;
+  align-items: start;
+}
+
+.pdp-media {
+  display: grid;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.pdp-main {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  padding: 0;
+  cursor: zoom-in;
+  border: 1px solid var(--grey);
+  background: color-mix(in srgb, var(--grey) 22%, white);
+  overflow: hidden;
+}
+
+.pdp-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.pdp-thumbs button {
+  position: relative;
+  flex: none;
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  border: 1px solid var(--grey);
+  background: color-mix(in srgb, var(--grey) 22%, white);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.pdp-thumbs button.on {
+  border-color: var(--copper);
+  box-shadow: inset 0 0 0 2px var(--copper);
+}
+
+.pdp-info {
+  display: grid;
+  gap: 0.55rem;
+  align-content: start;
+}
+
+.pdp-sticky {
+  position: sticky;
+  top: 5.5rem;
+}
+
+.pdp-kicker {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+html[dir="rtl"] .pdp-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.pdp-info h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  line-height: 1.05;
+}
+
+.pdp-detail {
+  margin: 0;
+  max-width: 36rem;
+  color: color-mix(in srgb, var(--blue) 78%, white);
+}
+
+.pdp .price {
+  margin: 0.2rem 0 0.4rem;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1;
+  color: var(--gold);
+}
+
+.pdp-buy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.35rem;
+}
+
+.pdp-buy .btn:first-child {
+  min-width: 10rem;
+}
+
+.pdp-specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem 1rem;
+  margin: 0.6rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--grey);
+}
+
+.pdp-specs div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.pdp-specs dt {
+  font-size: 0.78rem;
+  color: var(--grey);
+}
+
+.pdp-specs dd {
+  margin: 0;
+}
+
+.related {
+  display: grid;
+  gap: 1.1rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--grey);
+}
+
+.related > h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.1;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.related-card {
+  display: grid;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.related-shot {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--grey);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--grey) 22%, white);
+}
+
+.related-copy {
+  display: grid;
+  gap: 0.25rem;
+  align-content: start;
+}
+
+.related-copy h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.related-copy h3 a {
+  text-decoration: none;
+}
+
+.related-copy .price {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.related-link {
+  justify-self: start;
+  min-height: 32px;
+  padding: 0.15rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1100px) {
+  .pdp-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(14rem, 0.85fr);
+    gap: 1.25rem 1.4rem;
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 800px) {
   .browse-tools {
     flex-direction: column;
@@ -506,5 +728,60 @@ html[dir="rtl"] .chev-end {
 
   .catalog-strip {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .product-detail {
+    gap: 2.2rem;
+  }
+
+  .pdp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-sticky {
+    position: static;
+  }
+
+  .pdp-main {
+    aspect-ratio: 4 / 3;
+  }
+
+  .pdp-thumbs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.2rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pdp-buy .btn:first-child {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .pdp-thumbs button {
+    width: 56px;
+    height: 56px;
+  }
+
+  .pdp-specs {
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-main {
+    aspect-ratio: 1;
+  }
+
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-shot {
+    aspect-ratio: 16 / 10;
   }
 }

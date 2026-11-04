@@ -102,7 +102,7 @@ export const products = [
     dimensions: null,
     rating: null,
     image: "/images/black-door.jpg",
-    images: ["/images/black-door.jpg"],
+    images: ["/images/black-door.jpg", "/images/ornate-doors.jpg", "/images/iron-fence.jpg", "/images/bronze-doors.jpg"],
   },
 ] as const;
 

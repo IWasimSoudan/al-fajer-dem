@@ -255,6 +255,8 @@ export const ar: Dictionary = {
     photoNext: "الصورة التالية",
     photoView: "عرض الصورة",
     photoClose: "إغلاق الصورة",
+    related: "منتجات ذات صلة",
+    view: "عرض",
     empty: "لا يطابق أي نموذج. أخبرنا بما تحتاجه ويرد الفريق.",
     categories: {
       rolling: { title: "أبواب لفافة وأبواب أرصفة", text: "أبواب فوم وملفوفة وسريعة." },

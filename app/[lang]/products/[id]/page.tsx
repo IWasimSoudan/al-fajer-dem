@@ -1,5 +1,5 @@
 import { PageStage } from "@/components/PageStage";
-import { ProductPurchase } from "@/components/ProductPurchase";
+import { ProductDetail } from "@/components/ProductDetail";
 import { productById, products, type ProductId } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { isLocale } from "@/lib/i18n";
@@ -37,10 +37,9 @@ export default async function ProductPage({ params }: { params: Promise<{ lang: 
       dict={dict}
       kicker={dict.products.categories[product.category].title}
       title={copy.name}
-      image={product.image}
-      imageAlt={copy.name}
+      lead={copy.detail}
     >
-      <ProductPurchase lang={lang} dict={dict} id={product.id as ProductId} />
+      <ProductDetail lang={lang} dict={dict} id={product.id as ProductId} />
     </PageStage>
   );
 }

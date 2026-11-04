@@ -254,6 +254,8 @@ export const en = {
     photoNext: "Next photo",
     photoView: "View photo",
     photoClose: "Close photo",
+    related: "Related products",
+    view: "View",
     empty: "No sample item matches. Tell us what you need and the team will reply.",
     categories: {
       rolling: { title: "Rolling shutters and bay doors", text: "Foam, twisted, and high-speed roll-up doors." },
