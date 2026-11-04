@@ -1,6 +1,6 @@
 import { asset } from "@/lib/asset";
 import type { Metadata } from "next";
-import { Cormorant_Garamond, IBM_Plex_Sans_Arabic, Outfit } from "next/font/google";
+import { Amiri, Cairo, Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
 import "@/styles/layout.css";
 import "@/styles/forms.css";
@@ -20,10 +20,17 @@ const serif = Cormorant_Garamond({
   display: "swap",
 });
 
-const arabic = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic"],
+const arabicSans = Cairo({
+  subsets: ["arabic", "latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-arabic",
+  display: "swap",
+});
+
+const arabicSerif = Amiri({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "700"],
+  variable: "--font-arabic-serif",
   display: "swap",
 });
 
@@ -40,7 +47,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning>
-      <body className={`${outfit.variable} ${arabic.variable} ${serif.variable}`} suppressHydrationWarning>
+      <body
+        className={`${outfit.variable} ${serif.variable} ${arabicSans.variable} ${arabicSerif.variable}`}
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

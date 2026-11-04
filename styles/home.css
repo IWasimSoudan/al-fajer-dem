@@ -9,7 +9,6 @@ body:has(.home-page) .site-footer {
 }
 
 .home-page {
-  --serif: var(--font-serif), "Times New Roman", serif;
   background: var(--white);
   color: var(--blue);
   overflow: clip;
@@ -18,10 +17,6 @@ body:has(.home-page) .site-footer {
 .home-page.stage-page,
 .home-page.missing {
   overflow: visible;
-}
-
-html[dir="rtl"] .home-page {
-  --serif: var(--font-arabic), serif;
 }
 
 .mark {
@@ -509,6 +504,8 @@ html[dir="rtl"] .works-head h2,
 html[dir="rtl"] .creation-copy h3,
 html[dir="rtl"] .team-copy h2 {
   letter-spacing: 0;
+  line-height: 1.25;
+  font-weight: 400;
 }
 
 html[dir="rtl"] .creation-text {
@@ -1079,7 +1076,7 @@ html[dir="rtl"] .page-hero .page-kicker {
 }
 
 .missing .hero-copy p {
-  font-family: var(--font-arabic), serif;
+  font-family: var(--serif);
 }
 
 .missing {

@@ -87,6 +87,7 @@
 html[dir="rtl"] .browse-search span {
   letter-spacing: 0;
   text-transform: none;
+  font-size: 0.88rem;
 }
 
 .browse-search input {
