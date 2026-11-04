@@ -9,4 +9,9 @@ export const footer = {
   hours: "الأحد–الخميس، 8:00–18:30",
   talk: "البريد",
   email: "admin@iconsjo.com",
+  social: "التواصل",
+  facebook: "فيسبوك",
+  instagram: "إنستغرام",
+  linkedin: "لينكدإن",
+  youtube: "يوتيوب",
 } satisfies FooterTranslations;

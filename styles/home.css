@@ -4,10 +4,6 @@ body:has(.home-page) {
   color: var(--blue);
 }
 
-body:has(.home-page) .site-footer {
-  display: none;
-}
-
 .home-page {
   background: var(--white);
   color: var(--blue);

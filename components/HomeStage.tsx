@@ -3,7 +3,6 @@
 import { HeroSection } from "@/components/home/HeroSection";
 import { QuotesSection } from "@/components/home/QuotesSection";
 import { TeamSection } from "@/components/home/TeamSection";
-import { VisitSection } from "@/components/home/VisitSection";
 import { WelcomeSection } from "@/components/home/WelcomeSection";
 import { WorksSection } from "@/components/home/WorksSection";
 import type { Dictionary } from "@/lib/dictionaries/en";
@@ -129,7 +128,6 @@ export function HomeStage({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       <WorksSection lang={lang} stage={stage} motion={motion} />
       <TeamSection lang={lang} stage={stage} />
       <QuotesSection stage={stage} motion={motion} />
-      <VisitSection lang={lang} stage={stage} footer={dict.footer} nav={dict.nav} />
     </div>
   );
 }

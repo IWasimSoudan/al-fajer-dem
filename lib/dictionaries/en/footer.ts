@@ -7,6 +7,11 @@ export const footer = {
   hours: "Sunday–Thursday, 8:00–18:30",
   talk: "Email",
   email: "admin@iconsjo.com",
+  social: "Social",
+  facebook: "Facebook",
+  instagram: "Instagram",
+  linkedin: "LinkedIn",
+  youtube: "YouTube",
 }
 
 export type FooterTranslations = typeof footer;

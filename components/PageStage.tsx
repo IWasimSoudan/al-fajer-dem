@@ -1,4 +1,3 @@
-import { VisitSection } from "@/components/home/VisitSection";
 import { asset } from "@/lib/asset";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
@@ -42,7 +41,6 @@ export function PageStage({
         </div>
       </section>
       <div className="page-body">{children}</div>
-      <VisitSection lang={lang} stage={dict.home.stage} footer={dict.footer} nav={dict.nav} />
     </div>
   );
 }

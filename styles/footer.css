@@ -1,0 +1,148 @@
+.foot a {
+  text-decoration: none;
+}
+
+.foot a:hover {
+  color: var(--copper);
+}
+
+/* Option B — two-column editorial */
+.foot-b {
+  background: var(--white);
+  color: var(--blue);
+  border-top: 1px solid color-mix(in srgb, var(--blue) 14%, transparent);
+}
+
+.foot-b-main {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-block: clamp(3rem, 7vw, 4.75rem);
+}
+
+.foot-b-name {
+  margin: 0 0 1rem;
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.foot-b-closing {
+  margin: 0;
+  max-width: 34rem;
+  color: color-mix(in srgb, var(--blue) 72%, var(--grey));
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.foot-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.75rem;
+}
+
+.foot-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid color-mix(in srgb, var(--blue) 16%, transparent);
+  color: var(--blue);
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.foot-social-btn svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.foot-social-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 6%, var(--white));
+}
+
+.foot-b-meta {
+  display: grid;
+  gap: 1.35rem;
+  align-content: start;
+  padding-top: 0.35rem;
+}
+
+.foot-b-row {
+  display: grid;
+  gap: 0.3rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+}
+
+.foot-b-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.foot-b-row span {
+  color: var(--copper);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.foot-b-row a,
+.foot-b-row p {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: var(--blue);
+}
+
+.foot-b-row a {
+  transition: color 0.25s ease;
+}
+
+.foot-b-bar {
+  border-top: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  background: color-mix(in srgb, var(--blue) 3.5%, var(--white));
+}
+
+.foot-b-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  padding-block: 1.15rem;
+}
+
+.foot-b-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+}
+
+.foot-b-links a {
+  color: color-mix(in srgb, var(--blue) 70%, var(--grey));
+  font-size: 0.95rem;
+  transition: color 0.25s ease;
+}
+
+.foot-b-links a:hover {
+  color: var(--primary);
+}
+
+.foot-b-copy {
+  margin: 0;
+  color: var(--grey);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 900px) {
+  .foot-b-main {
+    grid-template-columns: 1fr;
+  }
+}
