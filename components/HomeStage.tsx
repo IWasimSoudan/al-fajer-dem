@@ -1,8 +1,8 @@
 "use client";
 
 import { HeroSection } from "@/components/home/HeroSection";
-import { QuotesSection } from "@/components/home/QuotesSection";
-import { TeamSection } from "@/components/home/TeamSection";
+import { BrandsSection } from "@/components/home/BrandsSection";
+import { HistorySection } from "@/components/home/HistorySection";
 import { WelcomeSection } from "@/components/home/WelcomeSection";
 import { WorksSection } from "@/components/home/WorksSection";
 import type { Dictionary } from "@/lib/dictionaries/en";
@@ -79,15 +79,16 @@ export function HomeStage({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         );
       });
 
-      const teamImage = root.querySelector(".team-photo img");
-      if (teamImage) {
+      const brandsImage = root.querySelector(".brands-home-collage");
+      if (brandsImage) {
         gsap.fromTo(
-          teamImage,
-          { scale: 1.18 },
+          brandsImage,
+          { y: 36, opacity: 0.55 },
           {
-            scale: 1,
+            y: 0,
+            opacity: 1,
             ease: "none",
-            scrollTrigger: { trigger: ".team-photo", start: "top bottom", end: "bottom top", scrub: true },
+            scrollTrigger: { trigger: ".brands-stage", start: "top 85%", end: "top 35%", scrub: 1 },
           },
         );
       }
@@ -126,8 +127,8 @@ export function HomeStage({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       />
       <WelcomeSection lang={lang} text={stage.welcome} stage={stage} motion={motion} />
       <WorksSection lang={lang} stage={stage} motion={motion} />
-      <TeamSection lang={lang} stage={stage} />
-      <QuotesSection stage={stage} motion={motion} />
+      <BrandsSection lang={lang} stage={stage} />
+      <HistorySection lang={lang} stage={stage} motion={motion} />
     </div>
   );
 }

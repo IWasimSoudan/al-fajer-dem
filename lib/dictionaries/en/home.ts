@@ -131,37 +131,56 @@ export const home = {
         href: "expertise#warehouse",
       },
     ],
-    teamKicker: "The workshop",
-    teamTitle: "A team that has stayed with the work since 1969.",
-    teamText:
-      "Founded in Amman by Khaled al Jariri. The people who fabricate the steel also fit it, for companies across Jordan and the region, and for civil defense, hospitals, and factories.",
-    teamCta: "About the workshop",
-    quotesKicker: "How we work",
-    quotes: [
+    brandsTitle: "Trusted brands",
+    brandsLead: "Automation, shutters, and door hardware from makers we supply and install across Jordan.",
+    brandsCta: "View all brands",
+    brandsImageAlt:
+      "Partner logos: ISEA, KEY Automation, GfA, SAP Italy, Ascot Doors, Gamma Doors, GfA Elektromaten, Masinara, Gerolimatos, Italo, and ACM",
+    historyKicker: "Our history",
+    historyTitle: "Steel in Amman since 1969",
+    historyLead:
+      "New Al Fajer Workshops LTD was founded by Khaled Al Jariri (Abu Hafez) and grown with Factory Manager Farouq Al Jariri — metal work and construction across Jordan for more than fifty years.",
+    historyStylePicker: "History timeline style — preview only",
+    historyStyleHint: "Three ways to read the company story. Pick one later to lock in.",
+    historyStyles: {
+      spine: {
+        label: "1 · Vertical spine",
+        blurb: "A classic year line: milestones rise as you scroll.",
+      },
+      rail: {
+        label: "2 · Year rail",
+        blurb: "Horizontal stations — scrub or click through the decades.",
+      },
+      chapters: {
+        label: "3 · Era chapters",
+        blurb: "One chapter at a time, with a progress spine beside the story.",
+      },
+    },
+    history: [
       {
-        quote: "We stay with the job from the design of a door system through fitting and commissioning.",
-        name: "Reliability",
-        role: "One standard at each step",
+        year: "1969",
+        title: "The workshop opens",
+        text: "Khaled Al Jariri founds New Al Fajer Workshops in Amman — steel fabrication as a trade, not a showroom.",
       },
       {
-        quote: "More than 57 years of trade go into choosing the right product for the application.",
-        name: "Integrity",
-        role: "The right piece for the opening",
+        year: "1985",
+        title: "Structures take shape",
+        text: "The range grows into light steel frames, hangars, silos, and tanks for sites across Jordan.",
       },
       {
-        quote: "Civil defense, hospitals, and factories keep the workshop on their lists.",
-        name: "Workmanship",
-        role: "Amman, since 1969",
+        year: "1998",
+        title: "Doors and openings",
+        text: "Rolling shutters, fire doors, windows, and handrails join the floor — openings made in the same shop that builds the frame.",
       },
       {
-        quote: "Repair covers Jordan. Annual maintenance can include an extended warranty.",
-        name: "After the install",
-        role: "Service desk",
+        year: "2010",
+        title: "Factory leadership",
+        text: "Under Farouq Al Jariri the factory deepens capacity: custom fabrication, structural installs, and full project delivery.",
       },
       {
-        quote: "Class 4 roll-up doors are rated for wind up to 120 km/h and widths up to 12 m.",
-        name: "Anti-wind doors",
-        role: "Exposed sites",
+        year: "Today",
+        title: "Quality meets craftsmanship",
+        text: "Art steel, laser cutting, wood engraving, and metal furniture sit beside the core lines — still one workshop, still on time and to standard.",
       },
     ],
     emailLabel: "Email",

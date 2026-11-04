@@ -1,7 +1,7 @@
 export const brands = {
   kicker: "Brands",
-  title: "Names we supply and install",
-  lead: "Norton, KEY, and GfA lead the automation lines. Further makers of operators, shutter parts, and door hardware follow below.",
+  title: "Our trusted brands",
+  lead: "KEY, GfA, ISEA, and more — automation, shutters, and door hardware we supply and install.",
   featuredTitle: "Featured partners",
   moreTitle: "Also supplied",
 }
