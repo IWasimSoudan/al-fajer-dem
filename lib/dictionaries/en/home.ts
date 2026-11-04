@@ -59,6 +59,22 @@ export const home = {
     heroTitle: "Al Fajer",
     heroLead: "We shape steel, rolling shutters, and gate automation into work that closes and carries a building.",
     scroll: "Scroll down",
+    heroStylePicker: "Hero style — preview only",
+    heroStyleHint: "All three keep the workshop video. Pick one later to lock in.",
+    heroStyles: {
+      cinema: {
+        label: "1 · Cinema",
+        blurb: "Full-bleed video with title low on the frame — the current look.",
+      },
+      center: {
+        label: "2 · Center stage",
+        blurb: "Video fills the screen; brand and lead sit in the middle.",
+      },
+      split: {
+        label: "3 · Steel panel",
+        blurb: "Video stays live while copy sits on a solid workshop panel.",
+      },
+    },
     welcome:
       "Welcome to Al Fajer, where the trade is more than fabrication. It is the full job, from the drawing through fitting.",
     welcomeMotionPicker: "Welcome image motion — preview only",

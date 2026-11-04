@@ -49,9 +49,9 @@ export function HomeStage({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       if (hero && media) {
         gsap.fromTo(
           media,
-          { scale: 1.28 },
+          { scale: 1.2 },
           {
-            scale: 1.08,
+            scale: 1.05,
             ease: "none",
             scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true },
           },
@@ -116,6 +116,7 @@ export function HomeStage({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <div className="home-page" ref={rootRef}>
       <HeroSection
+        lang={lang}
         stage={stage}
         heroAlt={dict.home.heroAlt}
         motion={motion}
