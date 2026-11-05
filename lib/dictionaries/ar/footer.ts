@@ -3,6 +3,9 @@ import type { FooterTranslations } from "@/lib/dictionaries/en/footer";
 export const footer = {
   blurb:
     "مورّد موثوق للهياكل الفولاذية والأبواب اللفافة والحلول الصناعية في الأردن والمنطقة منذ عام 1969.",
+  kicker: "مجموعة الفجر",
+  explore: "استكشف",
+  connect: "تواصل",
   visit: "الزيارة",
   address: "عمّان – أبو علندا، مبنى رقم 118 · صالة العرض: أبو علندا",
   phoneLabel: "هاتف",
@@ -19,6 +22,8 @@ export const footer = {
   website: "www.al-fajergroup.com",
   websiteHref: "https://www.al-fajergroup.com",
   poBox: "ص.ب 962730-11196",
+  since: "الورشة منذ 1969",
+  contactCta: "اطلب عرض سعر",
   social: "التواصل",
   facebook: "فيسبوك",
   instagram: "إنستغرام",

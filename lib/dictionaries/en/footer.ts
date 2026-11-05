@@ -1,6 +1,9 @@
 export const footer = {
   blurb:
     "Trusted supplier of steel structures, rolling shutters, and industrial solutions across Jordan and MENA since 1969.",
+  kicker: "Al Fajer Group",
+  explore: "Explore",
+  connect: "Connect",
   visit: "Visit",
   address: "Amman – Abu Alanda, Building No. 118 · Showroom: Abu Alanda",
   phoneLabel: "Phone",
@@ -17,6 +20,8 @@ export const footer = {
   website: "www.al-fajergroup.com",
   websiteHref: "https://www.al-fajergroup.com",
   poBox: "P.O.Box 962730-11196",
+  since: "Workshop since 1969",
+  contactCta: "Request a quote",
   social: "Social",
   facebook: "Facebook",
   instagram: "Instagram",
