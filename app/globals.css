@@ -21,6 +21,14 @@
   --serif: var(--font-inter), "Inter Fallback", system-ui, sans-serif;
   --max: 1120px;
   --space: clamp(4.5rem, 8vw, 7rem);
+  --text: 1.125rem;
+  --text-sm: 0.95rem;
+  --text-xs: 0.88rem;
+  --nav: 1rem;
+  --h1: clamp(2.6rem, 5.5vw, 4.6rem);
+  --h2: clamp(1.95rem, 3.4vw, 2.75rem);
+  --h3: clamp(1.25rem, 2vw, 1.45rem);
+  --lead: 1.25rem;
 }
 
 * {
@@ -54,8 +62,8 @@ body {
   background: var(--white);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: var(--text);
+  line-height: 1.65;
   font-weight: 400;
 }
 
@@ -121,7 +129,7 @@ p {
 }
 
 h1 {
-  font-size: clamp(2.3rem, 5vw, 4.2rem);
+  font-size: var(--h1);
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -136,15 +144,19 @@ html[dir="rtl"] h2 {
 }
 
 h2 {
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-size: var(--h2);
   line-height: 1.15;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
 
+h3 {
+  font-size: var(--h3);
+}
+
 .lead {
-  font-size: 1.15rem;
+  font-size: var(--lead);
   max-width: 38rem;
   color: var(--muted);
 }
@@ -152,7 +164,7 @@ h2 {
 .kicker {
   margin-bottom: 0.8rem;
   color: var(--royal);
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 500;

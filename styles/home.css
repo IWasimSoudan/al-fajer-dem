@@ -397,7 +397,7 @@ html[dir="rtl"] .home-overlay a {
 .hero-copy h1 {
   font-family: inherit;
   font-weight: 800;
-  font-size: clamp(3.4rem, 9vw, 6.8rem);
+  font-size: clamp(3.7rem, 9.5vw, 7.2rem);
   line-height: 1;
   letter-spacing: -0.02em;
   margin: 0 0 1.1rem;
@@ -409,7 +409,7 @@ html[dir="rtl"] .home-overlay a {
   max-width: 38rem;
   color: color-mix(in srgb, var(--hv1-white) 88%, transparent);
   font-family: inherit;
-  font-size: clamp(1.05rem, 2vw, 1.22rem);
+  font-size: clamp(1.15rem, 2.1vw, 1.35rem);
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0;
@@ -436,7 +436,7 @@ html[dir="rtl"] .home-overlay a {
   border-radius: 999px;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
