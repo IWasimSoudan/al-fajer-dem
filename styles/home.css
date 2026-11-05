@@ -1980,12 +1980,19 @@ html[dir="rtl"] .history-style-picker-title {
 }
 
 .page-hero .page-kicker {
-  color: var(--gold);
+  color: var(--sky);
   margin: 0 0 0.9rem;
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  text-shadow: 0 1px 12px rgba(11, 40, 68, 0.45);
   animation: rise 0.9s ease both;
+}
+
+.page-hero.compact .page-kicker {
+  color: var(--royal);
+  text-shadow: none;
 }
 
 html[dir="rtl"] .page-hero .page-kicker {
