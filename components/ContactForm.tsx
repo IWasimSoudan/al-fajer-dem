@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export function ContactForm({ dict }: { dict: Dictionary }) {
+export function ContactForm({ dict, className }: { dict: Dictionary; className?: string }) {
   const [error, setError] = useState(false);
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -24,7 +24,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
   }
 
   return (
-    <form className="form" onSubmit={onSubmit} noValidate>
+    <form className={className ? `form ${className}` : "form"} onSubmit={onSubmit} noValidate>
       <label className="field">
         <span>{dict.contact.name}</span>
         <input name="name" autoComplete="name" required />
