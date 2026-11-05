@@ -8,8 +8,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AboutProjects } from "./AboutProjects";
 import { BrandsBand } from "./BrandsBand";
 import { CategoryGrid } from "./CategoryGrid";
-import { HeroSlider } from "./HeroSlider";
 import { HistoryBand } from "./HistoryBand";
+import { HomeV2Hero } from "./HomeV2Hero";
 import { StatsBar } from "./StatsBar";
 import { TrustStrip } from "./TrustStrip";
 import { useHomeV2Ready } from "./useHomeV2Ready";
@@ -91,7 +91,7 @@ export function HomeV2Stage({ lang, dict }: { lang: Locale; dict: Dictionary }) 
 
   return (
     <div className="hv2-page" ref={rootRef}>
-      <HeroSlider lang={lang} copy={copy.hero} ready={ready} />
+      <HomeV2Hero lang={lang} copy={copy.hero} ready={ready} motion={motion} />
       <TrustStrip copy={copy.trust} ready={ready} />
       <CategoryGrid lang={lang} copy={copy.categories} ready={ready} />
       <AboutProjects lang={lang} about={copy.about} projects={copy.projects} ready={ready} />

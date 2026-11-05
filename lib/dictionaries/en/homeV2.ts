@@ -9,6 +9,18 @@ export const homeV2 = {
     searchCta: "Search",
   },
   hero: {
+    stylePicker: "Hero style — preview only",
+    styleHint: "Switch between the image slider and the workshop video. Pick one later to lock in.",
+    styles: {
+      slider: {
+        label: "1 · Image slider",
+        blurb: "Rotating steel photography with slide arrows and dots.",
+      },
+      video: {
+        label: "2 · Workshop video",
+        blurb: "Full-bleed live video — the same workshop reel used on classic home.",
+      },
+    },
     slides: [
       {
         id: "coils",
@@ -29,6 +41,11 @@ export const homeV2 = {
         cta: "Browse expertise",
       },
     ],
+    video: {
+      title: "Steel made in the workshop.",
+      lead: "Watch the floor at work — fabrication, shutters, and openings shaped for the job.",
+      cta: "Discover our products",
+    },
     prev: "Previous slide",
     next: "Next slide",
   },
