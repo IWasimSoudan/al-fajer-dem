@@ -1,0 +1,431 @@
+/* Brands page — plates / marquee / index */
+
+.br-studio .page-body {
+  padding-top: 2.5vh;
+}
+
+.br-picker {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 960px;
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--white) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.br-picker-title {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+html[dir="rtl"] .br-picker-title {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.br-picker-hint {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--blue) 70%, transparent);
+}
+
+.br-picker-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.br-picker-item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  background: color-mix(in srgb, var(--grey) 28%, white);
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.br-picker-item:hover {
+  border-color: color-mix(in srgb, var(--royal) 45%, transparent);
+}
+
+.br-picker-item.is-active {
+  background: color-mix(in srgb, var(--royal) 12%, white);
+  border-color: color-mix(in srgb, var(--royal) 50%, transparent);
+}
+
+.br-picker-item strong {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.br-picker-item span {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  opacity: 0.75;
+}
+
+.br-idea {
+  max-width: 720px;
+  margin: 0 0 2rem;
+  padding: 0.9rem 1rem;
+  border-inline-start: 3px solid var(--royal);
+  background: color-mix(in srgb, var(--sky) 55%, white);
+}
+
+.br-idea-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
+
+html[dir="rtl"] .br-idea-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.br-idea p {
+  margin: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.br-idea strong {
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.br-idea span {
+  color: color-mix(in srgb, var(--blue) 75%, white);
+  line-height: 1.5;
+}
+
+.br-plates h2,
+.br-marquee h2 {
+  margin: 0 0 1rem;
+  font-size: var(--h3);
+  color: var(--navy);
+}
+
+.br-plates section + section,
+.br-marquee section + section {
+  margin-top: 2.6rem;
+}
+
+/* Monogram placeholder */
+.br-mono {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(145deg, var(--ice), var(--sky));
+  border: 1px solid color-mix(in srgb, var(--royal) 18%, transparent);
+  color: var(--royal);
+  flex-shrink: 0;
+}
+
+.br-mono em {
+  position: relative;
+  z-index: 1;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.br-mono-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    color-mix(in srgb, var(--white) 55%, transparent) 45%,
+    transparent 65%
+  );
+  background-size: 200% 100%;
+  animation: br-shimmer 2s ease-in-out infinite;
+}
+
+@keyframes br-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* 1 · Plates */
+.br-plate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.br-plate {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  padding: 1.4rem 1.3rem 1.5rem;
+  border-radius: 18px;
+  background: var(--white);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 16px 36px rgba(11, 40, 68, 0.08);
+}
+
+.br-plate .br-mono {
+  width: 4.6rem;
+  height: 4.6rem;
+  border-radius: 16px;
+}
+
+.br-plate .br-mono em {
+  font-size: 1.2rem;
+}
+
+.br-plate h3 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+  color: var(--navy);
+}
+
+.br-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.br-chip {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--ice) 70%, white);
+  border: 1px solid color-mix(in srgb, var(--blue) 10%, transparent);
+}
+
+.br-chip .br-mono {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 10px;
+}
+
+.br-chip .br-mono em {
+  font-size: 0.78rem;
+}
+
+.br-chip span {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.95rem;
+}
+
+/* 2 · Marquee */
+.br-feature-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.br-feature-card {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.2rem;
+  border-radius: 16px;
+  background: linear-gradient(160deg, var(--navy), var(--steel));
+  color: var(--white);
+  box-shadow: 0 16px 36px rgba(11, 40, 68, 0.16);
+}
+
+.br-feature-card .br-mono {
+  background: color-mix(in srgb, var(--white) 12%, transparent);
+  border-color: color-mix(in srgb, var(--white) 28%, transparent);
+  color: var(--sky);
+}
+
+.br-studio .br-feature-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--white);
+}
+
+.br-marquee-viewport {
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+  overflow: hidden;
+  padding: 0.4rem 0 0.8rem;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.br-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 0.85rem;
+  animation: br-marquee 32s linear infinite;
+}
+
+.br-marquee-item {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 11.5rem;
+  padding: 0.7rem 1rem 0.7rem 0.7rem;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 10px 24px rgba(11, 40, 68, 0.06);
+}
+
+.br-marquee-item .br-mono {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+}
+
+.br-marquee-item span {
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+@keyframes br-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+html[dir="rtl"] .br-marquee-track {
+  animation-name: br-marquee-rtl;
+}
+
+@keyframes br-marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+/* 3 · Index */
+.br-index-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 0 1.3rem;
+}
+
+.br-index-spine {
+  position: relative;
+  justify-self: center;
+  width: 2px;
+  background: color-mix(in srgb, var(--sky) 80%, var(--royal));
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.br-index-spine span {
+  position: absolute;
+  inset: 0;
+  transform-origin: top center;
+  background: var(--royal);
+}
+
+.br-index-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.br-index-row {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 0.9rem 1rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: var(--white);
+  border: 1px solid color-mix(in srgb, var(--blue) 10%, transparent);
+}
+
+.br-index-row.is-featured {
+  background: color-mix(in srgb, var(--royal) 8%, white);
+  border-color: color-mix(in srgb, var(--royal) 35%, transparent);
+  box-shadow: 0 12px 28px rgba(11, 40, 68, 0.08);
+}
+
+.br-index-num {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--royal);
+  letter-spacing: 0.04em;
+}
+
+.br-index-copy h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--navy);
+}
+
+.br-index-copy p {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .br-picker-list,
+  .br-plate-grid,
+  .br-chip-grid,
+  .br-feature-row {
+    grid-template-columns: 1fr;
+  }
+
+  .br-index-track {
+    grid-template-columns: 1fr;
+  }
+
+  .br-index-spine {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .br-mono-shimmer,
+  .br-marquee-track {
+    animation: none;
+  }
+
+  .br-plate,
+  .br-chip,
+  .br-feature-card,
+  .br-index-row,
+  .br-index-spine span {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
