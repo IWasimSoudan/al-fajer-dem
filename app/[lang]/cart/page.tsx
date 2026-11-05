@@ -1,7 +1,8 @@
 import { CartView } from "@/components/CartView";
-import { CheckoutStage } from "@/components/CheckoutStage";
+import { CheckoutFlowShell } from "@/components/checkout/CheckoutFlowShell";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { dict } = await load(params);
@@ -12,8 +13,10 @@ export default async function CartPage({ params }: { params: Promise<{ lang: str
   const { lang, dict } = await load(params);
 
   return (
-    <CheckoutStage title={dict.cart.title}>
-      <CartView lang={lang} dict={dict} />
-    </CheckoutStage>
+    <Suspense fallback={null}>
+      <CheckoutFlowShell lang={lang} dict={dict} title={dict.cart.title} current={1}>
+        <CartView lang={lang} dict={dict} />
+      </CheckoutFlowShell>
+    </Suspense>
   );
 }

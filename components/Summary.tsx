@@ -1,5 +1,6 @@
 "use client";
 
+import { PackageIcon } from "@/components/checkout/CheckoutIcons";
 import { useCart } from "@/components/CartProvider";
 import { productById } from "@/lib/catalog";
 import type { Dictionary } from "@/lib/dictionaries/en";
@@ -10,8 +11,11 @@ export function Summary({ lang, dict, title }: { lang: Locale; dict: Dictionary;
   const { items, total } = useCart();
 
   return (
-    <aside className="summary">
-      <h2 style={{ fontSize: "1.1rem" }}>{title}</h2>
+    <aside className="ck-summary">
+      <div className="ck-summary-head">
+        <PackageIcon />
+        <h2>{title}</h2>
+      </div>
       <ul>
         {items.map((item) => {
           const product = productById(item.id);
@@ -21,7 +25,13 @@ export function Summary({ lang, dict, title }: { lang: Locale; dict: Dictionary;
               <span>
                 {dict.products.items[product.id].name} × {item.qty}
               </span>
-              <span>{productPriceLabel(lang, product.price == null ? null : product.price * item.qty, dict.products.priceOnRequest)}</span>
+              <span>
+                {productPriceLabel(
+                  lang,
+                  product.price == null ? null : product.price * item.qty,
+                  dict.products.priceOnRequest,
+                )}
+              </span>
             </li>
           );
         })}

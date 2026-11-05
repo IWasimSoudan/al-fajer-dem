@@ -1,10 +1,13 @@
 "use client";
 
 import { useCart, type PayMethod } from "@/components/CartProvider";
-import { Steps } from "@/components/Steps";
+import { NextIcon, WalletIcon } from "@/components/checkout/CheckoutIcons";
+import { useCheckoutStyle } from "@/components/checkout/CheckoutFlowShell";
 import { Summary } from "@/components/Summary";
+import { checkoutStyleHref } from "@/lib/checkoutStyles";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
+import { CreditCard } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -12,6 +15,7 @@ import { useState } from "react";
 export function PaymentForm({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const { items, draft, placeOrder, reference } = useCart();
   const router = useRouter();
+  const style = useCheckoutStyle();
   const [method, setMethod] = useState<PayMethod>("card");
   const [cardName, setCardName] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -22,9 +26,9 @@ export function PaymentForm({ lang, dict }: { lang: Locale; dict: Dictionary }) 
 
   if (items.length === 0) {
     return (
-      <div className="prose">
+      <div className="ck-empty">
         <p>{dict.cart.empty}</p>
-        <Link className="btn" href={`/${lang}/cart`}>
+        <Link className="btn" href={checkoutStyleHref(lang, "cart", style)}>
           {dict.steps.cart}
         </Link>
       </div>
@@ -33,9 +37,9 @@ export function PaymentForm({ lang, dict }: { lang: Locale; dict: Dictionary }) 
 
   if (!draft.name) {
     return (
-      <div className="prose">
+      <div className="ck-empty">
         <p>{dict.checkout.missing}</p>
-        <Link className="btn" href={`/${lang}/checkout`}>
+        <Link className="btn" href={checkoutStyleHref(lang, "checkout", style)}>
           {dict.steps.details}
         </Link>
       </div>
@@ -56,31 +60,36 @@ export function PaymentForm({ lang, dict }: { lang: Locale; dict: Dictionary }) 
     setCardNumber("");
     setExpiry("");
     placeOrder(method);
-    router.push(`/${lang}/complete`);
+    router.push(checkoutStyleHref(lang, "complete", style));
   }
 
   return (
-    <div>
-      <Steps lang={lang} dict={dict} current={3} />
-      <p className="note">{dict.payment.demo}</p>
-      <p className="lead">{dict.payment.lead}</p>
-      <div className="purchase" style={{ marginTop: "1.4rem" }}>
-        <form className="form" onSubmit={onSubmit}>
-          <div className="choices">
+    <div className="ck-panel">
+      <p className="ck-note">{dict.payment.demo}</p>
+      <p className="ck-lead">{dict.payment.lead}</p>
+      <div className="ck-purchase">
+        <form className="ck-form" onSubmit={onSubmit}>
+          <div className="ck-form-head">
+            <CreditCard size={18} strokeWidth={1.75} aria-hidden="true" />
+            <h2>{dict.payment.title}</h2>
+          </div>
+          <div className="ck-choices">
             <button type="button" aria-pressed={method === "card"} onClick={() => setMethod("card")}>
+              <CreditCard size={18} strokeWidth={1.75} aria-hidden="true" />
               {dict.payment.card}
             </button>
             <button type="button" aria-pressed={method === "cod"} onClick={() => setMethod("cod")}>
+              <WalletIcon />
               {dict.payment.cod}
             </button>
           </div>
           {method === "card" ? (
             <>
-              <label className="field">
+              <label className="ck-field">
                 <span>{dict.payment.cardName}</span>
                 <input value={cardName} onChange={(event) => setCardName(event.target.value)} autoComplete="off" />
               </label>
-              <label className="field">
+              <label className="ck-field">
                 <span>{dict.payment.cardNumber}</span>
                 <input
                   value={cardNumber}
@@ -89,15 +98,16 @@ export function PaymentForm({ lang, dict }: { lang: Locale; dict: Dictionary }) 
                   autoComplete="off"
                 />
               </label>
-              <label className="field">
+              <label className="ck-field">
                 <span>{dict.payment.expiry}</span>
                 <input value={expiry} onChange={(event) => setExpiry(event.target.value)} placeholder="08/28" autoComplete="off" />
               </label>
             </>
           ) : null}
-          {error ? <p className="error">{dict.payment.missing}</p> : null}
-          <button className="btn" type="submit">
+          {error ? <p className="ck-error">{dict.payment.missing}</p> : null}
+          <button className="btn ck-next" type="submit">
             {dict.payment.pay}
+            <NextIcon />
           </button>
         </form>
         <Summary lang={lang} dict={dict} title={dict.payment.summary} />

@@ -15,6 +15,7 @@ import "@/styles/client-studio.css";
 import "@/styles/gallery-studio.css";
 import "@/styles/contact-studio.css";
 import "@/styles/brand-studio.css";
+import "@/styles/checkout-studio.css";
 import "@/styles/home.css";
 import "@/styles/home-v2.css";
 
