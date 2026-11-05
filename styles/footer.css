@@ -3,14 +3,14 @@
 }
 
 .foot a:hover {
-  color: var(--copper);
+  color: var(--royal);
 }
 
 /* Option B — two-column editorial */
 .foot-b {
   background: var(--white);
-  color: var(--blue);
-  border-top: 1px solid color-mix(in srgb, var(--blue) 14%, transparent);
+  color: var(--ink);
+  border-top: 1px solid var(--sky);
 }
 
 .foot-b-main {
@@ -22,17 +22,18 @@
 
 .foot-b-name {
   margin: 0 0 1rem;
-  font-family: var(--serif);
+  font-family: inherit;
   font-size: clamp(2.2rem, 4vw, 3.1rem);
   line-height: 1;
-  font-weight: 500;
+  font-weight: 800;
   letter-spacing: -0.02em;
+  color: var(--ink);
 }
 
 .foot-b-closing {
   margin: 0;
   max-width: 34rem;
-  color: color-mix(in srgb, var(--blue) 72%, var(--grey));
+  color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.65;
 }
@@ -50,8 +51,10 @@
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  border: 1px solid color-mix(in srgb, var(--blue) 16%, transparent);
-  color: var(--blue);
+  border-radius: 10px;
+  border: 1px solid var(--sky);
+  color: var(--navy);
+  background: var(--ice);
   transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 

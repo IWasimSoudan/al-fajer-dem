@@ -10,7 +10,6 @@ import { BrandsBand } from "./BrandsBand";
 import { CategoryGrid } from "./CategoryGrid";
 import { HeroSlider } from "./HeroSlider";
 import { HistoryBand } from "./HistoryBand";
-import { HomeV2Header } from "./HomeV2Header";
 import { StatsBar } from "./StatsBar";
 import { TrustStrip } from "./TrustStrip";
 import { useHomeV2Ready } from "./useHomeV2Ready";
@@ -92,7 +91,6 @@ export function HomeV2Stage({ lang, dict }: { lang: Locale; dict: Dictionary }) 
 
   return (
     <div className="hv2-page" ref={rootRef}>
-      <HomeV2Header lang={lang} dict={dict} />
       <HeroSlider lang={lang} copy={copy.hero} ready={ready} />
       <TrustStrip copy={copy.trust} ready={ready} />
       <CategoryGrid lang={lang} copy={copy.categories} ready={ready} />

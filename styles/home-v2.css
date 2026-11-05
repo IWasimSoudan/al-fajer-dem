@@ -1,9 +1,5 @@
 /* Home v2 — corporate e-commerce design system (isolated from v1) */
 
-body:has(.hv2-page) .home-bar {
-  display: none !important;
-}
-
 .hv2-page {
   /* Design tokens */
   --hv2-navy: #0b2844;

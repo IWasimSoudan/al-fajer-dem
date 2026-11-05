@@ -1,8 +1,4 @@
 /* home v1 — corporate e-commerce design system */
-body:has(.home-page) .home-bar {
-  display: none !important;
-}
-
 body:has(.home-page) {
   background: #ffffff;
   color: #1c2938;
