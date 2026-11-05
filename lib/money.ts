@@ -7,3 +7,12 @@ export function money(locale: Locale, amount: number) {
   }).format(amount);
   return locale === "ar" ? `${formatted} د.أ` : `${formatted} JOD`;
 }
+
+export function productPriceLabel(locale: Locale, amount: number | null | undefined, onRequest: string) {
+  if (amount == null) return onRequest;
+  return money(locale, amount);
+}
+
+export function priceSortValue(amount: number | null | undefined) {
+  return amount ?? Number.POSITIVE_INFINITY;
+}

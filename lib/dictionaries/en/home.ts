@@ -61,7 +61,7 @@ export const home = {
   catalogueText: "Product and service sheets are sent by the team. There is no mailing list on this demo.",
   catalogueCta: "Email the team",
   contactTitle: "Talk to the workshop",
-  contactText: "Amman. Sunday to Thursday, 8:00–18:30.",
+  contactText: "Abu Alanda, Amman. Sunday to Thursday, 8:00–18:30. Tel +962 6 4163020.",
   stage: {
     heroTitle: "Al Fajer",
     heroLead: "We shape steel, rolling shutters, and gate automation into work that closes and carries a building.",
@@ -158,11 +158,11 @@ export const home = {
     brandsLead: "Automation, shutters, and door hardware from makers we supply and install across Jordan.",
     brandsCta: "View all brands",
     brandsImageAlt:
-      "Partner logos: ISEA, KEY Automation, GfA, SAP Italy, Ascot Doors, Gamma Doors, GfA Elektromaten, Masinara, Gerolimatos, Italo, and ACM",
+      "Partner logos: ISEA, KEY Automation, GfA, SAP Italy, Ascot Doors, Gamma Doors, GfA Elektromaten, Masinara, Gerolimatos, Italo, ACM, Hiland, and Al Fajer",
     historyKicker: "Our history",
     historyTitle: "Steel in Amman since 1969",
     historyLead:
-      "New Al Fajer Workshops LTD was founded by Khaled Al Jariri (Abu Hafez) and grown with Factory Manager Farouq Al Jariri — metal work and construction across Jordan for more than fifty years.",
+      "Al Fajer Workshops since 1969; New Al Fajer Workshops Ltd from 2005 under Eng. Farouq Al Jariri — metal work, doors technology, and light steel across Jordan for more than fifty years.",
     historyStylePicker: "History timeline style — preview only",
     historyStyleHint: "Three ways to read the company story. Pick one later to lock in.",
     historyStyles: {
@@ -183,30 +183,31 @@ export const home = {
       {
         year: "1969",
         title: "The workshop opens",
-        text: "Khaled Al Jariri founds New Al Fajer Workshops in Amman — steel fabrication as a trade, not a showroom.",
+        text: "Khaled Al Jariri (Abu Hafez) founds Al Fajer Workshops in Amman and brings the first rolling-shutter machines — steel fabrication as a trade.",
       },
       {
-        year: "1985",
-        title: "Structures take shape",
-        text: "The range grows into light steel frames, hangars, silos, and tanks for sites across Jordan.",
+        year: "1971",
+        title: "Foundations of the trade",
+        text: "Reliability, integrity, and workmanship become the values the second generation still works by.",
       },
       {
-        year: "1998",
-        title: "Doors and openings",
-        text: "Rolling shutters, fire doors, windows, and handrails join the floor — openings made in the same shop that builds the frame.",
+        year: "1980s",
+        title: "Airports and industry",
+        text: "Completed rolling shutter and steel jobs at Queen Alia, Aqaba and Marka airports, HBTF, Sahab Industrial City, and major dealers.",
       },
       {
-        year: "2010",
-        title: "Factory leadership",
-        text: "Under Farouq Al Jariri the factory deepens capacity: custom fabrication, structural installs, and full project delivery.",
+        year: "2005",
+        title: "New Al Fajer Workshops Ltd",
+        text: "Engineering operations begin as New Al Fajer Workshops Ltd — the next generation of the 1969 workshop, with a ~5,000 m² facility at Al Juwayde and Sahab.",
       },
       {
         year: "Today",
         title: "Quality meets craftsmanship",
-        text: "Art steel, laser cutting, wood engraving, and metal furniture sit beside the core lines — still one workshop, still on time and to standard.",
+        text: "Metal works, doors technology, light steel, rolling shutters, gate automation, art steel, and laser cutting — still one workshop, on time and to standard.",
       },
     ],
     emailLabel: "Email",
+    phoneLabel: "Phone",
     visitLabel: "Visit",
     hoursLabel: "Hours",
     closing:

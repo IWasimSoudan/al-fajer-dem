@@ -4,17 +4,17 @@ import { asset } from "@/lib/asset";
 import { categories, families, founded, products, type FamilyId, type ProductId } from "@/lib/catalog";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
-import { money } from "@/lib/money";
+import { productPriceLabel } from "@/lib/money";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-const stripIds = ["foam", "twisted", "accordion", "sap"] as const satisfies readonly ProductId[];
+const stripIds = ["p80-foam", "antiwind-class4", "key-slide-500", "norton-roll-motor"] as const satisfies readonly ProductId[];
 
 export function CatalogView({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const [family, setFamily] = useState<FamilyId | "all">("all");
   const [query, setQuery] = useState("");
-  const [picked, setPicked] = useState<ProductId[]>(["antiwind", "levante"]);
+  const [picked, setPicked] = useState<ProductId[]>(["p80-foam", "antiwind-class4"]);
   const copy = dict.catalog;
   const locale = lang === "ar" ? "ar" : "en";
 
@@ -26,7 +26,7 @@ export function CatalogView({ lang, dict }: { lang: Locale; dict: Dictionary }) 
       const category = dict.products.categories[product.category].title;
       const dimensions = product.dimensions ? copy.measures[product.dimensions] : "";
       const rating = product.rating ? copy.measures[product.rating] : "";
-      return `${item.name} ${item.detail} ${category} ${copy.families[product.family]} ${dimensions} ${rating} ${product.price}`
+      return `${item.name} ${item.detail} ${category} ${copy.families[product.family]} ${dimensions} ${rating}`
         .toLocaleLowerCase(locale)
         .includes(needle);
     };
@@ -130,7 +130,7 @@ export function CatalogView({ lang, dict }: { lang: Locale; dict: Dictionary }) 
                 </div>
                 <div>
                   <dt>{copy.price}</dt>
-                  <dd>{money(lang, product.price)}</dd>
+                  <dd>{productPriceLabel(lang, product.price, dict.products.priceOnRequest)}</dd>
                 </div>
               </dl>
             </article>
@@ -194,7 +194,7 @@ export function CatalogView({ lang, dict }: { lang: Locale; dict: Dictionary }) 
               <tr>
                 <th scope="row">{copy.price}</th>
                 {compared.map((product) => (
-                  <td key={product.id}>{money(lang, product.price)}</td>
+                  <td key={product.id}>{productPriceLabel(lang, product.price, dict.products.priceOnRequest)}</td>
                 ))}
               </tr>
             </tbody>

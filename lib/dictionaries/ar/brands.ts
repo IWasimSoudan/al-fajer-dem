@@ -3,7 +3,7 @@ import type { BrandsTranslations } from "@/lib/dictionaries/en/brands";
 export const brands = {
   kicker: "العلامات",
   title: "علاماتنا الموثوقة",
-  lead: "KEY وGfA وISEA وغيرها — أتمتة وأبواب لفافة وتجهيزات نورّدها ونركّبها.",
+  lead: "KEY وGfA وISEA وNorton وHiland والفجر وغيرها — أتمتة وأبواب لفافة وتجهيزات نورّدها ونركّبها.",
   stylePicker: "تخطيط العلامات — معاينة فقط",
   styleHint: "نفس قائمة الشركاء، بثلاث طرق للعرض. اختر لاحقاً للتثبيت.",
   styleWhy: "لماذا هذا التخطيط",

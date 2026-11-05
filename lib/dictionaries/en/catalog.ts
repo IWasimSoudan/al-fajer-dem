@@ -1,7 +1,7 @@
 export const catalog = {
   kicker: "Catalog",
   title: "Technical catalog",
-  lead: "Download the company PDFs, then browse sample lines. Prices are for the demonstration cart.",
+  lead: "Download the company PDFs, then browse lines from the supplier sheet. Prices are on request.",
   stylePicker: "Catalog layout — preview only",
   styleHint: "Three simple modern layouts. Pick one later to lock in.",
   styleWhy: "Why this layout",
@@ -39,8 +39,8 @@ export const catalog = {
       blurb: "Steel structures, fabrication, and workshop lines.",
     },
   },
-  samplesTitle: "Sample items",
-  samplesLead: "A short set from the demo shop. Open any line for detail.",
+  samplesTitle: "Catalog lines",
+  samplesLead: "A short set from the supplier sheet. Open any line for detail.",
   browseProducts: "Browse all products",
   since: "Workshop since",
   categories: "Categories",
@@ -63,8 +63,10 @@ export const catalog = {
   unpublished: "Not published",
   measures: {
     width12: "Width up to 12 m",
-    class4: "Class 4, wind up to 120 km/h",
+    class4: "Class 4 (UNI EN 12424), wind up to 120 km/h",
     leaf120: "Leaves up to 120 kg",
+    p80profile: "P80 profile, 80 mm · sheet 0.4–0.7 mm",
+    foam80: "PU foam 80 kg/m³ · thermal ~3.8–4.0 W/(m²·K)",
   },
   compareTitle: "Compare",
   compareLead: "Select any of the sample items and read them side by side.",
@@ -89,10 +91,10 @@ export const catalog = {
   termsTitle: "Terms",
   termsLead: "Short definitions for the words on this page.",
   terms: [
-    { title: "Class 4", text: "A wind class used for exposed roll-up doors in this range." },
-    { title: "Wind rating", text: "The Class 4 door in the sample list is rated for wind up to 120 km/h." },
-    { title: "Opening size", text: "Width and height of the opening. The Class 4 sample is listed up to 12 m wide." },
-    { title: "Sample price", text: "A unit price for the demonstration cart. It is not a quotation." },
+    { title: "Class 4", text: "Wind resistance Class 4 under UNI EN 12424 — used for exposed steel P80 / anti-wind roll-up doors." },
+    { title: "P80", text: "Foam-filled 80 mm profiles in prepainted aluminum or galvanized painted steel; polyurethane core about 80 kg/m³." },
+    { title: "Opening size", text: "Aluminum P80 up to about 5×5 m; steel P80 up to about 8×8 m; anti-wind lines listed up to 12 m wide." },
+    { title: "Price on request", text: "Listed lines are supplied and installed on quotation. Contact the workshop for a price." },
   ],
 }
 

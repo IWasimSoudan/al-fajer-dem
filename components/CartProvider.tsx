@@ -51,7 +51,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const count = items.reduce((sum, item) => sum + item.qty, 0);
     const total = items.reduce((sum, item) => {
       const product = productById(item.id);
-      return sum + (product ? product.price * item.qty : 0);
+      return sum + (product && product.price != null ? product.price * item.qty : 0);
     }, 0);
 
     return {
@@ -63,7 +63,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
       count,
       total,
       add(id) {
-        if (!products.some((product) => product.id === id)) return;
+        const product = productById(id);
+        if (!product || product.price == null) return;
         setItems((current) => {
           const found = current.find((item) => item.id === id);
           if (!found) return [...current, { id, qty: 1 }];
@@ -83,7 +84,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       placeOrder(nextMethod) {
         const lines = items.flatMap((item) => {
           const product = productById(item.id);
-          return product ? [{ id: item.id, qty: item.qty, price: product.price }] : [];
+          return product ? [{ id: item.id, qty: item.qty, price: product.price ?? 0 }] : [];
         });
         setOrderLines(lines);
         setMethod(nextMethod);

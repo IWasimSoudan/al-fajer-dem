@@ -5,7 +5,7 @@ import { asset } from "@/lib/asset";
 import { categories, products, type CategoryId } from "@/lib/catalog";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
-import { money } from "@/lib/money";
+import { priceSortValue, productPriceLabel } from "@/lib/money";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
@@ -104,11 +104,17 @@ function ProductRow({
           <Link href={`/${lang}/products/${product.id}`}>{copy.name}</Link>
         </h3>
         <p>{copy.detail}</p>
-        <p className="price">{money(lang, product.price)}</p>
+        <p className="price">{productPriceLabel(lang, product.price, dict.products.priceOnRequest)}</p>
       </div>
-      <button className="btn product-add" type="button" onClick={onAdd}>
-        {added ? dict.products.added : dict.products.add}
-      </button>
+      {product.price == null ? (
+        <Link className="btn product-add" href={`/${lang}/contact`}>
+          {dict.products.askQuote}
+        </Link>
+      ) : (
+        <button className="btn product-add" type="button" onClick={onAdd}>
+          {added ? dict.products.added : dict.products.add}
+        </button>
+      )}
     </article>
   );
 }
@@ -136,7 +142,7 @@ export function ProductBrowser({ lang, dict }: { lang: Locale; dict: Dictionary 
           .includes(needle);
       })
       .sort((a, b) => {
-        if (sort === "price" && a.price !== b.price) return a.price - b.price;
+        if (sort === "price" && a.price !== b.price) return priceSortValue(a.price) - priceSortValue(b.price);
         return collator.compare(dict.products.items[a.id].name, dict.products.items[b.id].name);
       });
   }, [dict, filter, lang, query, sort]);

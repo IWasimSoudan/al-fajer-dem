@@ -5,7 +5,7 @@ import { asset } from "@/lib/asset";
 import { productTree, products, type CategoryId, type ProductId } from "@/lib/catalog";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
-import { money } from "@/lib/money";
+import { priceSortValue, productPriceLabel } from "@/lib/money";
 import {
   initialCatalogView,
   PRODUCT_STYLES,
@@ -263,35 +263,44 @@ function BuyActions({
   compact?: boolean;
 }) {
   const inCart = cartQty > 0;
+  const quoteOnly = product.price == null;
 
   return (
     <div className={compact ? "ps-buy is-compact" : "ps-buy"}>
-      <p className="ps-price">{money(lang, product.price)}</p>
+      <p className="ps-price">{productPriceLabel(lang, product.price, dict.products.priceOnRequest)}</p>
       {!compact ? <p className="ps-tax">{dict.products.taxNote}</p> : null}
       {inCart ? <p className="ps-in-cart">{dict.products.inCart}: {cartQty}</p> : null}
       <div className="ps-buy-row">
-        <QtyControl
-          qty={inCart ? cartQty : qty}
-          min={inCart ? 0 : 1}
-          onChange={(value) => {
-            if (inCart) {
-              if (value < 1) onRemove();
-              else onCartQty(value);
-              return;
-            }
-            onQty(value);
-          }}
-          decreaseLabel={dict.products.qtyDown}
-          increaseLabel={dict.products.qtyUp}
-        />
-        {inCart ? (
-          <button className="btn ghost ps-remove" type="button" onClick={onRemove}>
-            {dict.products.remove}
-          </button>
+        {quoteOnly ? (
+          <Link className="btn" href={`/${lang}/contact`}>
+            {dict.products.askQuote}
+          </Link>
         ) : (
-          <button className="btn" type="button" onClick={onAdd}>
-            {dict.products.add}
-          </button>
+          <>
+            <QtyControl
+              qty={inCart ? cartQty : qty}
+              min={inCart ? 0 : 1}
+              onChange={(value) => {
+                if (inCart) {
+                  if (value < 1) onRemove();
+                  else onCartQty(value);
+                  return;
+                }
+                onQty(value);
+              }}
+              decreaseLabel={dict.products.qtyDown}
+              increaseLabel={dict.products.qtyUp}
+            />
+            {inCart ? (
+              <button className="btn ghost ps-remove" type="button" onClick={onRemove}>
+                {dict.products.remove}
+              </button>
+            ) : (
+              <button className="btn" type="button" onClick={onAdd}>
+                {dict.products.add}
+              </button>
+            )}
+          </>
         )}
       </div>
     </div>
@@ -404,8 +413,8 @@ function useCatalog(dict: Dictionary, lang: Locale, query: string, sort: SortKey
       .sort((a, b) => {
         const nameA = dict.products.items[a.id].name;
         const nameB = dict.products.items[b.id].name;
-        if (sort === "priceAsc") return a.price - b.price || collator.compare(nameA, nameB);
-        if (sort === "priceDesc") return b.price - a.price || collator.compare(nameA, nameB);
+        if (sort === "priceAsc") return priceSortValue(a.price) - priceSortValue(b.price) || collator.compare(nameA, nameB);
+        if (sort === "priceDesc") return priceSortValue(b.price) - priceSortValue(a.price) || collator.compare(nameA, nameB);
         if (sort === "nameDesc") return collator.compare(nameB, nameA);
         return collator.compare(nameA, nameB);
       });
@@ -698,30 +707,38 @@ function StyleSheet({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRem
                   {stockLabel(dict, stock)}
                 </small>
               </span>
-              <span className="ps-price">{money(lang, product.price)}</span>
+              <span className="ps-price">{productPriceLabel(lang, product.price, dict.products.priceOnRequest)}</span>
               <span className="ps-sheet-actions">
-                <QtyControl
-                  qty={inCart ? cartQty : qty}
-                  min={inCart ? 0 : 1}
-                  onChange={(value) => {
-                    if (inCart) {
-                      if (value < 1) onRemove(product.id);
-                      else onCartQty(product.id, value);
-                      return;
-                    }
-                    setQty(product.id, value);
-                  }}
-                  decreaseLabel={dict.products.qtyDown}
-                  increaseLabel={dict.products.qtyUp}
-                />
-                {inCart ? (
-                  <button className="btn ghost ps-remove" type="button" onClick={() => onRemove(product.id)}>
-                    {dict.products.remove}
-                  </button>
+                {product.price == null ? (
+                  <Link className="btn" href={`/${lang}/contact`}>
+                    {dict.products.askQuote}
+                  </Link>
                 ) : (
-                  <button className="btn" type="button" onClick={() => onAdd(product.id, qty)}>
-                    {dict.products.add}
-                  </button>
+                  <>
+                    <QtyControl
+                      qty={inCart ? cartQty : qty}
+                      min={inCart ? 0 : 1}
+                      onChange={(value) => {
+                        if (inCart) {
+                          if (value < 1) onRemove(product.id);
+                          else onCartQty(product.id, value);
+                          return;
+                        }
+                        setQty(product.id, value);
+                      }}
+                      decreaseLabel={dict.products.qtyDown}
+                      increaseLabel={dict.products.qtyUp}
+                    />
+                    {inCart ? (
+                      <button className="btn ghost ps-remove" type="button" onClick={() => onRemove(product.id)}>
+                        {dict.products.remove}
+                      </button>
+                    ) : (
+                      <button className="btn" type="button" onClick={() => onAdd(product.id, qty)}>
+                        {dict.products.add}
+                      </button>
+                    )}
+                  </>
                 )}
               </span>
             </div>

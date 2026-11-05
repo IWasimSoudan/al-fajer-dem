@@ -41,15 +41,15 @@ export const expertise = {
     },
     gates: {
       title: "Gate automation",
-      text: "Operators, remote panels, and controls for residential, industrial, and commercial doors.",
+      text: "Roll-up, sliding, and swing motors, barriers, tubular and chain drives, remotes, and control panels for residential, industrial, and commercial doors.",
     },
     military: {
       title: "Military steel works",
-      text: "Steel doors, shutters, and structures made to the specification of the project, including protection ratings when the brief asks for them.",
+      text: "Steel doors, shutters, and structures to project specification — including fire-rated, explosive, and bullet-resistant openings when the brief asks for them.",
     },
     airport: {
-      title: "Airport solutions",
-      text: "Large openings, shutters, and steelwork for airport buildings and service areas.",
+      title: "Airport & logistics openings",
+      text: "Large openings, airplane doors, high-speed doors, dock levelers, and steelwork for airport and warehouse service areas.",
     },
     antiwind: {
       title: "Anti-wind roll-up doors",

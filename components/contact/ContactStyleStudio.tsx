@@ -50,20 +50,49 @@ function StylePicker({
 }
 
 function VisitFacts({ dict }: { dict: Dictionary }) {
+  const { footer } = dict;
   return (
     <ul className="cn-visit-facts">
       <li>
         <span>{dict.contact.visitTitle}</span>
-        <strong>{dict.footer.address}</strong>
+        <strong>
+          {footer.address}
+          <br />
+          {footer.poBox}
+        </strong>
       </li>
       <li>
-        <span>{dict.footer.hoursLabel}</span>
-        <strong>{dict.footer.hours}</strong>
+        <span>{footer.hoursLabel}</span>
+        <strong>{footer.hours}</strong>
+      </li>
+      <li>
+        <span>{footer.phoneLabel}</span>
+        <strong>
+          <a href={`tel:${footer.phone.replace(/\s+/g, "")}`}>{footer.phone}</a>
+        </strong>
+      </li>
+      <li>
+        <span>{footer.mobileLabel}</span>
+        <strong>
+          <a href={`tel:${footer.mobile.replace(/\s+/g, "")}`}>{footer.mobile}</a>
+        </strong>
+      </li>
+      <li>
+        <span>{footer.faxLabel}</span>
+        <strong>{footer.fax}</strong>
       </li>
       <li>
         <span>{dict.contact.email}</span>
         <strong>
-          <a href={`mailto:${dict.footer.email}`}>{dict.footer.email}</a>
+          <a href={`mailto:${footer.email}`}>{footer.email}</a>
+        </strong>
+      </li>
+      <li>
+        <span>{footer.websiteLabel}</span>
+        <strong>
+          <a href={footer.websiteHref} target="_blank" rel="noreferrer">
+            {footer.website}
+          </a>
         </strong>
       </li>
     </ul>

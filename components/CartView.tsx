@@ -6,7 +6,7 @@ import { asset } from "@/lib/asset";
 import { productById } from "@/lib/catalog";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
-import { money } from "@/lib/money";
+import { money, productPriceLabel } from "@/lib/money";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -40,7 +40,7 @@ export function CartView({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                     <h2 style={{ fontSize: "1.15rem" }}>
                       <Link href={`/${lang}/products/${product.id}`}>{copy.name}</Link>
                     </h2>
-                    <p className="price">{money(lang, product.price)}</p>
+                    <p className="price">{productPriceLabel(lang, product.price, dict.products.priceOnRequest)}</p>
                     <div className="qty" aria-label={dict.cart.qty}>
                       <button type="button" onClick={() => setQty(item.id, item.qty - 1)} aria-label="-">
                         −
@@ -52,7 +52,7 @@ export function CartView({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                     </div>
                   </div>
                   <div>
-                    <strong className="line-price">{money(lang, product.price * item.qty)}</strong>
+                    <strong className="line-price">{productPriceLabel(lang, product.price == null ? null : product.price * item.qty, dict.products.priceOnRequest)}</strong>
                     <div>
                       <button className="linkish" type="button" onClick={() => remove(item.id)}>
                         {dict.cart.remove}

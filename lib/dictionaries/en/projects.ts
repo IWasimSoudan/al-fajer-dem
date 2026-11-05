@@ -1,7 +1,7 @@
 export const projects = {
   kicker: "Projects",
   title: "Kinds of work",
-  lead: "Six project lines from the site map (P1–P6). These are types of jobs, not a list of named clients.",
+  lead: "Six project lines grounded in completed Al Fajer jobs from the company profile (P1–P6).",
   stylePicker: "Projects layout — preview only",
   styleHint: "Scroll to feel each motion. Pick one later to lock in.",
   styleWhy: "Why this layout",
@@ -23,12 +23,30 @@ export const projects = {
     },
   },
   items: {
-    hangar: { title: "Industrial hangars", text: "Framed halls and light steel buildings, fabricated and erected by the same team." },
-    warehouse: { title: "Warehouse packages", text: "Doors, frames, and steelwork for storage and loading buildings." },
-    civil: { title: "Hospitals and civil defense", text: "Shutters and doors for emergency services and hospitals that need a reliable closer." },
-    airport: { title: "Airport openings", text: "Wide doors and steelwork for airport buildings and service zones." },
-    art: { title: "Art steel", text: "Laser-cut screens, panels, and decorative steel in iron, copper, and stainless." },
-    gates: { title: "Automated gates", text: "Motors and remote panels on residential, industrial, and commercial doors." },
+    hangar: {
+      title: "Industrial hangars & steel halls",
+      text: "Framed halls and light steel buildings — the same scope delivered for Sahab Industrial City and industrial clients across Jordan.",
+    },
+    warehouse: {
+      title: "Warehouses, silos & tanks",
+      text: "Metal works for storage and loading — including Jordan Silos sites in Aqaba, Juwayde, and Irbid, plus mills and trading yards.",
+    },
+    civil: {
+      title: "Hotels, civil & sacred buildings",
+      text: "Rolling shutters and metal works for Regency Palace, Fairmont, Le Royal, Sheraton, King Abdullah I Mosque, and civil complexes.",
+    },
+    airport: {
+      title: "Airport openings",
+      text: "Steel and rolling shutter doors for Queen Alia International Airport, Aqaba Airport, Marka Airport, and related aviation buildings.",
+    },
+    art: {
+      title: "Art steel & laser cutting",
+      text: "Creative laser-cut screens, gates, and decorative steel in iron, copper, and stainless — residential, commercial, and cultural sites.",
+    },
+    gates: {
+      title: "Automated gates & shutters",
+      text: "Motors, barriers, and remote panels on residential, industrial, and commercial doors — including dealer and showroom projects such as Mercedes, Toyota, and BMW.",
+    },
   },
 }
 

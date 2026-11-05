@@ -11,7 +11,7 @@ import {
 import type { CatalogStyleId } from "@/lib/catalogStyles";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
-import { money } from "@/lib/money";
+import { productPriceLabel } from "@/lib/money";
 import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,7 +38,7 @@ function attrValue(lang: Locale, dict: Dictionary, product: Product, key: AttrKe
   if (key === "dimensions") return published(dict, product.dimensions);
   if (key === "rating") return published(dict, product.rating);
   if (key === "grade") return dict.catalog.unpublished;
-  return money(lang, product.price);
+  return productPriceLabel(lang, product.price, dict.products.priceOnRequest);
 }
 
 function valuesDiffer(values: string[]) {
@@ -134,7 +134,7 @@ function PlaceholderBlock({
   );
 }
 
-function usePicked(initial: ProductId[] = ["antiwind", "levante"]) {
+function usePicked(initial: ProductId[] = ["p80-foam", "antiwind-class4"]) {
   const [picked, setPicked] = useState<ProductId[]>(initial);
 
   function toggle(id: ProductId, max?: number) {
@@ -277,7 +277,7 @@ function ColumnsCompare({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 <h3>
                   <Link href={`/${lang}/products/${product.id}`}>{dict.products.items[product.id].name}</Link>
                 </h3>
-                <p className="cg-col-price">{money(lang, product.price)}</p>
+                <p className="cg-col-price">{productPriceLabel(lang, product.price, dict.products.priceOnRequest)}</p>
                 <dl>
                   {ATTRS.filter((key) => key !== "price").map((key) => (
                     <div key={key}>

@@ -5,7 +5,7 @@ import { asset } from "@/lib/asset";
 import { productById, products, type ProductId } from "@/lib/catalog";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
-import { money } from "@/lib/money";
+import { productPriceLabel } from "@/lib/money";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
@@ -87,10 +87,14 @@ export function ProductDetail({ lang, dict, id }: { lang: Locale; dict: Dictiona
             <p className="pdp-kicker">{category}</p>
             <h2>{copy.name}</h2>
             <p className="pdp-detail">{copy.detail}</p>
-            <p className="price">{money(lang, product.price)}</p>
+            <p className="price">{productPriceLabel(lang, product.price, dict.products.priceOnRequest)}</p>
             {inCart ? <p className="ps-in-cart">{dict.products.inCart}: {cartQty}</p> : null}
             <div className="pdp-buy">
-              {inCart ? (
+              {product.price == null ? (
+                <Link className="btn" href={`/${lang}/contact`}>
+                  {dict.products.askQuote}
+                </Link>
+              ) : inCart ? (
                 <>
                   <div className="qty" aria-label={dict.cart.qty}>
                     <button type="button" onClick={() => (cartQty <= 1 ? remove(product.id) : setQty(product.id, cartQty - 1))} aria-label={dict.products.qtyDown}>
@@ -110,9 +114,11 @@ export function ProductDetail({ lang, dict, id }: { lang: Locale; dict: Dictiona
                   {dict.products.add}
                 </button>
               )}
-              <Link className="btn ghost" href={`/${lang}/cart`}>
-                {dict.nav.cart}
-              </Link>
+              {product.price != null ? (
+                <Link className="btn ghost" href={`/${lang}/cart`}>
+                  {dict.nav.cart}
+                </Link>
+              ) : null}
               <Link className="btn ghost" href={`/${lang}/products`}>
                 {dict.products.back}
               </Link>
@@ -198,7 +204,7 @@ export function ProductDetail({ lang, dict, id }: { lang: Locale; dict: Dictiona
                     <h3>
                       <Link href={`/${lang}/products/${item.id}`}>{itemCopy.name}</Link>
                     </h3>
-                    <p className="price">{money(lang, item.price)}</p>
+                    <p className="price">{productPriceLabel(lang, item.price, dict.products.priceOnRequest)}</p>
                     <Link className="btn ghost related-link" href={`/${lang}/products/${item.id}`}>
                       {dict.products.view}
                     </Link>

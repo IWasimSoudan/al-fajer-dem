@@ -4,7 +4,7 @@ import { useCart } from "@/components/CartProvider";
 import { productById } from "@/lib/catalog";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
-import { money } from "@/lib/money";
+import { money, productPriceLabel } from "@/lib/money";
 
 export function Summary({ lang, dict, title }: { lang: Locale; dict: Dictionary; title: string }) {
   const { items, total } = useCart();
@@ -21,7 +21,7 @@ export function Summary({ lang, dict, title }: { lang: Locale; dict: Dictionary;
               <span>
                 {dict.products.items[product.id].name} × {item.qty}
               </span>
-              <span>{money(lang, product.price * item.qty)}</span>
+              <span>{productPriceLabel(lang, product.price == null ? null : product.price * item.qty, dict.products.priceOnRequest)}</span>
             </li>
           );
         })}

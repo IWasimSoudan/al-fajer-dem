@@ -31,12 +31,30 @@ export function FooterOptionB({ lang, dict }: { lang: Locale; dict: Dictionary }
             <a href={`mailto:${footer.email}`}>{footer.email}</a>
           </div>
           <div className="foot-b-row">
+            <span>{stage.phoneLabel}</span>
+            <a href={`tel:${footer.phone.replace(/\s+/g, "")}`}>{footer.phone}</a>
+          </div>
+          <div className="foot-b-row">
+            <span>{footer.mobileLabel}</span>
+            <a href={`tel:${footer.mobile.replace(/\s+/g, "")}`}>{footer.mobile}</a>
+          </div>
+          <div className="foot-b-row">
             <span>{stage.visitLabel}</span>
-            <p>{footer.address}</p>
+            <p>
+              {footer.address}
+              <br />
+              {footer.poBox}
+            </p>
           </div>
           <div className="foot-b-row">
             <span>{stage.hoursLabel}</span>
             <p>{footer.hours}</p>
+          </div>
+          <div className="foot-b-row">
+            <span>{footer.websiteLabel}</span>
+            <a href={footer.websiteHref} target="_blank" rel="noreferrer">
+              {footer.website}
+            </a>
           </div>
         </div>
       </div>

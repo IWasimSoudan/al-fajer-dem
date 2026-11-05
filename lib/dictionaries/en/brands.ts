@@ -1,7 +1,7 @@
 export const brands = {
   kicker: "Brands",
   title: "Our trusted brands",
-  lead: "KEY, GfA, ISEA, and more — automation, shutters, and door hardware we supply and install.",
+  lead: "KEY, GfA, ISEA, Norton, Hiland, Al Fajer, and more — automation, shutters, and door hardware we supply and install.",
   stylePicker: "Brands layout — preview only",
   styleHint: "Same partner list, three ways to show it. Pick one later to lock in.",
   styleWhy: "Why this layout",

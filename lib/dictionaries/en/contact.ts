@@ -1,7 +1,7 @@
 export const contact = {
   kicker: "Contact",
   title: "Write to the team",
-  lead: "The form opens an email draft to admin@iconsjo.com. It does not store the message.",
+  lead: "The form opens an email draft to fj@al-fajergroup.com. It does not store the message.",
   stylePicker: "Contact layout — preview only",
   styleHint: "Same form and visit details, three ways to present them. Pick one later to lock in.",
   styleWhy: "Why this layout",
@@ -26,15 +26,15 @@ export const contact = {
   email: "Email",
   message: "Message",
   send: "Open email draft",
-  hint: "Your email app opens with this message. If it does not, write to admin@iconsjo.com.",
+  hint: "Your email app opens with this message. If it does not, write to fj@al-fajergroup.com.",
   missing: "Add your name, a valid email, and a message.",
   visitTitle: "Visit",
-  visitPlaceholder: "Workshop location",
+  visitPlaceholder: "Abu Alanda workshop",
   faqTitle: "Before you write",
   faq: [
     {
       q: "How do I ask for a price?",
-      a: "Send the opening size, the building type, and the city. The team replies with a quotation. The cart on this site is only a demonstration.",
+      a: "Send the opening size, the building type, and the city. The team replies with a quotation. Listed prices on this site are on request only.",
     },
     {
       q: "How long does the work take?",

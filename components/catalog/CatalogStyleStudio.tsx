@@ -7,7 +7,7 @@ import { CATALOG_STYLES, catalogDownloads, resolveCatalogStyle, type CatalogStyl
 import { resolveCompareStyle, type CompareStyleId } from "@/lib/compareStyles";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
-import { money } from "@/lib/money";
+import { productPriceLabel } from "@/lib/money";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -124,7 +124,7 @@ function SampleGrid({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </span>
               <span className="cg-sample-copy">
                 <strong>{item.name}</strong>
-                <em>{money(lang, product.price)}</em>
+                <em>{productPriceLabel(lang, product.price, dict.products.priceOnRequest)}</em>
               </span>
             </Link>
           );
