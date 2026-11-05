@@ -16,5 +16,8 @@ export const nav = {
   menu: "القائمة",
   close: "إغلاق",
   home: "الرئيسية",
+  homeV1: "v1",
+  homeV2: "v2",
+  homeVersion: "إصدار الصفحة الرئيسية",
   primary: "القائمة الرئيسية",
 } satisfies NavTranslations;

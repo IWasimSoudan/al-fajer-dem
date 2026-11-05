@@ -52,6 +52,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const [scrolled, setScrolled] = useState(false);
 
   const isHome = pathname === `/${lang}` || pathname === `/${lang}/`;
+  const isHomeV2 = pathname === `/${lang}/v2` || pathname === `/${lang}/v2/`;
   const atTop = !scrolled;
   const glass = scrolled;
 
@@ -105,6 +106,22 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       </nav>
 
       <div className="home-tools">
+        <div className="home-version" role="group" aria-label={dict.nav.homeVersion}>
+          <Link
+            href={`/${lang}`}
+            aria-label={`${dict.nav.home} ${dict.nav.homeV1}`}
+            aria-current={isHome ? "page" : undefined}
+          >
+            {dict.nav.homeV1}
+          </Link>
+          <Link
+            href={`/${lang}/v2`}
+            aria-label={`${dict.nav.home} ${dict.nav.homeV2}`}
+            aria-current={isHomeV2 ? "page" : undefined}
+          >
+            {dict.nav.homeV2}
+          </Link>
+        </div>
         <div className="home-lang">
           <Link href={withLocale(pathname, "en")} hrefLang="en" aria-current={lang === "en" ? "true" : undefined}>
             EN
@@ -136,6 +153,12 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
       <div className={open ? "home-overlay open" : "home-overlay"}>
         <nav aria-label={dict.nav.primary}>
+          <Link href={`/${lang}`} aria-current={isHome ? "page" : undefined} onClick={() => setOpen(false)}>
+            {dict.nav.homeV1}
+          </Link>
+          <Link href={`/${lang}/v2`} aria-current={isHomeV2 ? "page" : undefined} onClick={() => setOpen(false)}>
+            {dict.nav.homeV2}
+          </Link>
           {navLinks.map((key) => {
             const href = `/${lang}/${key}`;
             return (

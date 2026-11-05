@@ -14,6 +14,9 @@ export const nav = {
   menu: "Menu",
   close: "Close",
   home: "Home",
+  homeV1: "v1",
+  homeV2: "v2",
+  homeVersion: "Home version",
   primary: "Primary",
 }
 

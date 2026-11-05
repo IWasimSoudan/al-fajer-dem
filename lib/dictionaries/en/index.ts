@@ -12,6 +12,7 @@ import { expertise } from "./expertise";
 import { footer } from "./footer";
 import { gallery } from "./gallery";
 import { home } from "./home";
+import { homeV2 } from "./homeV2";
 import { nav } from "./nav";
 import { notFound } from "./notFound";
 import { payment } from "./payment";
@@ -25,6 +26,7 @@ export const en = {
   nav,
   footer,
   home,
+  homeV2,
   about,
   expertise,
   products,
@@ -60,6 +62,7 @@ export type { ExpertiseTranslations } from "./expertise";
 export type { FooterTranslations } from "./footer";
 export type { GalleryTranslations } from "./gallery";
 export type { HomeTranslations } from "./home";
+export type { HomeV2Translations } from "./homeV2";
 export type { NavTranslations } from "./nav";
 export type { NotFoundTranslations } from "./notFound";
 export type { PaymentTranslations } from "./payment";

@@ -116,10 +116,31 @@ body:has(.home-page) .home-bar {
   z-index: 32;
 }
 
-.home-lang {
+.home-lang,
+.home-version {
   display: flex;
   gap: 0.55rem;
   font-size: 0.82rem;
+}
+
+.home-version {
+  padding: 0.2rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--bar-fg) 22%, transparent);
+}
+
+.home-version a {
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  color: var(--bar-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.home-version a[aria-current="page"] {
+  color: var(--bar-fg);
+  background: color-mix(in srgb, var(--bar-fg) 12%, transparent);
+  font-weight: 600;
 }
 
 .home-lang a {
