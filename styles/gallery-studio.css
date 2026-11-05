@@ -345,6 +345,8 @@ html[dir="rtl"] .gl-stage-tag {
   text-transform: none;
 }
 
+/* Beat .home-page h2 ink override (home.css loads later). */
+.home-page .gl-stage-copy h2,
 .gl-stage-copy h2 {
   margin: 0;
   font-size: clamp(1.35rem, 2.8vw, 2rem);

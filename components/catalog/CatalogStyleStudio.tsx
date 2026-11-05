@@ -3,7 +3,13 @@
 import { CatalogCompareStudio } from "@/components/catalog/CatalogCompareStudio";
 import { asset } from "@/lib/asset";
 import { products } from "@/lib/catalog";
-import { CATALOG_STYLES, catalogDownloads, resolveCatalogStyle, type CatalogStyleId } from "@/lib/catalogStyles";
+import {
+  CATALOG_STYLES,
+  catalogDownloads,
+  resolveCatalogStyle,
+  type CatalogDownloadId,
+  type CatalogStyleId,
+} from "@/lib/catalogStyles";
 import { resolveCompareStyle, type CompareStyleId } from "@/lib/compareStyles";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
@@ -11,6 +17,7 @@ import { productPriceLabel } from "@/lib/money";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useId, useRef, useState } from "react";
 
 function StylePicker({
   lang,
@@ -66,6 +73,21 @@ function DownloadIcon() {
   );
 }
 
+function ViewIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="cg-dl-icon">
+      <path
+        d="M2.5 12s3.5-6.5 9.5-6.5S21.5 12 21.5 12s-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="12" r="2.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
 function Downloads({
   dict,
   variant,
@@ -73,6 +95,23 @@ function Downloads({
   dict: Dictionary;
   variant: "cards" | "rail" | "rows";
 }) {
+  const [previewId, setPreviewId] = useState<CatalogDownloadId | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
+  const preview = catalogDownloads.find((file) => file.id === previewId) ?? null;
+  const previewMeta = preview ? dict.catalog.downloads[preview.id] : null;
+  const previewHref = preview ? asset(preview.href) : "";
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (preview) {
+      if (!dialog.open) dialog.showModal();
+      return;
+    }
+    if (dialog.open) dialog.close();
+  }, [preview]);
+
   return (
     <section className={`cg-downloads cg-downloads-${variant}`} aria-labelledby="cg-downloads-title">
       <div className="cg-downloads-head">
@@ -82,9 +121,10 @@ function Downloads({
       <ul className="cg-download-list">
         {catalogDownloads.map((file) => {
           const meta = dict.catalog.downloads[file.id];
+          const href = asset(file.href);
           return (
             <li key={file.id}>
-              <a className="cg-download-item" href={asset(file.href)} download={file.fileName}>
+              <div className="cg-download-item">
                 <span className="cg-download-mark" aria-hidden="true">
                   PDF
                 </span>
@@ -92,15 +132,60 @@ function Downloads({
                   <strong>{meta.title}</strong>
                   <em>{meta.blurb}</em>
                 </span>
-                <span className="cg-download-action">
-                  <DownloadIcon />
-                  {dict.catalog.downloadCta}
+                <span className="cg-download-actions">
+                  <button
+                    type="button"
+                    className="cg-download-action cg-download-view"
+                    onClick={() => setPreviewId(file.id)}
+                  >
+                    <ViewIcon />
+                    {dict.catalog.viewCta}
+                  </button>
+                  <a className="cg-download-action" href={href} download={file.fileName}>
+                    <DownloadIcon />
+                    {dict.catalog.downloadCta}
+                  </a>
                 </span>
-              </a>
+              </div>
             </li>
           );
         })}
       </ul>
+
+      <dialog
+        ref={dialogRef}
+        className="cg-preview"
+        aria-labelledby={titleId}
+        onClose={() => setPreviewId(null)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) setPreviewId(null);
+        }}
+      >
+        {preview && previewMeta ? (
+          <div className="cg-preview-panel">
+            <header className="cg-preview-head">
+              <div>
+                <p className="cg-preview-kicker">PDF</p>
+                <h3 id={titleId}>{previewMeta.title}</h3>
+              </div>
+              <div className="cg-preview-tools">
+                <a className="btn ghost" href={previewHref} target="_blank" rel="noreferrer">
+                  {dict.catalog.previewOpenTab}
+                </a>
+                <a className="btn" href={previewHref} download={preview.fileName}>
+                  {dict.catalog.previewDownload}
+                </a>
+                <button type="button" className="btn ghost" onClick={() => setPreviewId(null)}>
+                  {dict.catalog.previewClose}
+                </button>
+              </div>
+            </header>
+            <div className="cg-preview-frame">
+              <iframe title={previewMeta.title} src={`${previewHref}#view=FitH`} />
+            </div>
+          </div>
+        ) : null}
+      </dialog>
     </section>
   );
 }

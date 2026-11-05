@@ -295,7 +295,7 @@ html[dir="rtl"] .ex-idea-kicker {
   font-size: 0.82rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--gold) 80%, white);
+  color: color-mix(in srgb, var(--sky) 88%, white);
 }
 
 html[dir="rtl"] .ex-shutter-kicker {
@@ -303,6 +303,8 @@ html[dir="rtl"] .ex-shutter-kicker {
   text-transform: none;
 }
 
+/* Beat .home-page h2 ink override (home.css loads later). */
+.home-page .ex-shutter-copy h2,
 .ex-shutter-copy h2 {
   margin: 0 0 0.85rem;
   font-family: var(--serif);
@@ -312,10 +314,14 @@ html[dir="rtl"] .ex-shutter-kicker {
   color: var(--white);
 }
 
+.home-page .ex-shutter-kicker {
+  color: color-mix(in srgb, var(--sky) 88%, white);
+}
+
 .ex-shutter-copy p:last-child {
   margin: 0;
   line-height: 1.55;
-  color: color-mix(in srgb, var(--white) 82%, transparent);
+  color: color-mix(in srgb, var(--white) 88%, transparent);
   max-width: 34rem;
 }
 

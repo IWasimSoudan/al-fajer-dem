@@ -23,8 +23,12 @@ export const catalog = {
     },
   },
   downloadsTitle: "Download catalogs",
-  downloadsLead: "Company profile, general catalog, and metal works brochure.",
+  downloadsLead: "Preview any PDF in the browser, then download the file you need.",
+  viewCta: "View",
   downloadCta: "Download",
+  previewClose: "Close preview",
+  previewDownload: "Download this file",
+  previewOpenTab: "Open in new tab",
   downloads: {
     profile: {
       title: "Company profile",

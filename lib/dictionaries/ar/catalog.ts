@@ -25,8 +25,12 @@ export const catalog = {
     },
   },
   downloadsTitle: "تحميل الكتالوجات",
-  downloadsLead: "ملف تعريف الشركة، الكتالوج العام، وكتيّب أعمال المعادن.",
+  downloadsLead: "عاين أي PDF في المتصفح، ثم حمّل الملف الذي تحتاجه.",
+  viewCta: "عرض",
   downloadCta: "تحميل",
+  previewClose: "إغلاق المعاينة",
+  previewDownload: "تحميل هذا الملف",
+  previewOpenTab: "فتح في تبويب جديد",
   downloads: {
     profile: {
       title: "ملف الشركة",
