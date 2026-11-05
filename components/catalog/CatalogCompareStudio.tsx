@@ -84,34 +84,116 @@ function ComparePicker({
   );
 }
 
-function ChipBar({
+const BROWSE_LIMIT = 8;
+const SEARCH_LIMIT = 12;
+
+function formatCount(template: string, shown: number, total: number) {
+  return template.replace("{shown}", String(shown)).replace("{total}", String(total));
+}
+
+function ProductPickPanel({
+  lang,
   dict,
   picked,
   onToggle,
+  onClear,
   max,
 }: {
+  lang: Locale;
   dict: Dictionary;
   picked: ProductId[];
   onToggle: (id: ProductId) => void;
+  onClear: () => void;
   max?: number;
 }) {
+  const [query, setQuery] = useState("");
+  const locale = lang === "ar" ? "ar" : "en";
+  const copy = dict.catalog;
+
+  const filtered = useMemo(() => {
+    const needle = query.trim().toLocaleLowerCase(locale);
+    if (!needle) return products;
+    return products.filter((product) => {
+      const item = dict.products.items[product.id];
+      const category = dict.products.categories[product.category].title;
+      return `${item.name} ${item.detail} ${category} ${product.id}`
+        .toLocaleLowerCase(locale)
+        .includes(needle);
+    });
+  }, [dict, locale, query]);
+
+  const limit = query.trim() ? SEARCH_LIMIT : BROWSE_LIMIT;
+  const visible = filtered.slice(0, limit);
+  const selected = products.filter((product) => picked.includes(product.id));
+
   return (
-    <div className="filters cg-compare-filters" role="group" aria-label={dict.catalog.compareTitle}>
-      {products.map((product) => {
-        const on = picked.includes(product.id);
-        const full = Boolean(max && !on && picked.length >= max);
-        return (
-          <button
-            key={product.id}
-            type="button"
-            aria-pressed={on}
-            disabled={full}
-            onClick={() => onToggle(product.id)}
-          >
-            {dict.products.items[product.id].name}
-          </button>
-        );
-      })}
+    <div className="cg-pick">
+      <label className="cg-pick-search">
+        <span>{copy.compareSearch}</span>
+        <input
+          type="search"
+          value={query}
+          placeholder={copy.compareSearchPlaceholder}
+          onChange={(event) => setQuery(event.target.value)}
+        />
+      </label>
+
+      {selected.length > 0 ? (
+        <div className="cg-pick-selected">
+          <div className="cg-pick-selected-head">
+            <p className="cg-pick-label">{copy.compareSelected}</p>
+            <button type="button" className="cg-pick-clear" onClick={onClear}>
+              {copy.compareClear}
+            </button>
+          </div>
+          <div className="filters cg-compare-filters" role="group" aria-label={copy.compareSelected}>
+            {selected.map((product) => (
+              <button
+                key={product.id}
+                type="button"
+                className="is-picked"
+                aria-pressed="true"
+                onClick={() => onToggle(product.id)}
+              >
+                {dict.products.items[product.id].name}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
+      <div className="cg-pick-browse">
+        <div className="cg-pick-browse-head">
+          <p className="cg-pick-label">{copy.compareBrowse}</p>
+          <p className="cg-pick-count">{formatCount(copy.compareShowing, visible.length, filtered.length)}</p>
+        </div>
+
+        {visible.length === 0 ? (
+          <p className="note cg-pick-empty">{copy.compareEmpty}</p>
+        ) : (
+          <div className="filters cg-compare-filters" role="group" aria-label={copy.compareBrowse}>
+            {visible.map((product) => {
+              const on = picked.includes(product.id);
+              const full = Boolean(max && !on && picked.length >= max);
+              return (
+                <button
+                  key={product.id}
+                  type="button"
+                  aria-pressed={on}
+                  disabled={full}
+                  onClick={() => onToggle(product.id)}
+                >
+                  {dict.products.items[product.id].name}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {!query.trim() && filtered.length > BROWSE_LIMIT ? (
+          <p className="cg-pick-hint">{copy.compareMoreHint}</p>
+        ) : null}
+      </div>
     </div>
   );
 }
@@ -145,17 +227,21 @@ function usePicked(initial: ProductId[] = ["p80-foam", "antiwind-class4"]) {
     });
   }
 
+  function clear() {
+    setPicked([]);
+  }
+
   const compared = useMemo(
     () => products.filter((product) => picked.includes(product.id)),
     [picked],
   );
 
-  return { picked, toggle, compared };
+  return { picked, toggle, clear, compared };
 }
 
 /** 1 · Spec matrix */
 function MatrixCompare({ lang, dict }: { lang: Locale; dict: Dictionary }) {
-  const { picked, toggle, compared } = usePicked();
+  const { picked, toggle, clear, compared } = usePicked();
   const wrapRef = useRef<HTMLDivElement>(null);
   const ready = compared.length >= 2;
 
@@ -188,7 +274,13 @@ function MatrixCompare({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
   return (
     <div className="cg-cmp cg-cmp-matrix">
-      <ChipBar dict={dict} picked={picked} onToggle={(id) => toggle(id)} />
+      <ProductPickPanel
+        lang={lang}
+        dict={dict}
+        picked={picked}
+        onToggle={(id) => toggle(id)}
+        onClear={clear}
+      />
       {!ready ? (
         <div className="cg-cmp-need">
           <p className="note">{dict.catalog.compareNeed}</p>
@@ -234,7 +326,7 @@ function MatrixCompare({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
 /** 2 · Face-off columns */
 function ColumnsCompare({ lang, dict }: { lang: Locale; dict: Dictionary }) {
-  const { picked, toggle, compared } = usePicked();
+  const { picked, toggle, clear, compared } = usePicked();
   const gridRef = useRef<HTMLDivElement>(null);
   const slots = Array.from({ length: COMPARE_COLUMN_SLOTS }, (_, index) => compared[index] ?? null);
 
@@ -253,11 +345,13 @@ function ColumnsCompare({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
   return (
     <div className="cg-cmp cg-cmp-columns">
-      <ChipBar
+      <ProductPickPanel
+        lang={lang}
         dict={dict}
         picked={picked}
         max={COMPARE_COLUMN_SLOTS}
         onToggle={(id) => toggle(id, COMPARE_COLUMN_SLOTS)}
+        onClear={clear}
       />
       {compared.length < 2 ? <p className="note">{dict.catalog.compareNeed}</p> : null}
       <div className="cg-col-grid" ref={gridRef}>
