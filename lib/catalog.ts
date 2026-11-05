@@ -105,7 +105,7 @@ export type FamilyId = (typeof families)[number];
 export const products = [
   {
     id: "p80-foam",
-    price: null as number | null,
+    price: 1675,
     category: "rolling" as const,
     family: "rolling" as const,
     dimensions: "width12" as const,
@@ -115,7 +115,7 @@ export const products = [
   },
   {
     id: "antiwind-class4",
-    price: null as number | null,
+    price: 2264,
     category: "rolling" as const,
     family: "rolling" as const,
     dimensions: "width12" as const,
@@ -125,7 +125,7 @@ export const products = [
   },
   {
     id: "sap-switch-thin",
-    price: null as number | null,
+    price: 38,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -135,7 +135,7 @@ export const products = [
   },
   {
     id: "sap-switch-brake",
-    price: null as number | null,
+    price: 36,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -145,7 +145,7 @@ export const products = [
   },
   {
     id: "key-slide-500",
-    price: null as number | null,
+    price: 169,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -155,7 +155,7 @@ export const products = [
   },
   {
     id: "key-slide-800",
-    price: null as number | null,
+    price: 355,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -165,7 +165,7 @@ export const products = [
   },
   {
     id: "key-slide-1600",
-    price: null as number | null,
+    price: 323,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -175,7 +175,7 @@ export const products = [
   },
   {
     id: "key-slide-2500",
-    price: null as number | null,
+    price: 460,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -185,7 +185,7 @@ export const products = [
   },
   {
     id: "key-slide-4000",
-    price: null as number | null,
+    price: 766,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -195,7 +195,7 @@ export const products = [
   },
   {
     id: "key-joint",
-    price: null as number | null,
+    price: 181,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -205,7 +205,7 @@ export const products = [
   },
   {
     id: "key-barrier-4",
-    price: null as number | null,
+    price: 337,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -215,7 +215,7 @@ export const products = [
   },
   {
     id: "key-barrier-6",
-    price: null as number | null,
+    price: 469,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -225,7 +225,7 @@ export const products = [
   },
   {
     id: "key-remote",
-    price: null as number | null,
+    price: 79,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -235,7 +235,7 @@ export const products = [
   },
   {
     id: "key-sensors",
-    price: null as number | null,
+    price: 79,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -245,7 +245,7 @@ export const products = [
   },
   {
     id: "key-key",
-    price: null as number | null,
+    price: 35,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -255,7 +255,7 @@ export const products = [
   },
   {
     id: "key-card-system",
-    price: null as number | null,
+    price: 90,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -265,7 +265,7 @@ export const products = [
   },
   {
     id: "key-number-system",
-    price: null as number | null,
+    price: 40,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -275,7 +275,7 @@ export const products = [
   },
   {
     id: "key-card",
-    price: null as number | null,
+    price: 50,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -285,7 +285,7 @@ export const products = [
   },
   {
     id: "key-gear-wide",
-    price: null as number | null,
+    price: 46,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -295,7 +295,7 @@ export const products = [
   },
   {
     id: "key-gear-std",
-    price: null as number | null,
+    price: 25,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -305,7 +305,7 @@ export const products = [
   },
   {
     id: "key-slide-brake",
-    price: null as number | null,
+    price: 42,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -315,7 +315,7 @@ export const products = [
   },
   {
     id: "acm-chain-600",
-    price: null as number | null,
+    price: 303,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -325,7 +325,7 @@ export const products = [
   },
   {
     id: "acm-key",
-    price: null as number | null,
+    price: 184,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -335,7 +335,7 @@ export const products = [
   },
   {
     id: "china-tubular-330",
-    price: null as number | null,
+    price: 210,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -345,7 +345,7 @@ export const products = [
   },
   {
     id: "china-track-330",
-    price: null as number | null,
+    price: 117,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -355,7 +355,7 @@ export const products = [
   },
   {
     id: "alfajer-chain-600",
-    price: null as number | null,
+    price: 174,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -365,7 +365,7 @@ export const products = [
   },
   {
     id: "alfajer-chain-1000",
-    price: null as number | null,
+    price: 314,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -375,7 +375,7 @@ export const products = [
   },
   {
     id: "alfajer-chain-1500",
-    price: null as number | null,
+    price: 519,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -385,7 +385,7 @@ export const products = [
   },
   {
     id: "china-barrier-6",
-    price: null as number | null,
+    price: 558,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -395,7 +395,7 @@ export const products = [
   },
   {
     id: "norton-roll-motor",
-    price: null as number | null,
+    price: 323,
     category: "rolling" as const,
     family: "motors" as const,
     dimensions: null,
@@ -405,7 +405,7 @@ export const products = [
   },
   {
     id: "norton-panel",
-    price: null as number | null,
+    price: 175,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -415,7 +415,7 @@ export const products = [
   },
   {
     id: "norton-brake",
-    price: null as number | null,
+    price: 55,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -425,7 +425,7 @@ export const products = [
   },
   {
     id: "norton-key-switch",
-    price: null as number | null,
+    price: 28,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -435,7 +435,7 @@ export const products = [
   },
   {
     id: "norton-slide-600",
-    price: null as number | null,
+    price: 188,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -445,7 +445,7 @@ export const products = [
   },
   {
     id: "norton-slide-800",
-    price: null as number | null,
+    price: 388,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -455,7 +455,7 @@ export const products = [
   },
   {
     id: "norton-slide-2000",
-    price: null as number | null,
+    price: 502,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -465,7 +465,7 @@ export const products = [
   },
   {
     id: "norton-joint",
-    price: null as number | null,
+    price: 227,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -475,7 +475,7 @@ export const products = [
   },
   {
     id: "norton-remote",
-    price: null as number | null,
+    price: 86,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -485,7 +485,7 @@ export const products = [
   },
   {
     id: "norton-antenna",
-    price: null as number | null,
+    price: 29,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -495,7 +495,7 @@ export const products = [
   },
   {
     id: "norton-bearing",
-    price: null as number | null,
+    price: 24,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -505,7 +505,7 @@ export const products = [
   },
   {
     id: "hiland-flasher",
-    price: null as number | null,
+    price: 67,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -515,7 +515,7 @@ export const products = [
   },
   {
     id: "hiland-sensor",
-    price: null as number | null,
+    price: 83,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -525,7 +525,7 @@ export const products = [
   },
   {
     id: "hiland-panel-black",
-    price: null as number | null,
+    price: 153,
     category: "rolling" as const,
     family: "motors" as const,
     dimensions: null,
@@ -535,7 +535,7 @@ export const products = [
   },
   {
     id: "hiland-panel-white",
-    price: null as number | null,
+    price: 183,
     category: "rolling" as const,
     family: "motors" as const,
     dimensions: null,
@@ -545,7 +545,7 @@ export const products = [
   },
   {
     id: "hiland-flasher-sm",
-    price: null as number | null,
+    price: 94,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -555,7 +555,7 @@ export const products = [
   },
   {
     id: "hiland-remote",
-    price: null as number | null,
+    price: 44,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,
@@ -565,7 +565,7 @@ export const products = [
   },
   {
     id: "hiland-master-24",
-    price: null as number | null,
+    price: 95,
     category: "gates" as const,
     family: "motors" as const,
     dimensions: null,

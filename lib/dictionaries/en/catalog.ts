@@ -1,7 +1,7 @@
 export const catalog = {
   kicker: "Catalog",
   title: "Technical catalog",
-  lead: "Download the company PDFs, then browse lines from the supplier sheet. Prices are on request.",
+  lead: "Download the company PDFs, then browse lines from the supplier sheet. Sample prices are for the demo cart.",
   stylePicker: "Catalog layout — preview only",
   styleHint: "Three simple modern layouts. Pick one later to lock in.",
   styleWhy: "Why this layout",

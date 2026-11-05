@@ -1,7 +1,7 @@
 export const products = {
   kicker: "Products",
   title: "Product range",
-  lead: "Automation, motors, and shutter lines from our supplier sheet. Prices are on request — ask the workshop for a quotation.",
+  lead: "Automation, motors, and shutter lines from our supplier sheet. Sample prices are for the demo cart — ask the workshop for a quotation.",
   all: "All",
   ask: "Ask about this",
   added: "Added",
@@ -11,7 +11,7 @@ export const products = {
   inStock: "In stock",
   qtyDown: "Decrease quantity",
   qtyUp: "Increase quantity",
-  taxNote: "Price on request",
+  taxNote: "Sample unit price",
   priceOnRequest: "Price on request",
   askQuote: "Request a quotation",
   back: "All products",

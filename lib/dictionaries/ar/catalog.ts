@@ -3,7 +3,7 @@ import type { CatalogTranslations } from "@/lib/dictionaries/en/catalog";
 export const catalog = {
   kicker: "الكتالوج",
   title: "الكتالوج الفني",
-  lead: "حمّل ملفات الشركة، ثم تصفّح خطوط قائمة التوريد. الأسعار عند الطلب.",
+  lead: "حمّل ملفات الشركة، ثم تصفّح خطوط قائمة التوريد. الأسعار للسلة التجريبية.",
   stylePicker: "تخطيط الكتالوج — معاينة فقط",
   styleHint: "ثلاثة تخطيطات بسيطة وحديثة. اختر واحداً لاحقاً لتثبيته.",
   styleWhy: "لماذا هذا التخطيط",

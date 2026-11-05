@@ -3,7 +3,7 @@ import type { ProductsTranslations } from "@/lib/dictionaries/en/products";
 export const products = {
   kicker: "المنتجات",
   title: "نطاق المنتجات",
-  lead: "خطوط الأتمتة والمحركات والأبواب اللفافة من قائمة التوريد. الأسعار عند الطلب — اطلب عرض سعر من الورشة.",
+  lead: "خطوط الأتمتة والمحركات والأبواب اللفافة من قائمة التوريد. الأسعار للسلة التجريبية — اطلب عرض سعر من الورشة.",
   all: "الكل",
   ask: "اسأل عن هذا",
   added: "تمت الإضافة",
@@ -13,7 +13,7 @@ export const products = {
   inStock: "متوفر",
   qtyDown: "إنقاص الكمية",
   qtyUp: "زيادة الكمية",
-  taxNote: "السعر عند الطلب",
+  taxNote: "سعر وحدة للعرض",
   priceOnRequest: "السعر عند الطلب",
   askQuote: "اطلب عرض سعر",
   back: "كل المنتجات",
