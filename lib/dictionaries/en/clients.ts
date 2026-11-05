@@ -3,23 +3,20 @@ export const clients = {
   title: "Companies that keep the workshop on their lists",
   lead: "Placeholder marks stand in for client logos. Named references are available from the team on request.",
   stylePicker: "Clients layout — preview only",
-  styleHint: "Scroll to feel each motion. Pick one later to lock in.",
+  styleHint: "Try each layout. Pick one later to lock in.",
   styleWhy: "Why this layout",
+  prev: "Previous client",
+  next: "Next client",
   styles: {
-    roster: {
-      label: "1 · Roster cascade",
-      blurb: "Oversized index numbers scrub in; marks slide from alternate sides.",
-      idea: "A living client list — each partner earns a beat as you roll down the roster.",
+    mosaic: {
+      label: "1 · Mosaic bloom",
+      blurb: "Tiles bloom into a living grid as you scroll.",
+      idea: "A wall of partners that builds itself — staggered bloom instead of a list.",
     },
-    spotlight: {
-      label: "2 · Spotlight panels",
-      blurb: "Full-bleed chapters wipe open on each mark, with rising copy.",
-      idea: "One client at a time, cinematic — useful when logos deserve the stage.",
-    },
-    rail: {
-      label: "3 · Partner rail",
-      blurb: "Pin the stage and scrub sideways through all five marks.",
-      idea: "Strong motion piece: vertical scroll drives a horizontal partner track.",
+    deck: {
+      label: "2 · Partner deck",
+      blurb: "Swap cards left and right with the controls.",
+      idea: "User-driven carousel — browse marks at your own pace.",
     },
   },
   items: {

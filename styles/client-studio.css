@@ -1,0 +1,411 @@
+/* Clients page — mosaic bloom + button-driven partner deck */
+
+.cl-studio .page-body {
+  padding-top: 2.5vh;
+}
+
+.cl-picker {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 960px;
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--white) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.cl-picker-title {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+html[dir="rtl"] .cl-picker-title {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.cl-picker-hint {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--blue) 70%, transparent);
+}
+
+.cl-picker-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.cl-picker-item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  background: color-mix(in srgb, var(--grey) 28%, white);
+  border: 1px solid transparent;
+}
+
+.cl-picker-item:hover {
+  border-color: color-mix(in srgb, var(--royal) 45%, transparent);
+}
+
+.cl-picker-item.is-active {
+  background: color-mix(in srgb, var(--royal) 12%, white);
+  border-color: color-mix(in srgb, var(--royal) 50%, transparent);
+}
+
+.cl-picker-item strong {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.cl-picker-item span {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  opacity: 0.75;
+}
+
+.cl-idea {
+  max-width: 720px;
+  margin: 0 0 2.5rem;
+  padding: 0.9rem 1rem;
+  border-inline-start: 3px solid var(--royal);
+  background: color-mix(in srgb, var(--sky) 55%, white);
+}
+
+.cl-idea-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
+
+html[dir="rtl"] .cl-idea-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.cl-idea p {
+  margin: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.cl-idea strong {
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.cl-idea span {
+  color: color-mix(in srgb, var(--blue) 75%, white);
+  line-height: 1.5;
+}
+
+/* 1 · Mosaic bloom */
+.cl-mosaic {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1rem;
+  padding-bottom: 4vh;
+}
+
+.cl-mosaic-tile {
+  display: grid;
+  gap: 0.65rem;
+  grid-column: span 2;
+}
+
+.cl-mosaic-tile.is-span-1 {
+  grid-column: span 3;
+}
+
+.cl-mosaic-tile.is-span-2 {
+  grid-column: span 3;
+}
+
+.cl-mosaic-tile.is-span-3 {
+  grid-column: span 2;
+}
+
+.cl-mosaic-tile:nth-child(4) {
+  grid-column: span 4;
+}
+
+.cl-mosaic-tile:nth-child(5) {
+  grid-column: span 2;
+}
+
+.cl-mosaic-media {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  min-height: 180px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--ice);
+}
+
+.cl-mosaic-tile:nth-child(1) .cl-mosaic-media,
+.cl-mosaic-tile:nth-child(4) .cl-mosaic-media {
+  aspect-ratio: 16 / 10;
+}
+
+.cl-mosaic-media img {
+  object-fit: cover;
+}
+
+.cl-mosaic-copy {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.cl-mosaic-copy span {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--royal);
+  letter-spacing: 0.04em;
+}
+
+/* 2 · Partner deck (button-driven L/R swap) */
+.cl-deck {
+  position: relative;
+  max-width: 920px;
+  margin: 0 auto 3rem;
+  padding: 0.25rem 0 1rem;
+}
+
+.cl-deck-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.cl-deck-kicker {
+  margin: 0 0 0.25rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
+
+html[dir="rtl"] .cl-deck-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.cl-deck-active {
+  margin: 0;
+  font-size: clamp(1.55rem, 3.2vw, 2.35rem);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+.cl-deck-count {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.cl-deck-shell {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cl-deck-stage {
+  position: relative;
+  height: min(72vh, 680px);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--ice);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 22px 50px rgba(11, 40, 68, 0.14);
+}
+
+.cl-deck-card {
+  position: absolute;
+  inset: 0;
+  background: var(--white);
+  will-change: transform, opacity;
+}
+
+.cl-deck-media {
+  position: absolute;
+  inset: 0 0 18% 0;
+}
+
+.cl-deck-media img {
+  object-fit: cover;
+}
+
+.cl-deck-copy {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1.1rem 1.25rem 1.35rem;
+  display: grid;
+  gap: 0.25rem;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--navy) 8%, white) 28%, var(--white));
+}
+
+.cl-deck-copy span {
+  color: var(--royal);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.cl-deck-copy h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  color: var(--navy);
+}
+
+.cl-deck-nav {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--royal) 30%, transparent);
+  background: var(--white);
+  color: var(--navy);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(11, 40, 68, 0.1);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.cl-deck-nav:hover {
+  background: var(--royal);
+  border-color: var(--royal);
+  color: var(--white);
+}
+
+.cl-deck-nav svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+html[dir="rtl"] .cl-deck-nav svg {
+  transform: scaleX(-1);
+}
+
+.cl-deck-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 1.1rem;
+}
+
+.cl-deck-dots button {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--royal) 28%, white);
+  cursor: pointer;
+}
+
+.cl-deck-dots button.is-active {
+  width: 1.35rem;
+  background: var(--royal);
+}
+
+@media (max-width: 900px) {
+  .cl-picker-list {
+    grid-template-columns: 1fr;
+  }
+
+  .cl-mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cl-mosaic-tile,
+  .cl-mosaic-tile.is-span-1,
+  .cl-mosaic-tile.is-span-2,
+  .cl-mosaic-tile.is-span-3,
+  .cl-mosaic-tile:nth-child(4),
+  .cl-mosaic-tile:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .cl-mosaic-tile:nth-child(1) {
+    grid-column: span 2;
+  }
+
+  .cl-deck-shell {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .cl-deck-nav {
+    justify-self: center;
+  }
+
+  .cl-deck-shell {
+    grid-template-areas:
+      "stage"
+      "navs";
+  }
+
+  .cl-deck-stage {
+    grid-area: stage;
+    height: min(64vh, 560px);
+  }
+
+  .cl-deck-nav.is-prev,
+  .cl-deck-nav.is-next {
+    grid-area: navs;
+  }
+
+  .cl-deck-shell {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cl-deck-stage {
+    width: 100%;
+    order: 1;
+    height: min(64vh, 560px);
+  }
+
+  .cl-deck-nav {
+    order: 2;
+  }
+
+  .cl-deck-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cl-mosaic-tile,
+  .cl-mosaic-media,
+  .cl-mosaic-copy,
+  .cl-deck-card {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+}
