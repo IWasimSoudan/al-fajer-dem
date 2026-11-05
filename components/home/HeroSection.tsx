@@ -4,6 +4,7 @@ import { asset } from "@/lib/asset";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import { HERO_STYLES, resolveHeroStyle, type HeroStyleId } from "@/lib/heroStyle";
+import { ArrowLeft, ChevronDown, Package, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -79,18 +80,21 @@ function HeroActions({
   return (
     <div className="hero-actions">
       <Link className="hero-cta hero-cta-primary" href={`/${lang}/products`}>
+        <Package size={16} strokeWidth={1.75} aria-hidden="true" />
         <span>{home.ctaProducts}</span>
         <span className="hero-cta-arrow" aria-hidden="true">
-          ←
+          <ArrowLeft size={16} strokeWidth={1.75} />
         </span>
       </Link>
       <Link className="hero-cta hero-cta-secondary" href={`/${lang}/contact`}>
+        <Phone size={16} strokeWidth={1.75} aria-hidden="true" />
         <span>{home.ctaContact}</span>
         <span className="hero-cta-arrow" aria-hidden="true">
-          ←
+          <ArrowLeft size={16} strokeWidth={1.75} />
         </span>
       </Link>
       <a className="scroll-cue" href="#welcome" onClick={onScrollDown}>
+        <ChevronDown size={16} strokeWidth={1.75} aria-hidden="true" />
         {stage.scroll}
       </a>
     </div>

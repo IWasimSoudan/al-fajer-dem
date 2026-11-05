@@ -4,6 +4,7 @@ import { asset } from "@/lib/asset";
 import type { HomeV2Translations } from "@/lib/dictionaries/en/homeV2";
 import { homeV2HeroSlides } from "@/lib/homeV2Media";
 import type { Locale } from "@/lib/i18n";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -78,7 +79,7 @@ export function HeroSlider({
           aria-label={copy.prev}
           onClick={() => setIndex((current) => (current - 1 + copy.slides.length) % copy.slides.length)}
         >
-          ‹
+          <ChevronLeft size={20} strokeWidth={1.75} aria-hidden="true" />
         </button>
         <button
           type="button"
@@ -86,7 +87,7 @@ export function HeroSlider({
           aria-label={copy.next}
           onClick={() => setIndex((current) => (current + 1) % copy.slides.length)}
         >
-          ›
+          <ChevronRight size={20} strokeWidth={1.75} aria-hidden="true" />
         </button>
       </div>
 

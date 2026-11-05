@@ -1,16 +1,7 @@
+import { ArrowRight } from "lucide-react";
+
 export function IconArrow() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d="M5 12h12m0 0l-4-4m4 4l-4 4"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
+  return <ArrowRight size={20} strokeWidth={1.6} aria-hidden="true" />;
 }
 
 export function IconSteel() {

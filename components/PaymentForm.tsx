@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart, type PayMethod } from "@/components/CartProvider";
-import { NextIcon, WalletIcon } from "@/components/checkout/CheckoutIcons";
+import { CartIcon, DetailsIcon, NextIcon, WalletIcon } from "@/components/checkout/CheckoutIcons";
 import { useCheckoutStyle } from "@/components/checkout/CheckoutFlowShell";
 import { Summary } from "@/components/Summary";
 import { checkoutStyleHref } from "@/lib/checkoutStyles";
@@ -27,6 +27,9 @@ export function PaymentForm({ lang, dict }: { lang: Locale; dict: Dictionary }) 
   if (items.length === 0) {
     return (
       <div className="ck-empty">
+        <span className="ck-empty-icon">
+          <CartIcon />
+        </span>
         <p>{dict.cart.empty}</p>
         <Link className="btn" href={checkoutStyleHref(lang, "cart", style)}>
           {dict.steps.cart}
@@ -38,6 +41,9 @@ export function PaymentForm({ lang, dict }: { lang: Locale; dict: Dictionary }) 
   if (!draft.name) {
     return (
       <div className="ck-empty">
+        <span className="ck-empty-icon">
+          <DetailsIcon />
+        </span>
         <p>{dict.checkout.missing}</p>
         <Link className="btn" href={checkoutStyleHref(lang, "checkout", style)}>
           {dict.steps.details}

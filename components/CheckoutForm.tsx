@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart, type Draft } from "@/components/CartProvider";
-import { DetailsIcon, NextIcon } from "@/components/checkout/CheckoutIcons";
+import { CartIcon, DetailsIcon, NextIcon } from "@/components/checkout/CheckoutIcons";
 import { useCheckoutStyle } from "@/components/checkout/CheckoutFlowShell";
 import { Summary } from "@/components/Summary";
 import { checkoutStyleHref } from "@/lib/checkoutStyles";
@@ -23,6 +23,9 @@ export function CheckoutForm({ lang, dict }: { lang: Locale; dict: Dictionary })
   if (items.length === 0) {
     return (
       <div className="ck-empty">
+        <span className="ck-empty-icon">
+          <CartIcon />
+        </span>
         <p>{dict.cart.empty}</p>
         <Link className="btn" href={`/${lang}/products`}>
           {dict.cart.emptyCta}

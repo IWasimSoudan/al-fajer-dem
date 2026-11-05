@@ -6,6 +6,7 @@ import { productById, products, type ProductId } from "@/lib/catalog";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import { productPriceLabel } from "@/lib/money";
+import { ChevronLeft, ChevronRight, Mail, Minus, Plus, ShoppingCart, Trash2, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
@@ -91,35 +92,40 @@ export function ProductDetail({ lang, dict, id }: { lang: Locale; dict: Dictiona
             {inCart ? <p className="ps-in-cart">{dict.products.inCart}: {cartQty}</p> : null}
             <div className="pdp-buy">
               {product.price == null ? (
-                <Link className="btn" href={`/${lang}/contact`}>
+                <Link className="btn ui-ico-btn" href={`/${lang}/contact`}>
+                  <Mail size={16} strokeWidth={1.75} aria-hidden="true" />
                   {dict.products.askQuote}
                 </Link>
               ) : inCart ? (
                 <>
                   <div className="qty" aria-label={dict.cart.qty}>
                     <button type="button" onClick={() => (cartQty <= 1 ? remove(product.id) : setQty(product.id, cartQty - 1))} aria-label={dict.products.qtyDown}>
-                      −
+                      <Minus size={14} strokeWidth={2} aria-hidden="true" />
                     </button>
                     <span>{cartQty}</span>
                     <button type="button" onClick={() => setQty(product.id, cartQty + 1)} aria-label={dict.products.qtyUp}>
-                      +
+                      <Plus size={14} strokeWidth={2} aria-hidden="true" />
                     </button>
                   </div>
-                  <button className="btn ghost" type="button" onClick={() => remove(product.id)}>
+                  <button className="btn ghost ui-ico-btn" type="button" onClick={() => remove(product.id)}>
+                    <Trash2 size={16} strokeWidth={1.75} aria-hidden="true" />
                     {dict.products.remove}
                   </button>
                 </>
               ) : (
-                <button className="btn" type="button" onClick={() => add(product.id)}>
+                <button className="btn ui-ico-btn" type="button" onClick={() => add(product.id)}>
+                  <ShoppingCart size={16} strokeWidth={1.75} aria-hidden="true" />
                   {dict.products.add}
                 </button>
               )}
               {product.price != null ? (
-                <Link className="btn ghost" href={`/${lang}/cart`}>
+                <Link className="btn ghost ui-ico-btn" href={`/${lang}/cart`}>
+                  <ShoppingCart size={16} strokeWidth={1.75} aria-hidden="true" />
                   {dict.nav.cart}
                 </Link>
               ) : null}
-              <Link className="btn ghost" href={`/${lang}/products`}>
+              <Link className="btn ghost ui-ico-btn" href={`/${lang}/products`}>
+                <ChevronLeft size={16} strokeWidth={1.75} aria-hidden="true" className="flip-rtl" />
                 {dict.products.back}
               </Link>
             </div>
@@ -160,7 +166,7 @@ export function ProductDetail({ lang, dict, id }: { lang: Locale; dict: Dictiona
             <Image src={asset(photo)} alt={copy.name} fill sizes="92vw" className="photo" />
           </div>
           <button type="button" className="photo-view-close" aria-label={dict.products.photoClose} onClick={closeView}>
-            ×
+            <X size={20} strokeWidth={1.75} aria-hidden="true" />
           </button>
           {many ? (
             <>
@@ -170,9 +176,7 @@ export function ProductDetail({ lang, dict, id }: { lang: Locale; dict: Dictiona
                 aria-label={dict.products.photoPrev}
                 onClick={() => setIndex((current) => (current - 1 + photos.length) % photos.length)}
               >
-                <svg className="chev-start" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <ChevronLeft size={22} strokeWidth={1.6} aria-hidden="true" className="chev-start" />
               </button>
               <button
                 type="button"
@@ -180,9 +184,7 @@ export function ProductDetail({ lang, dict, id }: { lang: Locale; dict: Dictiona
                 aria-label={dict.products.photoNext}
                 onClick={() => setIndex((current) => (current + 1) % photos.length)}
               >
-                <svg className="chev-end" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <ChevronRight size={22} strokeWidth={1.6} aria-hidden="true" className="chev-end" />
               </button>
             </>
           ) : null}

@@ -1,6 +1,7 @@
 "use client";
 
 import type { Dictionary } from "@/lib/dictionaries/en";
+import { Send } from "lucide-react";
 import { useState } from "react";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,7 +39,8 @@ export function ContactForm({ dict, className }: { dict: Dictionary; className?:
         <textarea name="message" required />
       </label>
       {error ? <p className="error">{dict.contact.missing}</p> : <p>{dict.contact.hint}</p>}
-      <button className="btn" type="submit">
+      <button className="btn ui-ico-btn" type="submit">
+        <Send size={16} strokeWidth={1.75} aria-hidden="true" />
         {dict.contact.send}
       </button>
     </form>

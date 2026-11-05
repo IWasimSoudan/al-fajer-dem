@@ -14,6 +14,9 @@ export function CompleteView({ lang, dict }: { lang: Locale; dict: Dictionary })
   if (!reference) {
     return (
       <div className="ck-empty">
+        <span className="ck-empty-icon">
+          <PackageIcon />
+        </span>
         <p>{dict.complete.empty}</p>
         <Link className="btn" href={`/${lang}/products`}>
           {dict.complete.again}

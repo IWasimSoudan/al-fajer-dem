@@ -7,6 +7,7 @@ import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -268,9 +269,7 @@ function DeckLayout({ dict }: { dict: Dictionary }) {
 
       <div className="cl-deck-shell">
         <button type="button" className="cl-deck-nav is-prev" aria-label={dict.clients.prev} onClick={() => go(-1)}>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <ChevronLeft size={22} strokeWidth={1.8} aria-hidden="true" />
         </button>
 
         <div className="cl-deck-stage" ref={stageRef}>
@@ -294,9 +293,7 @@ function DeckLayout({ dict }: { dict: Dictionary }) {
         </div>
 
         <button type="button" className="cl-deck-nav is-next" aria-label={dict.clients.next} onClick={() => go(1)}>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M10 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <ChevronRight size={22} strokeWidth={1.8} aria-hidden="true" />
         </button>
       </div>
 

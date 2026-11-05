@@ -14,6 +14,7 @@ import { resolveCompareStyle, type CompareStyleId } from "@/lib/compareStyles";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import { productPriceLabel } from "@/lib/money";
+import { Download, ExternalLink, Eye, Package, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -55,36 +56,6 @@ function StylePicker({
         })}
       </div>
     </aside>
-  );
-}
-
-function DownloadIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="cg-dl-icon">
-      <path
-        d="M12 3v10m0 0l-3.5-3.5M12 13l3.5-3.5M5 18h14"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function ViewIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="cg-dl-icon">
-      <path
-        d="M2.5 12s3.5-6.5 9.5-6.5S21.5 12 21.5 12s-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-      <circle cx="12" cy="12" r="2.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
   );
 }
 
@@ -138,11 +109,11 @@ function Downloads({
                     className="cg-download-action cg-download-view"
                     onClick={() => setPreviewId(file.id)}
                   >
-                    <ViewIcon />
+                    <Eye size={16} strokeWidth={1.75} aria-hidden="true" className="cg-dl-icon" />
                     {dict.catalog.viewCta}
                   </button>
                   <a className="cg-download-action" href={href} download={file.fileName}>
-                    <DownloadIcon />
+                    <Download size={16} strokeWidth={1.75} aria-hidden="true" className="cg-dl-icon" />
                     {dict.catalog.downloadCta}
                   </a>
                 </span>
@@ -169,13 +140,16 @@ function Downloads({
                 <h3 id={titleId}>{previewMeta.title}</h3>
               </div>
               <div className="cg-preview-tools">
-                <a className="btn ghost" href={previewHref} target="_blank" rel="noreferrer">
+                <a className="btn ghost ui-ico-btn" href={previewHref} target="_blank" rel="noreferrer">
+                  <ExternalLink size={16} strokeWidth={1.75} aria-hidden="true" />
                   {dict.catalog.previewOpenTab}
                 </a>
-                <a className="btn" href={previewHref} download={preview.fileName}>
+                <a className="btn ui-ico-btn" href={previewHref} download={preview.fileName}>
+                  <Download size={16} strokeWidth={1.75} aria-hidden="true" />
                   {dict.catalog.previewDownload}
                 </a>
-                <button type="button" className="btn ghost" onClick={() => setPreviewId(null)}>
+                <button type="button" className="btn ghost ui-ico-btn" onClick={() => setPreviewId(null)}>
+                  <X size={16} strokeWidth={1.75} aria-hidden="true" />
                   {dict.catalog.previewClose}
                 </button>
               </div>
@@ -216,7 +190,10 @@ function SampleGrid({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         })}
       </div>
       <p className="cg-samples-more">
-        <Link href={`/${lang}/products`}>{dict.catalog.browseProducts}</Link>
+        <Link className="ui-ico" href={`/${lang}/products`}>
+          <Package size={16} strokeWidth={1.75} aria-hidden="true" />
+          {dict.catalog.browseProducts}
+        </Link>
       </p>
     </section>
   );

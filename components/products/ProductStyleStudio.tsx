@@ -12,6 +12,19 @@ import {
   resolveProductStyle,
   type ProductStyleId,
 } from "@/lib/productStyles";
+import {
+  ChevronLeft,
+  ChevronRight,
+  LayoutGrid,
+  LayoutList,
+  Mail,
+  Minus,
+  Package,
+  Plus,
+  Search,
+  ShoppingCart,
+  Trash2,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -181,7 +194,10 @@ function Toolbar({
   return (
     <div className="ps-toolbar">
       <label className="ps-filter">
-        <span>{dict.products.search}</span>
+        <span className="ui-ico">
+          <Search size={14} strokeWidth={1.75} aria-hidden="true" />
+          {dict.products.search}
+        </span>
         <input
           type="search"
           value={query}
@@ -193,9 +209,11 @@ function Toolbar({
       {view && onView ? (
         <div className="ps-view-toggle" role="group" aria-label={dict.products.samples}>
           <button type="button" aria-pressed={view === "list"} onClick={() => onView("list")}>
+            <LayoutList size={14} strokeWidth={1.75} aria-hidden="true" />
             {dict.products.viewList}
           </button>
           <button type="button" aria-pressed={view === "grid"} onClick={() => onView("grid")}>
+            <LayoutGrid size={14} strokeWidth={1.75} aria-hidden="true" />
             {dict.products.viewGrid}
           </button>
         </div>
@@ -229,11 +247,11 @@ function QtyControl({
   return (
     <div className="ps-qty">
       <button type="button" aria-label={decreaseLabel} disabled={qty <= min} onClick={() => onChange(Math.max(min, qty - 1))}>
-        −
+        <Minus size={14} strokeWidth={2} aria-hidden="true" />
       </button>
       <span aria-live="polite">{qty}</span>
       <button type="button" aria-label={increaseLabel} onClick={() => onChange(qty + 1)}>
-        +
+        <Plus size={14} strokeWidth={2} aria-hidden="true" />
       </button>
     </div>
   );
@@ -272,7 +290,8 @@ function BuyActions({
       {inCart ? <p className="ps-in-cart">{dict.products.inCart}: {cartQty}</p> : null}
       <div className="ps-buy-row">
         {quoteOnly ? (
-          <Link className="btn" href={`/${lang}/contact`}>
+          <Link className="btn ui-ico-btn" href={`/${lang}/contact`}>
+            <Mail size={16} strokeWidth={1.75} aria-hidden="true" />
             {dict.products.askQuote}
           </Link>
         ) : (
@@ -292,11 +311,13 @@ function BuyActions({
               increaseLabel={dict.products.qtyUp}
             />
             {inCart ? (
-              <button className="btn ghost ps-remove" type="button" onClick={onRemove}>
+              <button className="btn ghost ps-remove ui-ico-btn" type="button" onClick={onRemove}>
+                <Trash2 size={16} strokeWidth={1.75} aria-hidden="true" />
                 {dict.products.remove}
               </button>
             ) : (
-              <button className="btn" type="button" onClick={onAdd}>
+              <button className="btn ui-ico-btn" type="button" onClick={onAdd}>
+                <ShoppingCart size={16} strokeWidth={1.75} aria-hidden="true" />
                 {dict.products.add}
               </button>
             )}
@@ -365,14 +386,10 @@ function ProductMedia({
       {many ? (
         <>
           <button type="button" className="ps-media-step is-prev" aria-label={dict.products.photoPrev} onClick={(event) => step(-1, event)}>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <ChevronLeft size={18} strokeWidth={1.7} aria-hidden="true" />
           </button>
           <button type="button" className="ps-media-step is-next" aria-label={dict.products.photoNext} onClick={(event) => step(1, event)}>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <ChevronRight size={18} strokeWidth={1.7} aria-hidden="true" />
           </button>
           <div className="ps-media-dots" aria-hidden="true">
             {photos.map((src, dot) => (
@@ -648,7 +665,8 @@ function Pagination({
         <span className="ps-pager-of">{pageOf}</span>
       </p>
       <div className="ps-pager-controls">
-        <button type="button" className="ps-pager-nav" disabled={page <= 1} onClick={() => onPage(page - 1)}>
+        <button type="button" className="ps-pager-nav ui-ico-btn" disabled={page <= 1} onClick={() => onPage(page - 1)}>
+          <ChevronLeft size={16} strokeWidth={1.75} aria-hidden="true" className="flip-rtl" />
           {dict.products.pagePrev}
         </button>
         <div className="ps-pager-pages" role="list">
@@ -665,8 +683,9 @@ function Pagination({
             </button>
           ))}
         </div>
-        <button type="button" className="ps-pager-nav" disabled={page >= pages} onClick={() => onPage(page + 1)}>
+        <button type="button" className="ps-pager-nav ui-ico-btn" disabled={page >= pages} onClick={() => onPage(page + 1)}>
           {dict.products.pageNext}
+          <ChevronRight size={16} strokeWidth={1.75} aria-hidden="true" className="flip-rtl" />
         </button>
       </div>
     </nav>
@@ -710,7 +729,8 @@ function StyleSheet({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRem
               <span className="ps-price">{productPriceLabel(lang, product.price, dict.products.priceOnRequest)}</span>
               <span className="ps-sheet-actions">
                 {product.price == null ? (
-                  <Link className="btn" href={`/${lang}/contact`}>
+                  <Link className="btn ui-ico-btn" href={`/${lang}/contact`}>
+                    <Mail size={16} strokeWidth={1.75} aria-hidden="true" />
                     {dict.products.askQuote}
                   </Link>
                 ) : (
@@ -730,11 +750,13 @@ function StyleSheet({ lang, dict, items, qtyMap, setQty, cartQtyOf, onAdd, onRem
                       increaseLabel={dict.products.qtyUp}
                     />
                     {inCart ? (
-                      <button className="btn ghost ps-remove" type="button" onClick={() => onRemove(product.id)}>
+                      <button className="btn ghost ps-remove ui-ico-btn" type="button" onClick={() => onRemove(product.id)}>
+                        <Trash2 size={16} strokeWidth={1.75} aria-hidden="true" />
                         {dict.products.remove}
                       </button>
                     ) : (
-                      <button className="btn" type="button" onClick={() => onAdd(product.id, qty)}>
+                      <button className="btn ui-ico-btn" type="button" onClick={() => onAdd(product.id, qty)}>
+                        <ShoppingCart size={16} strokeWidth={1.75} aria-hidden="true" />
                         {dict.products.add}
                       </button>
                     )}
@@ -878,8 +900,15 @@ export function ProductStyleStudio({ lang, dict }: { lang: Locale; dict: Diction
           />
 
           {items.length === 0 ? (
-            <p className="prose">
-              {dict.products.empty} <Link href={`/${lang}/contact`}>{dict.products.ask}</Link>
+            <p className="prose ui-ico">
+              <Package size={18} strokeWidth={1.75} aria-hidden="true" />
+              <span>
+                {dict.products.empty}{" "}
+                <Link className="ui-ico" href={`/${lang}/contact`}>
+                  <Mail size={14} strokeWidth={1.75} aria-hidden="true" />
+                  {dict.products.ask}
+                </Link>
+              </span>
             </p>
           ) : null}
 

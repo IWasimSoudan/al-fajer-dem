@@ -1,0 +1,147 @@
+/* Shared Lucide icon + label patterns */
+
+.ui-ico {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ui-ico svg {
+  flex-shrink: 0;
+  width: 1.05em;
+  height: 1.05em;
+}
+
+.ui-ico-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.ui-ico-btn svg {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.site-utility-links a,
+.site-nav a,
+.site-drawer nav a,
+.foot-b-nav a,
+.foot-b-cta,
+.foot-b-facts span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.site-nav a svg,
+.site-drawer nav a svg,
+.site-utility-links a svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  opacity: 0.9;
+}
+
+.site-cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.site-burger svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.foot-b-facts span svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  opacity: 0.85;
+}
+
+.foot-b-cta svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+html[dir="rtl"] .ui-ico-btn svg.flip-rtl,
+html[dir="rtl"] .ck-next svg,
+html[dir="rtl"] .btn svg.flip-rtl {
+  transform: scaleX(-1);
+}
+
+.ps-view-toggle button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.ps-qty button {
+  display: inline-grid;
+  place-items: center;
+}
+
+.ps-qty button svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.qty button {
+  display: inline-grid;
+  place-items: center;
+}
+
+.qty button svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.cn-visit-facts span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cn-visit-facts span svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  opacity: 0.9;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.hero-cta svg {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+}
+
+.hero-cta-arrow {
+  display: inline-flex;
+  align-items: center;
+}
+
+.scroll-cue {
+  gap: 0.35rem;
+}
+
+.scroll-cue svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.history-chapter-controls button {
+  display: inline-grid;
+  place-items: center;
+}
+
+.history-chapter-controls button svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}

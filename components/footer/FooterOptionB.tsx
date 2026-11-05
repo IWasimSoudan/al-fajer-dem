@@ -1,6 +1,8 @@
+import { FOOTER_FACT_ICONS, NAV_ICONS } from "@/components/icons/navIcons";
 import { SOCIAL_PATHS, SocialIcons } from "@/components/footer/SocialIcons";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
+import { Send } from "lucide-react";
 import Link from "next/link";
 
 function telHref(value: string) {
@@ -12,16 +14,16 @@ export function FooterOptionB({ lang, dict }: { lang: Locale; dict: Dictionary }
   const year = new Date().getFullYear();
 
   const explore = [
-    { href: `/${lang}/about`, label: nav.about },
-    { href: `/${lang}/products`, label: nav.products },
-    { href: `/${lang}/projects`, label: nav.projects },
-    { href: `/${lang}/expertise`, label: nav.expertise },
-    { href: `/${lang}/catalog`, label: nav.catalog },
-    { href: `/${lang}/brands`, label: nav.brands },
-    { href: `/${lang}/certificates`, label: nav.certificates },
-    { href: `/${lang}/clients`, label: nav.clients },
-    { href: `/${lang}/gallery`, label: nav.gallery },
-    { href: `/${lang}/contact`, label: nav.contact },
+    { href: `/${lang}/about`, label: nav.about, key: "about" as const },
+    { href: `/${lang}/products`, label: nav.products, key: "products" as const },
+    { href: `/${lang}/projects`, label: nav.projects, key: "projects" as const },
+    { href: `/${lang}/expertise`, label: nav.expertise, key: "expertise" as const },
+    { href: `/${lang}/catalog`, label: nav.catalog, key: "catalog" as const },
+    { href: `/${lang}/brands`, label: nav.brands, key: "brands" as const },
+    { href: `/${lang}/certificates`, label: nav.certificates, key: "certificates" as const },
+    { href: `/${lang}/clients`, label: nav.clients, key: "clients" as const },
+    { href: `/${lang}/gallery`, label: nav.gallery, key: "gallery" as const },
+    { href: `/${lang}/contact`, label: nav.contact, key: "contact" as const },
   ];
 
   return (
@@ -34,6 +36,7 @@ export function FooterOptionB({ lang, dict }: { lang: Locale; dict: Dictionary }
             <p className="foot-b-closing">{footer.blurb}</p>
             <div className="foot-b-actions">
               <Link className="foot-b-cta" href={`/${lang}/contact`}>
+                <Send size={16} strokeWidth={1.75} aria-hidden="true" />
                 {footer.contactCta}
               </Link>
               <SocialIcons
@@ -55,25 +58,37 @@ export function FooterOptionB({ lang, dict }: { lang: Locale; dict: Dictionary }
               </h2>
               <ul className="foot-b-facts">
                 <li>
-                  <span>{footer.talk}</span>
+                  <span>
+                    <FOOTER_FACT_ICONS.email size={14} strokeWidth={1.75} aria-hidden="true" />
+                    {footer.talk}
+                  </span>
                   <strong>
                     <a href={`mailto:${footer.email}`}>{footer.email}</a>
                   </strong>
                 </li>
                 <li>
-                  <span>{footer.phoneLabel}</span>
+                  <span>
+                    <FOOTER_FACT_ICONS.phone size={14} strokeWidth={1.75} aria-hidden="true" />
+                    {footer.phoneLabel}
+                  </span>
                   <strong>
                     <a href={telHref(footer.phone)}>{footer.phone}</a>
                   </strong>
                 </li>
                 <li>
-                  <span>{footer.mobileLabel}</span>
+                  <span>
+                    <FOOTER_FACT_ICONS.mobile size={14} strokeWidth={1.75} aria-hidden="true" />
+                    {footer.mobileLabel}
+                  </span>
                   <strong>
                     <a href={telHref(footer.mobile)}>{footer.mobile}</a>
                   </strong>
                 </li>
                 <li>
-                  <span>{footer.websiteLabel}</span>
+                  <span>
+                    <FOOTER_FACT_ICONS.website size={14} strokeWidth={1.75} aria-hidden="true" />
+                    {footer.websiteLabel}
+                  </span>
                   <strong>
                     <a href={footer.websiteHref} target="_blank" rel="noreferrer">
                       {footer.website}
@@ -89,7 +104,10 @@ export function FooterOptionB({ lang, dict }: { lang: Locale; dict: Dictionary }
               </h2>
               <ul className="foot-b-facts">
                 <li>
-                  <span>{footer.visit}</span>
+                  <span>
+                    <FOOTER_FACT_ICONS.visit size={14} strokeWidth={1.75} aria-hidden="true" />
+                    {footer.visit}
+                  </span>
                   <strong>
                     {footer.address}
                     <br />
@@ -97,11 +115,17 @@ export function FooterOptionB({ lang, dict }: { lang: Locale; dict: Dictionary }
                   </strong>
                 </li>
                 <li>
-                  <span>{footer.hoursLabel}</span>
+                  <span>
+                    <FOOTER_FACT_ICONS.hours size={14} strokeWidth={1.75} aria-hidden="true" />
+                    {footer.hoursLabel}
+                  </span>
                   <strong>{footer.hours}</strong>
                 </li>
                 <li>
-                  <span>{footer.faxLabel}</span>
+                  <span>
+                    <FOOTER_FACT_ICONS.fax size={14} strokeWidth={1.75} aria-hidden="true" />
+                    {footer.faxLabel}
+                  </span>
                   <strong>{footer.fax}</strong>
                 </li>
               </ul>
@@ -112,11 +136,15 @@ export function FooterOptionB({ lang, dict }: { lang: Locale; dict: Dictionary }
                 {footer.explore}
               </h2>
               <nav className="foot-b-nav" aria-label={nav.primary}>
-                {explore.map((item) => (
-                  <Link key={item.href} href={item.href}>
-                    {item.label}
-                  </Link>
-                ))}
+                {explore.map((item) => {
+                  const Icon = NAV_ICONS[item.key];
+                  return (
+                    <Link key={item.href} href={item.href}>
+                      <Icon size={14} strokeWidth={1.75} aria-hidden="true" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </nav>
             </section>
           </div>

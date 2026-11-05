@@ -196,24 +196,8 @@
   background: transparent;
   display: grid;
   place-content: center;
-  gap: 0.35rem;
+  color: var(--navy);
   cursor: pointer;
-}
-
-.site-burger span {
-  display: block;
-  width: 1.35rem;
-  height: 2px;
-  background: var(--navy);
-  transition: transform 0.2s ease;
-}
-
-.site-burger.is-open span:first-child {
-  transform: translateY(3.5px) rotate(45deg);
-}
-
-.site-burger.is-open span:last-child {
-  transform: translateY(-3.5px) rotate(-45deg);
 }
 
 .site-drawer {

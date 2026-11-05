@@ -7,6 +7,7 @@ import { GALLERY_STYLES, resolveGalleryStyle, type GalleryStyleId } from "@/lib/
 import type { Locale } from "@/lib/i18n";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -325,9 +326,7 @@ function StageLayout({ dict }: { dict: Dictionary }) {
         <>
           <div className="gl-stage-feature-wrap">
             <button type="button" className="gl-stage-nav is-prev" aria-label={dict.gallery.prev} onClick={() => go(-1)}>
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <ChevronLeft size={22} strokeWidth={1.8} aria-hidden="true" />
             </button>
 
             <div className="gl-stage-feature" ref={featureRef}>
@@ -352,9 +351,7 @@ function StageLayout({ dict }: { dict: Dictionary }) {
             </div>
 
             <button type="button" className="gl-stage-nav is-next" aria-label={dict.gallery.next} onClick={() => go(1)}>
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M10 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <ChevronRight size={22} strokeWidth={1.8} aria-hidden="true" />
             </button>
           </div>
 

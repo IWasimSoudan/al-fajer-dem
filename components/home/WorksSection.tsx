@@ -5,6 +5,7 @@ import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import { resolveWorksStyle, WORKS_STYLES, type WorksStyleId } from "@/lib/worksStyle";
 import gsap from "gsap";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -14,11 +15,7 @@ type Stage = Dictionary["home"]["stage"];
 type Creation = Stage["creations"][number];
 
 function Arrow() {
-  return (
-    <svg className="works-arrow" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
+  return <ArrowRight className="works-arrow" size={24} strokeWidth={1.4} aria-hidden="true" />;
 }
 
 function Gear() {

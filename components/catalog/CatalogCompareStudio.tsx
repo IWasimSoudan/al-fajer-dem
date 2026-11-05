@@ -13,6 +13,7 @@ import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import { productPriceLabel } from "@/lib/money";
 import gsap from "gsap";
+import { Search, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
@@ -129,7 +130,10 @@ function ProductPickPanel({
   return (
     <div className="cg-pick">
       <label className="cg-pick-search">
-        <span>{copy.compareSearch}</span>
+        <span className="ui-ico">
+          <Search size={14} strokeWidth={1.75} aria-hidden="true" />
+          {copy.compareSearch}
+        </span>
         <input
           type="search"
           value={query}
@@ -142,7 +146,8 @@ function ProductPickPanel({
         <div className="cg-pick-selected">
           <div className="cg-pick-selected-head">
             <p className="cg-pick-label">{copy.compareSelected}</p>
-            <button type="button" className="cg-pick-clear" onClick={onClear}>
+            <button type="button" className="cg-pick-clear ui-ico-btn" onClick={onClear}>
+              <X size={14} strokeWidth={1.75} aria-hidden="true" />
               {copy.compareClear}
             </button>
           </div>

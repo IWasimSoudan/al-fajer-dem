@@ -5,6 +5,7 @@ import type { Locale } from "@/lib/i18n";
 import { HISTORY_STYLES, resolveHistoryStyle, type HistoryStyleId } from "@/lib/historyStyle";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from "react";
@@ -263,14 +264,14 @@ function ChaptersLayout({
               onClick={() => setActive((active - 1 + stage.history.length) % stage.history.length)}
               aria-label="Previous"
             >
-              ←
+              <ChevronLeft size={18} strokeWidth={1.75} aria-hidden="true" />
             </button>
             <button
               type="button"
               onClick={() => setActive((active + 1) % stage.history.length)}
               aria-label="Next"
             >
-              →
+              <ChevronRight size={18} strokeWidth={1.75} aria-hidden="true" />
             </button>
           </div>
         </article>

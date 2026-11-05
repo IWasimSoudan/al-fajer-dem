@@ -1,6 +1,7 @@
 "use client";
 
 import { ContactForm } from "@/components/ContactForm";
+import { FOOTER_FACT_ICONS } from "@/components/icons/navIcons";
 import { asset } from "@/lib/asset";
 import { CONTACT_STYLES, resolveContactStyle, type ContactStyleId } from "@/lib/contactStyles";
 import type { Dictionary } from "@/lib/dictionaries/en";
@@ -54,7 +55,10 @@ function VisitFacts({ dict }: { dict: Dictionary }) {
   return (
     <ul className="cn-visit-facts">
       <li>
-        <span>{dict.contact.visitTitle}</span>
+        <span>
+          <FOOTER_FACT_ICONS.visit size={14} strokeWidth={1.75} aria-hidden="true" />
+          {dict.contact.visitTitle}
+        </span>
         <strong>
           {footer.address}
           <br />
@@ -62,33 +66,51 @@ function VisitFacts({ dict }: { dict: Dictionary }) {
         </strong>
       </li>
       <li>
-        <span>{footer.hoursLabel}</span>
+        <span>
+          <FOOTER_FACT_ICONS.hours size={14} strokeWidth={1.75} aria-hidden="true" />
+          {footer.hoursLabel}
+        </span>
         <strong>{footer.hours}</strong>
       </li>
       <li>
-        <span>{footer.phoneLabel}</span>
+        <span>
+          <FOOTER_FACT_ICONS.phone size={14} strokeWidth={1.75} aria-hidden="true" />
+          {footer.phoneLabel}
+        </span>
         <strong>
           <a href={`tel:${footer.phone.replace(/\s+/g, "")}`}>{footer.phone}</a>
         </strong>
       </li>
       <li>
-        <span>{footer.mobileLabel}</span>
+        <span>
+          <FOOTER_FACT_ICONS.mobile size={14} strokeWidth={1.75} aria-hidden="true" />
+          {footer.mobileLabel}
+        </span>
         <strong>
           <a href={`tel:${footer.mobile.replace(/\s+/g, "")}`}>{footer.mobile}</a>
         </strong>
       </li>
       <li>
-        <span>{footer.faxLabel}</span>
+        <span>
+          <FOOTER_FACT_ICONS.fax size={14} strokeWidth={1.75} aria-hidden="true" />
+          {footer.faxLabel}
+        </span>
         <strong>{footer.fax}</strong>
       </li>
       <li>
-        <span>{dict.contact.email}</span>
+        <span>
+          <FOOTER_FACT_ICONS.email size={14} strokeWidth={1.75} aria-hidden="true" />
+          {dict.contact.email}
+        </span>
         <strong>
           <a href={`mailto:${footer.email}`}>{footer.email}</a>
         </strong>
       </li>
       <li>
-        <span>{footer.websiteLabel}</span>
+        <span>
+          <FOOTER_FACT_ICONS.website size={14} strokeWidth={1.75} aria-hidden="true" />
+          {footer.websiteLabel}
+        </span>
         <strong>
           <a href={footer.websiteHref} target="_blank" rel="noreferrer">
             {footer.website}
