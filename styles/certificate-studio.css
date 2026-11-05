@@ -315,6 +315,8 @@ html[dir="rtl"] .ct-imprint-kicker {
   text-transform: none;
 }
 
+/* Beat .home-page h2 ink override (home.css loads later). */
+.home-page .ct-imprint-copy h2,
 .ct-imprint-copy h2 {
   margin: 0;
   font-size: clamp(2rem, 4.5vw, 3.2rem);
