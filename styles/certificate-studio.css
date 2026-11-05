@@ -1,0 +1,524 @@
+/* Certificates page — three scroll-motion layout previews */
+
+.ct-studio .page-body {
+  padding-top: 2.5vh;
+}
+
+.ct-picker {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 960px;
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--white) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.ct-picker-title {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+html[dir="rtl"] .ct-picker-title {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.ct-picker-hint {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--blue) 70%, transparent);
+}
+
+.ct-picker-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.ct-picker-item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  background: color-mix(in srgb, var(--grey) 28%, white);
+  border: 1px solid transparent;
+}
+
+.ct-picker-item:hover {
+  border-color: color-mix(in srgb, var(--royal) 45%, transparent);
+}
+
+.ct-picker-item.is-active {
+  background: color-mix(in srgb, var(--royal) 12%, white);
+  border-color: color-mix(in srgb, var(--royal) 50%, transparent);
+}
+
+.ct-picker-item strong {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.ct-picker-item span {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  opacity: 0.75;
+}
+
+.ct-idea {
+  max-width: 720px;
+  margin: 0 0 2.5rem;
+  padding: 0.9rem 1rem;
+  border-inline-start: 3px solid var(--royal);
+  background: color-mix(in srgb, var(--sky) 55%, white);
+}
+
+.ct-idea-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
+
+html[dir="rtl"] .ct-idea-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.ct-idea p {
+  margin: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.ct-idea strong {
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.ct-idea span {
+  color: color-mix(in srgb, var(--blue) 75%, white);
+  line-height: 1.5;
+}
+
+.ct-seal {
+  width: 100%;
+  height: 100%;
+  color: var(--royal);
+}
+
+.ct-footer {
+  margin-top: 3.5rem;
+  padding-top: 0.5rem;
+}
+
+/* 1 · Ledger cascade */
+.ct-ledger {
+  position: relative;
+  padding-bottom: 4vh;
+}
+
+.ct-ledger-sticky {
+  position: sticky;
+  top: 18vh;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  pointer-events: none;
+  width: fit-content;
+  margin-inline-start: auto;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--navy) 88%, transparent);
+  color: var(--white);
+  box-shadow: 0 10px 28px rgba(11, 40, 68, 0.28);
+}
+
+.ct-ledger-count {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.ct-ledger-total {
+  font-size: 0.85rem;
+  opacity: 0.72;
+}
+
+.ct-ledger-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 0 1.4rem;
+  margin-top: -2.4rem;
+}
+
+.ct-ledger-spine {
+  position: relative;
+  justify-self: center;
+  width: 2px;
+  background: color-mix(in srgb, var(--sky) 80%, var(--royal));
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.ct-ledger-spine span {
+  position: absolute;
+  inset: 0;
+  transform-origin: top center;
+  background: var(--royal);
+}
+
+.ct-ledger-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4.5rem;
+}
+
+.ct-ledger-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 1.2rem 1.5rem;
+  align-items: center;
+  will-change: transform, opacity;
+}
+
+.ct-ledger-num {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1;
+  color: color-mix(in srgb, var(--royal) 55%, var(--ink));
+  letter-spacing: -0.04em;
+}
+
+.ct-ledger-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ice);
+}
+
+.ct-ledger-media img {
+  object-fit: cover;
+}
+
+.ct-ledger-seal {
+  position: absolute;
+  inset-inline-end: 0.85rem;
+  bottom: 0.85rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--white) 92%, transparent);
+  box-shadow: 0 10px 24px rgba(11, 40, 68, 0.22);
+  will-change: transform, opacity;
+}
+
+.ct-ledger-copy h2 {
+  margin: 0 0 0.45rem;
+  font-size: var(--h3);
+  color: var(--navy);
+}
+
+.ct-ledger-copy p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 36ch;
+}
+
+/* 2 · Wax imprint */
+.ct-imprints {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.ct-imprint {
+  position: relative;
+  min-height: min(86vh, 820px);
+  display: grid;
+  align-items: end;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.ct-imprint-door {
+  position: absolute;
+  inset: 0;
+  will-change: clip-path;
+}
+
+.ct-imprint-door img {
+  object-fit: cover;
+}
+
+.ct-imprint-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--navy) 10%, transparent) 20%,
+    color-mix(in srgb, var(--navy) 78%, transparent) 100%
+  );
+}
+
+.ct-imprint-seal {
+  position: absolute;
+  inset-inline-end: clamp(1.2rem, 4vw, 2.4rem);
+  top: clamp(1.2rem, 4vw, 2.4rem);
+  z-index: 2;
+  width: clamp(4.2rem, 9vw, 5.6rem);
+  height: clamp(4.2rem, 9vw, 5.6rem);
+  padding: 0.55rem;
+  border-radius: 999px;
+  color: var(--white);
+  background: color-mix(in srgb, var(--royal) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--white) 35%, transparent);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+  will-change: transform, opacity;
+}
+
+.ct-imprint-copy {
+  position: relative;
+  z-index: 2;
+  padding: clamp(1.4rem, 4vw, 2.6rem);
+  color: var(--white);
+  max-width: 34rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.ct-imprint-kicker {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--sky) 80%, white);
+}
+
+html[dir="rtl"] .ct-imprint-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.ct-imprint-copy h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  color: var(--white);
+}
+
+.ct-imprint-copy p {
+  margin: 0;
+  color: color-mix(in srgb, var(--ice) 88%, white);
+  line-height: 1.55;
+}
+
+/* 3 · Vault rail */
+.ct-vault-wrap {
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+}
+
+.ct-vault {
+  position: relative;
+  min-height: 100vh;
+  padding: 1.5rem clamp(1rem, 4vw, 3rem) 2rem;
+  background: linear-gradient(180deg, var(--ice) 0%, var(--white) 55%, var(--sky) 100%);
+  overflow: hidden;
+}
+
+.ct-vault-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  max-width: 1200px;
+}
+
+.ct-vault-kicker {
+  margin: 0 0 0.25rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
+
+html[dir="rtl"] .ct-vault-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.ct-vault-active {
+  margin: 0;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+.ct-vault-progress {
+  width: min(280px, 40vw);
+  height: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--royal) 18%, white);
+  overflow: hidden;
+  margin-bottom: 0.55rem;
+}
+
+.ct-vault-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--royal);
+}
+
+.ct-vault-viewport {
+  perspective: 1400px;
+  overflow: visible;
+}
+
+.ct-vault-track {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: 1rem 0 2rem;
+  width: max-content;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.ct-vault-card {
+  width: min(420px, 78vw);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 18px 44px rgba(11, 40, 68, 0.12);
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.ct-vault-media {
+  position: relative;
+  height: min(42vh, 360px);
+}
+
+.ct-vault-media img {
+  object-fit: cover;
+}
+
+.ct-vault-seal {
+  position: absolute;
+  inset-inline-end: 0.9rem;
+  bottom: 0.9rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--white) 90%, transparent);
+  box-shadow: 0 10px 22px rgba(11, 40, 68, 0.2);
+}
+
+.ct-vault-copy {
+  padding: 1.1rem 1.2rem 1.4rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.ct-vault-copy span {
+  color: var(--royal);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.ct-vault-copy h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.15;
+  color: var(--navy);
+}
+
+.ct-vault-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.ct-vault-wrap .ct-footer {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .ct-picker-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ct-ledger-track {
+    grid-template-columns: 1fr;
+  }
+
+  .ct-ledger-spine {
+    display: none;
+  }
+
+  .ct-ledger-row {
+    grid-template-columns: auto 1fr;
+    gap: 0.85rem 1rem;
+  }
+
+  .ct-ledger-media {
+    grid-column: 1 / -1;
+  }
+
+  .ct-ledger-copy {
+    grid-column: 1 / -1;
+  }
+
+  .ct-imprint {
+    min-height: 78vh;
+  }
+
+  .ct-vault-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ct-vault-progress {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-ledger-row,
+  .ct-ledger-seal,
+  .ct-ledger-media,
+  .ct-ledger-spine span,
+  .ct-imprint-door,
+  .ct-imprint-copy > *,
+  .ct-imprint-seal,
+  .ct-vault-card,
+  .ct-vault-track {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+}
