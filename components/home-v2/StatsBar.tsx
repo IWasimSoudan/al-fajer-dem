@@ -3,8 +3,16 @@
 import type { HomeV2Translations } from "@/lib/dictionaries/en/homeV2";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BadgeCheck, Check, Globe, Handshake } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { useLayoutEffect, useRef } from "react";
 import { Skeleton } from "./Skeleton";
+
+const statsIcons: Record<Exclude<HomeV2Translations["stats"][number]["id"], "years">, LucideIcon> = {
+  iso: BadgeCheck,
+  clients: Handshake,
+  markets: Globe,
+};
 
 export function StatsBar({
   copy,
@@ -25,13 +33,13 @@ export function StatsBar({
     const context = gsap.context(() => {
       gsap.fromTo(
         root.querySelectorAll(".hv2-stat"),
-        { y: 28, opacity: 0 },
+        { y: 20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           stagger: 0.08,
           ease: "power2.out",
-          scrollTrigger: { trigger: root, start: "top 85%", once: true },
+          scrollTrigger: { trigger: root, start: "top 88%", once: true },
         },
       );
     }, root);
@@ -41,21 +49,37 @@ export function StatsBar({
   if (!ready) {
     return (
       <section className="hv2-stats is-loading" aria-busy="true">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <Skeleton key={i} className="hv2-stat-skel" />
-        ))}
+        <Skeleton className="hv2-stats-shell-skel" />
       </section>
     );
   }
 
   return (
-    <section className="hv2-stats" ref={rootRef}>
-      {copy.map((item) => (
-        <article key={item.label} className="hv2-stat">
-          <strong>{item.value}</strong>
-          <span>{item.label}</span>
-        </article>
-      ))}
+    <section className="hv2-stats" ref={rootRef} aria-label="Highlights">
+      <div className="hv2-stats-shell">
+        {copy.map((item) => {
+          if (item.id === "years") {
+            return (
+              <article key={item.id} className="hv2-stat">
+                <span className="hv2-stat-icon is-solid" aria-hidden="true">
+                  <Check strokeWidth={2.5} />
+                </span>
+                <p>{item.label}</p>
+              </article>
+            );
+          }
+
+          const Icon = statsIcons[item.id];
+          return (
+            <article key={item.id} className="hv2-stat">
+              <span className="hv2-stat-icon" aria-hidden="true">
+                <Icon strokeWidth={1.75} />
+              </span>
+              <p>{item.label}</p>
+            </article>
+          );
+        })}
+      </div>
     </section>
   );
 }

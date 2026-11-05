@@ -64,9 +64,9 @@ export const homeV2 = {
     cta: "عرض المشاريع",
   },
   stats: [
-    { value: "57+", label: "عاماً من التجارة" },
-    { value: "ISO", label: "معايير الجودة" },
-    { value: "500+", label: "عميل خدمناه" },
-    { value: "MENA", label: "أسواق محلية وإقليمية" },
+    { id: "years", label: "خبرة تمتد لأكثر من 20 عام" },
+    { id: "iso", label: "معايير جودة عالمية ISO 9001" },
+    { id: "clients", label: "+500 عميل حول العالم" },
+    { id: "markets", label: "خدمة في الأسواق المحلية والإقليمية" },
   ],
 } satisfies HomeV2Translations;

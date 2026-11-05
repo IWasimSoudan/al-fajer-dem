@@ -62,10 +62,10 @@ export const homeV2 = {
     cta: "View projects",
   },
   stats: [
-    { value: "57+", label: "Years of trade" },
-    { value: "ISO", label: "Quality standards" },
-    { value: "500+", label: "Clients served" },
-    { value: "MENA", label: "Local & regional markets" },
+    { id: "years", label: "Experience spanning more than 20 years" },
+    { id: "iso", label: "Global quality standards ISO 9001" },
+    { id: "clients", label: "+500 clients worldwide" },
+    { id: "markets", label: "Service in local and regional markets" },
   ],
 };
 
