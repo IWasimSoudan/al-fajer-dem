@@ -12,6 +12,7 @@ import "@/styles/project-studio.css";
 import "@/styles/expertise-studio.css";
 import "@/styles/certificate-studio.css";
 import "@/styles/client-studio.css";
+import "@/styles/gallery-studio.css";
 import "@/styles/home.css";
 import "@/styles/home-v2.css";
 

@@ -1,0 +1,472 @@
+/* Gallery page — three motion layouts (lattice / reel / stage) */
+
+.gl-studio .page-body {
+  padding-top: 2.5vh;
+}
+
+.gl-picker {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 960px;
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--white) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.gl-picker-title {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+html[dir="rtl"] .gl-picker-title {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.gl-picker-hint {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--blue) 70%, transparent);
+}
+
+.gl-picker-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.gl-picker-item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  background: color-mix(in srgb, var(--grey) 28%, white);
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.gl-picker-item:hover {
+  border-color: color-mix(in srgb, var(--royal) 45%, transparent);
+}
+
+.gl-picker-item.is-active {
+  background: color-mix(in srgb, var(--royal) 12%, white);
+  border-color: color-mix(in srgb, var(--royal) 50%, transparent);
+}
+
+.gl-picker-item strong {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.gl-picker-item span {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  opacity: 0.75;
+}
+
+.gl-idea {
+  max-width: 720px;
+  margin: 0 0 2rem;
+  padding: 0.9rem 1rem;
+  border-inline-start: 3px solid var(--royal);
+  background: color-mix(in srgb, var(--sky) 55%, white);
+}
+
+.gl-idea-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
+
+html[dir="rtl"] .gl-idea-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.gl-idea p {
+  margin: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.gl-idea strong {
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.gl-idea span {
+  color: color-mix(in srgb, var(--blue) 75%, white);
+  line-height: 1.5;
+}
+
+.gl-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.4rem;
+}
+
+.gl-filters button {
+  appearance: none;
+  border: 1px solid color-mix(in srgb, var(--royal) 22%, transparent);
+  background: var(--white);
+  color: var(--navy);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.gl-filters button:hover {
+  border-color: var(--royal);
+}
+
+.gl-filters button.is-active {
+  background: var(--royal);
+  border-color: var(--royal);
+  color: var(--white);
+}
+
+.gl-empty {
+  margin: 1rem 0 0;
+  color: var(--muted);
+}
+
+/* 1 · Lattice */
+.gl-lattice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.gl-lattice-item {
+  margin: 0;
+  display: grid;
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 12px 28px rgba(11, 40, 68, 0.08);
+}
+
+.gl-lattice-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--ice), var(--sky));
+  overflow: hidden;
+}
+
+.gl-lattice-media img {
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.gl-lattice-item:hover .gl-lattice-media img {
+  transform: scale(1.04);
+}
+
+.gl-lattice-shade {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--navy) 45%, transparent));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gl-lattice-item:hover .gl-lattice-shade {
+  opacity: 1;
+}
+
+.gl-lattice-item figcaption {
+  padding: 0.85rem 1rem 1.05rem;
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.gl-lattice-item figcaption span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
+
+html[dir="rtl"] .gl-lattice-item figcaption span {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* 2 · Film reel */
+.gl-reel-viewport {
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+  padding-inline: max(1rem, calc((100vw - var(--max)) / 2));
+}
+
+.gl-reel-track {
+  display: flex;
+  gap: 1.1rem;
+  overflow-x: auto;
+  padding: 0.4rem 0 1.4rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.gl-reel-card {
+  margin: 0;
+  flex: 0 0 min(78vw, 520px);
+  scroll-snap-align: start;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 16px 36px rgba(11, 40, 68, 0.1);
+}
+
+.gl-reel-media {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  background: linear-gradient(135deg, var(--ice), var(--sky));
+  overflow: hidden;
+}
+
+.gl-reel-media img {
+  object-fit: cover;
+}
+
+.gl-reel-card figcaption {
+  padding: 0.95rem 1.1rem 1.15rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.gl-reel-card figcaption span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
+
+html[dir="rtl"] .gl-reel-card figcaption span {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.gl-reel-card figcaption strong {
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+
+/* 3 · Spotlight stage */
+.gl-stage-feature-wrap {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gl-stage-feature {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--navy);
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  box-shadow: 0 22px 50px rgba(11, 40, 68, 0.16);
+  min-height: min(62vh, 620px);
+}
+
+.gl-stage-media {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--steel), var(--navy));
+}
+
+.gl-stage-media img {
+  object-fit: cover;
+}
+
+.gl-stage-placeholder {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(110deg, transparent 30%, color-mix(in srgb, var(--white) 12%, transparent) 45%, transparent 60%),
+    color-mix(in srgb, var(--navy) 20%, transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.gl-stage-feature.is-swapping .gl-stage-placeholder {
+  opacity: 1;
+}
+
+.gl-stage-copy {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1.4rem 1.5rem 1.5rem;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--navy) 82%, transparent));
+  color: var(--white);
+  display: grid;
+  gap: 0.3rem;
+}
+
+.gl-stage-tag {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--sky) 85%, white);
+}
+
+html[dir="rtl"] .gl-stage-tag {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.gl-stage-copy h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.8vw, 2rem);
+  color: var(--white);
+}
+
+.gl-stage-count {
+  margin: 0.15rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.gl-stage-nav {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--royal) 30%, transparent);
+  background: var(--white);
+  color: var(--navy);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(11, 40, 68, 0.1);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.gl-stage-nav:hover {
+  background: var(--royal);
+  border-color: var(--royal);
+  color: var(--white);
+}
+
+.gl-stage-nav svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+html[dir="rtl"] .gl-stage-nav svg {
+  transform: scaleX(-1);
+}
+
+.gl-stage-thumbs {
+  display: flex;
+  gap: 0.55rem;
+  overflow-x: auto;
+  margin-top: 1rem;
+  padding-bottom: 0.25rem;
+}
+
+.gl-stage-thumb {
+  position: relative;
+  flex: 0 0 92px;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  background: var(--ice);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.gl-stage-thumb img {
+  object-fit: cover;
+}
+
+.gl-stage-thumb:hover {
+  transform: translateY(-2px);
+}
+
+.gl-stage-thumb.is-active {
+  border-color: var(--royal);
+}
+
+@media (max-width: 900px) {
+  .gl-picker-list {
+    grid-template-columns: 1fr;
+  }
+
+  .gl-lattice-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gl-stage-feature-wrap {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .gl-stage-feature {
+    min-height: min(54vh, 480px);
+    order: 1;
+  }
+
+  .gl-stage-nav {
+    order: 2;
+    justify-self: center;
+  }
+
+  .gl-stage-feature-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .gl-stage-feature {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .gl-lattice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gl-lattice-item,
+  .gl-reel-card,
+  .gl-stage-feature,
+  .gl-lattice-media img {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
