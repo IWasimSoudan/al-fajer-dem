@@ -52,9 +52,21 @@ export function HomeV2Header({ lang, dict }: { lang: Locale; dict: Dictionary })
             <Link href={`/${lang}/cart`}>{chrome.account}</Link>
           </div>
           <div className="hv2-utility-tools">
-            <Link href={`/${lang}`} className="hv2-version-link">
-              {dict.homeV2.backToV1}
-            </Link>
+            <div className="hv2-version" role="group" aria-label={dict.nav.homeVersion}>
+              <Link
+                href={`/${lang}`}
+                aria-label={`${dict.nav.home} ${dict.nav.homeV1}`}
+              >
+                {dict.nav.homeV1}
+              </Link>
+              <Link
+                href={`/${lang}/v2`}
+                aria-label={`${dict.nav.home} ${dict.nav.homeV2}`}
+                aria-current="page"
+              >
+                {dict.nav.homeV2}
+              </Link>
+            </div>
             <div className="hv2-lang" role="group" aria-label="Language">
               <Link href={withLocale(pathname, "en")} hrefLang="en" aria-current={lang === "en" ? "true" : undefined}>
                 EN
@@ -134,7 +146,10 @@ export function HomeV2Header({ lang, dict }: { lang: Locale; dict: Dictionary })
             {dict.nav.cart} ({count})
           </Link>
           <Link href={`/${lang}`} onClick={() => setOpen(false)}>
-            {dict.homeV2.backToV1}
+            {dict.nav.home} {dict.nav.homeV1}
+          </Link>
+          <Link href={`/${lang}/v2`} aria-current="page" onClick={() => setOpen(false)}>
+            {dict.nav.home} {dict.nav.homeV2}
           </Link>
         </nav>
       </div>

@@ -1,6 +1,13 @@
 import type { HomeTranslations } from "@/lib/dictionaries/en/home";
 
 export const home = {
+  chrome: {
+    contactUs: "تواصل معنا",
+    support: "الدعم الفني",
+    account: "حسابي",
+    search: "ابحث في المنتجات",
+    searchCta: "بحث",
+  },
   kicker: "01 — منذ 1969",
   title: "هياكل فولاذية، وأبواب لفافة، وأتمتة بوابات.",
   lead: "مورّد موثوق للشركات الكبرى في الأردن والمنطقة. نصمّم ونصنّع ونركّب، ثم نبقى على العمل.",

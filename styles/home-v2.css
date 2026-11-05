@@ -80,16 +80,37 @@ html[dir="rtl"] .hv2-page h3 {
   flex-wrap: wrap;
 }
 
-.hv2-utility a,
-.hv2-version-link {
+.hv2-utility a {
   color: color-mix(in srgb, var(--hv2-white) 82%, transparent);
   text-decoration: none;
   font-weight: 500;
 }
 
-.hv2-utility a:hover,
-.hv2-version-link:hover {
+.hv2-utility a:hover {
   color: var(--hv2-white);
+}
+
+.hv2-version {
+  display: flex;
+  gap: 0.15rem;
+  padding: 0.15rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--hv2-white) 28%, transparent);
+}
+
+.hv2-version a {
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--hv2-white) 70%, transparent);
+  text-decoration: none;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.hv2-version a[aria-current="page"] {
+  color: var(--hv2-white);
+  background: color-mix(in srgb, var(--hv2-white) 16%, transparent);
+  font-weight: 700;
 }
 
 .hv2-lang a {

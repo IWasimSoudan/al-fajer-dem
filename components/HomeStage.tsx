@@ -1,8 +1,9 @@
 "use client";
 
-import { HeroSection } from "@/components/home/HeroSection";
 import { BrandsSection } from "@/components/home/BrandsSection";
+import { HeroSection } from "@/components/home/HeroSection";
 import { HistorySection } from "@/components/home/HistorySection";
+import { HomeV1Header } from "@/components/home/HomeV1Header";
 import { WelcomeSection } from "@/components/home/WelcomeSection";
 import { WorksSection } from "@/components/home/WorksSection";
 import type { Dictionary } from "@/lib/dictionaries/en";
@@ -115,9 +116,11 @@ export function HomeStage({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
   return (
     <div className="home-page" ref={rootRef}>
+      <HomeV1Header lang={lang} dict={dict} />
       <HeroSection
         lang={lang}
         stage={stage}
+        home={dict.home}
         heroAlt={dict.home.heroAlt}
         motion={motion}
         onScrollDown={(event) => {

@@ -1,6 +1,6 @@
 import { asset } from "@/lib/asset";
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
+import { Cairo, IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
 import "./globals.css";
 import "@/styles/layout.css";
 import "@/styles/footer.css";
@@ -26,6 +26,13 @@ const arabicSans = IBM_Plex_Sans_Arabic({
   display: "swap",
 });
 
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "700", "800"],
+  variable: "--font-cairo",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
     default: "Al Fajer Group",
@@ -39,7 +46,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning>
-      <body className={`${inter.variable} ${arabicSans.variable}`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${arabicSans.variable} ${cairo.variable}`} suppressHydrationWarning>
         {children}
       </body>
     </html>

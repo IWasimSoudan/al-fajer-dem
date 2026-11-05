@@ -65,15 +65,49 @@ function HeroPicker({ lang, stage, active }: { lang: Locale; stage: Stage; activ
   );
 }
 
+function HeroActions({
+  lang,
+  home,
+  stage,
+  onScrollDown,
+}: {
+  lang: Locale;
+  home: Dictionary["home"];
+  stage: Stage;
+  onScrollDown: (event: MouseEvent<HTMLAnchorElement>) => void;
+}) {
+  return (
+    <div className="hero-actions">
+      <Link className="hero-cta hero-cta-primary" href={`/${lang}/products`}>
+        <span>{home.ctaProducts}</span>
+        <span className="hero-cta-arrow" aria-hidden="true">
+          ←
+        </span>
+      </Link>
+      <Link className="hero-cta hero-cta-secondary" href={`/${lang}/contact`}>
+        <span>{home.ctaContact}</span>
+        <span className="hero-cta-arrow" aria-hidden="true">
+          ←
+        </span>
+      </Link>
+      <a className="scroll-cue" href="#welcome" onClick={onScrollDown}>
+        {stage.scroll}
+      </a>
+    </div>
+  );
+}
+
 export function HeroSection({
   lang,
   stage,
+  home,
   heroAlt,
   motion,
   onScrollDown,
 }: {
   lang: Locale;
   stage: Stage;
+  home: Dictionary["home"];
   heroAlt: string;
   motion: boolean;
   onScrollDown: (event: MouseEvent<HTMLAnchorElement>) => void;
@@ -93,18 +127,14 @@ export function HeroSection({
           <div className="hero-copy">
             <h1>{stage.heroTitle}</h1>
             <p>{stage.heroLead}</p>
-            <a className="scroll-cue" href="#welcome" onClick={onScrollDown}>
-              {stage.scroll}
-            </a>
+            <HeroActions lang={lang} home={home} stage={stage} onScrollDown={onScrollDown} />
           </div>
         </div>
       ) : (
         <div className="hero-copy">
           <h1>{stage.heroTitle}</h1>
           <p>{stage.heroLead}</p>
-          <a className="scroll-cue" href="#welcome" onClick={onScrollDown}>
-            {stage.scroll}
-          </a>
+          <HeroActions lang={lang} home={home} stage={stage} onScrollDown={onScrollDown} />
         </div>
       )}
 

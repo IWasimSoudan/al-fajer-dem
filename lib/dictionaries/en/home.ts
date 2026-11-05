@@ -1,4 +1,11 @@
 export const home = {
+  chrome: {
+    contactUs: "Contact us",
+    support: "Technical support",
+    account: "My account",
+    search: "Search products",
+    searchCta: "Search",
+  },
   kicker: "01 — Since 1969",
   title: "Steel structures, rolling shutters, and gate automation.",
   lead: "A trusted supplier to major companies in Jordan and MENA. We design, fabricate, fit, and look after the work.",
