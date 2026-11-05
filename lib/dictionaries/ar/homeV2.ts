@@ -1,8 +1,15 @@
 import type { HomeV2Translations } from "@/lib/dictionaries/en/homeV2";
 
 export const homeV2 = {
-  previewNote: "الصفحة الرئيسية v2 — معاينة التخطيط التجاري",
-  backToV1: "فتح الصفحة الكلاسيكية (v1)",
+  previewNote: "الرئيسية v2",
+  backToV1: "الرئيسية الكلاسيكية",
+  chrome: {
+    contactUs: "تواصل معنا",
+    support: "الدعم الفني",
+    account: "حسابي",
+    search: "ابحث في المنتجات",
+    searchCta: "بحث",
+  },
   hero: {
     slides: [
       {

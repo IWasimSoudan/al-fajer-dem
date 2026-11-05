@@ -1,6 +1,13 @@
 export const homeV2 = {
-  previewNote: "Home v2 — commercial layout preview",
-  backToV1: "Open classic home (v1)",
+  previewNote: "Home v2",
+  backToV1: "Classic home",
+  chrome: {
+    contactUs: "Contact us",
+    support: "Technical support",
+    account: "My account",
+    search: "Search products",
+    searchCta: "Search",
+  },
   hero: {
     slides: [
       {
