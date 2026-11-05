@@ -69,6 +69,23 @@ export const catalog = {
   compareTitle: "Compare",
   compareLead: "Select any of the sample items and read them side by side.",
   compareNeed: "Select at least two items.",
+  comparePicker: "Compare layout — preview only",
+  compareHint: "Same sample data, three ways to read it. Pick one later to lock in.",
+  compareWhy: "Why this compare",
+  compareSlot: "Select a sample",
+  compareSlotHint: "Tap a chip above to fill this slot.",
+  compareStyles: {
+    matrix: {
+      label: "1 · Spec matrix",
+      blurb: "Sheet-style table with thumbnails; differing cells light up.",
+      idea: "B2B tender feel — every fact in one scan, with motion when the set changes.",
+    },
+    columns: {
+      label: "2 · Face-off columns",
+      blurb: "Tall product cards side by side; empty slots stay as placeholders.",
+      idea: "Showroom compare — images lead, specs stack underneath.",
+    },
+  },
   termsTitle: "Terms",
   termsLead: "Short definitions for the words on this page.",
   terms: [

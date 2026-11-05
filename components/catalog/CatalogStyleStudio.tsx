@@ -1,24 +1,27 @@
 "use client";
 
+import { CatalogCompareStudio } from "@/components/catalog/CatalogCompareStudio";
 import { asset } from "@/lib/asset";
-import { products, type ProductId } from "@/lib/catalog";
+import { products } from "@/lib/catalog";
 import { CATALOG_STYLES, catalogDownloads, resolveCatalogStyle, type CatalogStyleId } from "@/lib/catalogStyles";
+import { resolveCompareStyle, type CompareStyleId } from "@/lib/compareStyles";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import { money } from "@/lib/money";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
 
 function StylePicker({
   lang,
   dict,
   active,
+  compare,
 }: {
   lang: Locale;
   dict: Dictionary;
   active: CatalogStyleId;
+  compare: CompareStyleId;
 }) {
   return (
     <aside className="cg-picker" aria-label={dict.catalog.stylePicker}>
@@ -32,7 +35,7 @@ function StylePicker({
           return (
             <Link
               key={id}
-              href={`/${lang}/catalog?style=${id}`}
+              href={`/${lang}/catalog?style=${id}&compare=${compare}`}
               role="listitem"
               className={active === id ? "cg-picker-item is-active" : "cg-picker-item"}
               aria-current={active === id ? "page" : undefined}
@@ -134,92 +137,6 @@ function SampleGrid({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   );
 }
 
-function CompareSection({ lang, dict }: { lang: Locale; dict: Dictionary }) {
-  const copy = dict.catalog;
-  const [picked, setPicked] = useState<ProductId[]>(["antiwind", "levante"]);
-
-  function toggle(id: ProductId) {
-    setPicked((current) => (current.includes(id) ? current.filter((item) => item !== id) : [...current, id]));
-  }
-
-  function published(key: (typeof products)[number]["dimensions"] | (typeof products)[number]["rating"]) {
-    return key ? copy.measures[key] : copy.unpublished;
-  }
-
-  const compared = products.filter((product) => picked.includes(product.id));
-
-  return (
-    <section className="cg-compare" aria-labelledby="cg-compare-title">
-      <div className="cg-samples-head">
-        <h2 id="cg-compare-title">{copy.compareTitle}</h2>
-        <p>{copy.compareLead}</p>
-      </div>
-
-      <div className="filters cg-compare-filters" role="group" aria-label={copy.compareTitle}>
-        {products.map((product) => {
-          const on = picked.includes(product.id);
-          return (
-            <button key={product.id} type="button" aria-pressed={on} onClick={() => toggle(product.id)}>
-              {dict.products.items[product.id].name}
-            </button>
-          );
-        })}
-      </div>
-
-      {compared.length < 2 ? (
-        <p className="note">{copy.compareNeed}</p>
-      ) : (
-        <div className="compare-wrap">
-          <table className="compare-table">
-            <thead>
-              <tr>
-                <th scope="col">{copy.name}</th>
-                {compared.map((product) => (
-                  <th key={product.id} scope="col">
-                    <Link href={`/${lang}/products/${product.id}`}>{dict.products.items[product.id].name}</Link>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">{copy.category}</th>
-                {compared.map((product) => (
-                  <td key={product.id}>{dict.products.categories[product.category].title}</td>
-                ))}
-              </tr>
-              <tr>
-                <th scope="row">{copy.dimensions}</th>
-                {compared.map((product) => (
-                  <td key={product.id}>{published(product.dimensions)}</td>
-                ))}
-              </tr>
-              <tr>
-                <th scope="row">{copy.rating}</th>
-                {compared.map((product) => (
-                  <td key={product.id}>{published(product.rating)}</td>
-                ))}
-              </tr>
-              <tr>
-                <th scope="row">{copy.grade}</th>
-                {compared.map((product) => (
-                  <td key={product.id}>{copy.unpublished}</td>
-                ))}
-              </tr>
-              <tr>
-                <th scope="row">{copy.price}</th>
-                {compared.map((product) => (
-                  <td key={product.id}>{money(lang, product.price)}</td>
-                ))}
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      )}
-    </section>
-  );
-}
-
 function SheetsLayout({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <div className="cg-layout cg-sheets">
@@ -250,6 +167,7 @@ function StackLayout({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 export function CatalogStyleStudio({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const searchParams = useSearchParams();
   const style = resolveCatalogStyle(searchParams.get("style") ?? undefined);
+  const compare = resolveCompareStyle(searchParams.get("compare") ?? undefined);
 
   return (
     <div className="home-page stage-page cg-studio">
@@ -266,7 +184,7 @@ export function CatalogStyleStudio({ lang, dict }: { lang: Locale; dict: Diction
       </section>
 
       <div className="page-body cg-body">
-        <StylePicker lang={lang} dict={dict} active={style} />
+        <StylePicker lang={lang} dict={dict} active={style} compare={compare} />
         <div className="cg-idea" role="note">
           <p className="cg-idea-kicker">{dict.catalog.styleWhy}</p>
           <p>
@@ -279,7 +197,12 @@ export function CatalogStyleStudio({ lang, dict }: { lang: Locale; dict: Diction
         {style === "split" ? <SplitLayout lang={lang} dict={dict} /> : null}
         {style === "stack" ? <StackLayout lang={lang} dict={dict} /> : null}
 
-        <CompareSection lang={lang} dict={dict} />
+        <CatalogCompareStudio
+          lang={lang}
+          dict={dict}
+          layoutStyle={style}
+          compareParam={searchParams.get("compare")}
+        />
       </div>
     </div>
   );
