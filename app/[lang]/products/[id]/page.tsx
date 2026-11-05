@@ -1,4 +1,3 @@
-import { PageStage } from "@/components/PageStage";
 import { ProductDetail } from "@/components/ProductDetail";
 import { productById, products, type ProductId } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
@@ -29,17 +28,12 @@ export default async function ProductPage({ params }: { params: Promise<{ lang: 
   const product = productById(id);
   if (!product) notFound();
   const dict = getDictionary(lang);
-  const copy = dict.products.items[product.id];
 
   return (
-    <PageStage
-      lang={lang}
-      dict={dict}
-      kicker={dict.products.categories[product.category].title}
-      title={copy.name}
-      lead={copy.detail}
-    >
-      <ProductDetail lang={lang} dict={dict} id={product.id as ProductId} />
-    </PageStage>
+    <div className="home-page stage-page">
+      <div className="page-body">
+        <ProductDetail lang={lang} dict={dict} id={product.id as ProductId} />
+      </div>
+    </div>
   );
 }
