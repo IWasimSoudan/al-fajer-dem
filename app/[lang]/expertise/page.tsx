@@ -1,7 +1,7 @@
-import { PageStage } from "@/components/PageStage";
-import { expertise } from "@/lib/catalog";
+import { ExpertiseStyleStudio } from "@/components/expertise/ExpertiseStyleStudio";
 import { load } from "@/lib/page";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { dict } = await load(params);
@@ -12,25 +12,8 @@ export default async function ExpertisePage({ params }: { params: Promise<{ lang
   const { lang, dict } = await load(params);
 
   return (
-    <PageStage
-      lang={lang}
-      dict={dict}
-      kicker={dict.expertise.kicker}
-      title={dict.expertise.title}
-      lead={dict.expertise.lead}
-      image="/images/hex-panels.jpg"
-    >
-      <div className="index">
-        {expertise.map((id, index) => (
-          <article key={id} id={id}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <div>
-              <h2>{dict.expertise.items[id].title}</h2>
-              <p>{dict.expertise.items[id].text}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </PageStage>
+    <Suspense fallback={null}>
+      <ExpertiseStyleStudio lang={lang} dict={dict} />
+    </Suspense>
   );
 }

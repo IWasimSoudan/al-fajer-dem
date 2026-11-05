@@ -2,6 +2,26 @@ export const expertise = {
   kicker: "Expertise",
   title: "Areas of expertise",
   lead: "Each area is work we design, supply, and install. Open a product or write to us if you need a specification for a tender.",
+  stylePicker: "Expertise layout — preview only",
+  styleHint: "Scroll to feel each motion. Pick one later to lock in.",
+  styleWhy: "Why this layout",
+  styles: {
+    cascade: {
+      label: "1 · Cascade index",
+      blurb: "Oversized numbers scrub in; rows slide from alternate sides on a growing spine.",
+      idea: "Keeps the workshop index feel, but every area earns a beat as you roll down the list.",
+    },
+    shutters: {
+      label: "2 · Shutter panels",
+      blurb: "Full-bleed chapters wipe open like a roll-up door, with rising copy.",
+      idea: "Cinematic one-area-at-a-time reading — motion that matches the product.",
+    },
+    orbit: {
+      label: "3 · Orbit rail",
+      blurb: "Pin the stage and scrub sideways through all eight areas.",
+      idea: "Strong motion piece: vertical scroll drives a horizontal expertise track.",
+    },
+  },
   items: {
     steel: {
       title: "Steel structures",

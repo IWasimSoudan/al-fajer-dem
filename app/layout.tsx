@@ -9,6 +9,7 @@ import "@/styles/catalog.css";
 import "@/styles/catalog-studio.css";
 import "@/styles/product-styles.css";
 import "@/styles/project-studio.css";
+import "@/styles/expertise-studio.css";
 import "@/styles/home.css";
 
 const inter = Inter({
